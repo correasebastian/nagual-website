@@ -1,2 +1,4 @@
-# nagual-web
-Web application for Nagual project
+# Nagual Web
+
+Rails-web application for Nagual project
+
