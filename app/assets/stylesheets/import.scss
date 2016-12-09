@@ -1,3 +1,40 @@
-// Place all the styles related to the import controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face {
+  font-family: 'Montserrat';
+  src:url('Montserrat-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+
+  h1 {
+    padding-top: 3em;
+    font-family: 'Montserrat';
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 44px;
+    color: #FFFFFF;
+    text-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  }
+
+  h2 {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 19px;
+    color: #20E6EE;
+  }
+
+  div#title-section {
+    margin: 1em 2em 1em 2em;
+    width: 1280px;
+    height: 511px;
+    background: linear-gradient(134.72deg, #3023AE 0%, #C86DD7 100%);
+
+  }
+
+
+}
