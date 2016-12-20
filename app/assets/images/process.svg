@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="26px" viewBox="0 0 25 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>process</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="-styles" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Elements" transform="translate(-998.000000, -847.000000)" stroke="">
+            <g id="process" transform="translate(998.000000, 847.000000)">
+                <path d="M20.4795918,21.4306122 C15.8020408,26.1081633 8.21020408,26.1081633 3.50816327,21.4306122 C-1.16938776,16.7530612 -1.16938776,9.18571429 3.50816327,4.50816327 C8.21020408,-0.169387755 15.8020408,-0.169387755 20.4795918,4.50816327 C25.1571429,9.18571429 25.1571429,16.7530612 20.4795918,21.4306122 Z" id="Shape" transform="translate(11.993878, 12.969388) rotate(-90.000000) translate(-11.993878, -12.969388) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

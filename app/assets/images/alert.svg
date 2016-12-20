@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>alert</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="-styles" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Elements" transform="translate(-997.000000, -738.000000)" stroke="#FF7411">
+            <g id="alert" transform="translate(998.000000, 739.000000)">
+                <path d="M20.4795918,3.50816327 C25.1571429,8.18571429 25.1571429,15.7530612 20.4795918,20.4306122 C15.8020408,25.1081633 8.21020408,25.1081633 3.50816327,20.4306122 C-1.16938776,15.7530612 -1.16938776,8.18571429 3.50816327,3.50816327 C8.21020408,-1.16938776 15.8020408,-1.16938776 20.4795918,3.50816327 L20.4795918,3.50816327 Z" id="Shape"></path>
+                <path d="M11.5,18.5 L11.5,19.3983976" id="Line" stroke-linecap="round"></path>
+                <path d="M11.5,6.5 L11.5,15.5" id="Line-Copy-7" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
