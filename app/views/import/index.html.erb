@@ -4,6 +4,10 @@
 
   <div id="import-area">
     <p class="copy">Drag your CSV file here or <a href="#">click to browse</a></p>
+    <%= form_tag({action: :upload}, multipart: true) do %>
+      <%= file_field_tag 'import_file' %>
+      <%= submit_tag("Upload") %>
+    <% end %>
   </div>
 
   <div id="import-area-hide">
