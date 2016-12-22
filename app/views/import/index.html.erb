@@ -6,7 +6,6 @@
     <p class="copy">Drag your CSV file here or <a id="file-browse" href="#">click to browse</a></p>
     <%= form_tag({action: :upload}, multipart: true) do %>
       <%= file_field_tag 'import-file', style: 'display: none' %>
-      <%= submit_tag("Upload") %>
     <% end %>
   </div>
 
