@@ -15,7 +15,7 @@ RSpec.describe ImportController, :type => :controller do
 
     let(:file) { double('csvfile', :read => 'read') }
 
-    it "responds successfully with an HTTP 200 status code" do
+    it "responds successfully when  file is uploaded" do
 
       testfile = fixture_file_upload('files/test.csv', 'text/csv')
 
@@ -24,14 +24,14 @@ RSpec.describe ImportController, :type => :controller do
       post :upload, params: { import_file: testfile }
 
       expect(response).to be_success
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(200)
     end
 
-    it 'returns a 204 if filename is not provided' do
+    it 'Skips upload if filename is not provided' do
       post :upload
 
       expect(response).to be_success
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(200)
     end
 
   end
