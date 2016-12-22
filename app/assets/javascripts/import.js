@@ -1,14 +1,18 @@
-var app = {};
+var app = {
+  nagual: {}
+};
 
 (function(app) {
 
   var importer = {
-    getFile: getFile
+    uploadFile: uploadFile,
+    init: init
   };
 
-  function getFile() {
+  function uploadFile() {
     var importBox = $('#import_file');
     var fileBrowse = $('#file-browse');
+
     fileBrowse.click(function (e) {
       if (importBox) {
         importBox.click();
@@ -17,9 +21,16 @@ var app = {};
     });
   }
 
-  app.nagual = importer;
+  function init() {
+    uploadFile();
+  }
+
+  app.nagual.importer = importer;
 
 })(app);
 
-app.nagual.getFile();
+$(function () {
+  app.nagual.importer.init();
+});
+
 
