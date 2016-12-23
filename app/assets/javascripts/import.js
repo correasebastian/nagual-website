@@ -5,11 +5,10 @@ var app = {
 (function(app) {
 
   var importer = {
-    uploadFile: uploadFile,
     init: init
   };
 
-  function dragFile() {
+  function initDragFile() {
     var importFileArea = $('#import-area');
 
     importFileArea.on( 'dragover', function(e) {
@@ -36,7 +35,7 @@ var app = {
 
   }
 
-  function uploadFile() {
+  function initUploadFile() {
     var importBox = $('#import-file');
     var fileBrowse = $('#file-browse');
 
@@ -73,8 +72,8 @@ var app = {
   }
 
   function init() {
-    uploadFile();
-    dragFile();
+    initUploadFile();
+    initDragFile();
   }
 
   app.nagual.importer = importer;
