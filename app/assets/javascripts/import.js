@@ -9,6 +9,33 @@ var app = {
     init: init
   };
 
+  function dragFile() {
+    var importFileArea = $('#import-area');
+
+    importFileArea.on( 'dragover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    importFileArea.on( 'dragenter', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    importFileArea.on( 'drop', function(e) {
+
+      if(e.originalEvent.dataTransfer){
+        files = e.originalEvent.dataTransfer.files;
+        if(files.length) {
+          e.preventDefault();
+          e.stopPropagation();
+          upload(files[0]);
+        }
+      }
+    });
+
+  }
+
   function uploadFile() {
     var importBox = $('#import-file');
     var fileBrowse = $('#file-browse');
@@ -25,27 +52,29 @@ var app = {
       upload(file);
     });
 
-    function upload(file) {
-      var formData = new FormData();
-      formData.append('import_file', file);
+  };
 
-      $.ajax({
-        url: 'import/upload',
-        data: formData,
-        processData: false,
-        contentType: false,
-        type: 'POST',
-        success: function(data){
-          alert("File successfully uploaded");
-        }, error: function(data){
-          alert("Error uploading file");
-        }
-      });
-    }
+  function upload(file) {
+    var formData = new FormData();
+    formData.append('import_file', file);
+
+    $.ajax({
+      url: 'import/upload',
+      data: formData,
+      processData: false,
+      contentType: false,
+      type: 'POST',
+      success: function(data){
+        alert("File successfully uploaded");
+      }, error: function(data){
+        alert("Error uploading file");
+      }
+    });
   }
 
   function init() {
     uploadFile();
+    dragFile();
   }
 
   app.nagual.importer = importer;
@@ -55,5 +84,3 @@ var app = {
 $(function () {
   app.nagual.importer.init();
 });
-
-
