@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/sawyer-effect/nagual.git
+  remote: git@github.com:sawyer-effect/nagual.git
   revision: f19cbe4591b3e16f967c569fd841fd49e43976ac
   branch: develop
   specs:
