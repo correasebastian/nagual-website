@@ -36,4 +36,19 @@ RSpec.describe ImportController, :type => :controller do
 
   end
 
+  describe 'GET #run' do
+    it "runs import" do
+
+      testfile = fixture_file_upload('files/test.csv', 'text/csv')
+
+      expect_any_instance_of(Nagual::API).to receive(:import)
+
+      get :run, params: { import_file: testfile }
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+  end
+
 end
