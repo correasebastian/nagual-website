@@ -67,14 +67,28 @@ var app = {
       contentType: false,
       type: 'POST',
       success: function(data){
-        $('#import-area > .copy').text('File was uploaded');
-        $('#import-area > .import').show();
-        $('#import-area > .import > .check').click(function() {
-          alert("File will be imported");
-        });
+        uploadFileSuccess(file);
       }, error: function(data){
         $('#import-area > .copy').text('Error uploading file');
       }
+    });
+  }
+
+  function uploadFileSuccess(file){
+    $('#import-area > .copy').text('File was uploaded');
+    $('#import-area > .import').show();
+    $('#import-area > .import > .check').click(function() {
+      importFile(file);
+    });
+  }
+
+  function importFile(){
+    $.get("import/run?filename=" + file.name, function(data) {
+      $('#import-area').css("background-color", "rgba(255,255,255,0.2)");
+      $('#import-area').css("color", "white");
+      $('#import-area > .copy').html('Drag your CSV file here or <a id="file-browse" href="#">click to browse</a>');
+    $('#import-area > .import').hide();
+
     });
   }
 
