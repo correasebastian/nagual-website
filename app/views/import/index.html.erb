@@ -7,6 +7,10 @@
     <%= form_tag({action: :upload}, multipart: true) do %>
       <%= file_field_tag 'import-file', style: 'display: none' %>
     <% end %>
+    <div class="import">
+      <%=image_tag "check.png", class: 'check' %>
+    </div>
+
   </div>
 
   <div id="import-area-hide">

@@ -54,6 +54,9 @@ var app = {
   };
 
   function upload(file) {
+    $('#import-area').css("background-color", "white");
+    $('#import-area').css("color", "#9B9B9B");
+
     var formData = new FormData();
     formData.append('import_file', file);
 
@@ -64,9 +67,13 @@ var app = {
       contentType: false,
       type: 'POST',
       success: function(data){
-        alert("File successfully uploaded");
+        $('#import-area > .copy').text('File was uploaded');
+        $('#import-area > .import').show();
+        $('#import-area > .import > .check').click(function() {
+          alert("File will be imported");
+        });
       }, error: function(data){
-        alert("Error uploading file");
+        $('#import-area > .copy').text('Error uploading file');
       }
     });
   }
