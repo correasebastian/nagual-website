@@ -54,8 +54,6 @@ var app = {
   };
 
   function upload(file) {
-    $('#import-area').css("background-color", "white");
-    $('#import-area').css("color", "#9B9B9B");
 
     var formData = new FormData();
     formData.append('import_file', file);
@@ -69,32 +67,45 @@ var app = {
       success: function(data){
         uploadFileSuccess(file);
       }, error: function(data){
-        $('#import-area > .copy').text('Error uploading file');
+        $('.import-area-browse').hide();
+        $('.import-area-error').show();
       }
     });
   }
 
   function uploadFileSuccess(file){
-    $('#import-area > .copy').text('File was uploaded');
-    $('#import-area > .import').show();
-    $('#import-area > .import > .check').click(function() {
+    $('.import-area-browse').hide();
+    $('.import-area-success > .copy').text(file.name + ' was uploaded');
+    $('.import-area-success').show();
+    $('.import-area-success > .import-icon > .check').click(function() {
       importFile(file);
     });
   }
 
+  function uploadFileError(file) {
+    $('.import-area-browse').hide();
+    $('.import-area-error > .copy').text('Error uploading file ' + file.name);
+    $('.import-area-error').show();
+  }
+
   function importFile(){
     $.get("import/run?filename=" + file.name, function(data) {
-      $('#import-area').css("background-color", "rgba(255,255,255,0.2)");
-      $('#import-area').css("color", "white");
-      $('#import-area > .copy').html('Drag your CSV file here or <a id="file-browse" href="#">click to browse</a>');
-    $('#import-area > .import').hide();
+      $('.import-area-success').hide();
+      $('.import-area-browse').show();
+    });
+  }
 
+  function addUploadFileErrorListener() {
+    $('.import-area-error > .import-icon > .error').click(function() {
+      $('.import-area-browse').show();
+      $('.import-area-error').hide();
     });
   }
 
   function init() {
     initUploadFile();
     initDragFile();
+    addUploadFileErrorListener();
   }
 
   app.nagual.importer = importer;

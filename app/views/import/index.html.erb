@@ -2,7 +2,7 @@
   <h1>Import files into Nagual</h1>
   <h3>Drag and drop a CSV file to the space below</h3>
 
-  <div id="import-area">
+  <div class="import-area import-area-browse">
     <p class="copy">Drag your CSV file here or <a id="file-browse" href="#">click to browse</a></p>
     <%= form_tag({action: :upload}, multipart: true) do %>
       <%= file_field_tag 'import-file', style: 'display: none' %>
@@ -10,7 +10,20 @@
     <div class="import">
       <%=image_tag "check.png", class: 'check' %>
     </div>
+  </div>
 
+  <div class="import-area import-area-success">
+    <p class="copy">File uploaded</p>
+    <div class="import-icon">
+      <%=image_tag 'check.png', class: 'check' %>
+    </div>
+  </div>
+
+  <div class="import-area import-area-error">
+    <p class="copy">Error uploading file</p>
+    <div class="import-icon">
+      <%=image_tag 'error.png', class: 'error' %>
+    </div>
   </div>
 
   <div id="import-area-hide">
