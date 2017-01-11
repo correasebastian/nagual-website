@@ -1,0 +1,22 @@
+---
+  product:
+    fixed:
+      min_order_quantity: 10
+      available_flag: 'true'
+    copy:
+      - key: short_description
+        to: short_description
+    merge:
+      - keys:
+          - product_id
+          - organization
+        pattern: 'http://host/%{organization}/%{product_id}'
+        to: page_url
+    images:
+      - view_type: small
+        filter_key: online_flag
+        filter_value: true
+        names:
+          - standard
+    variations:
+      - color

@@ -1,0 +1,83 @@
+---
+  product:
+    mappings:
+    - key: id
+      to: product_id
+      name: none
+    - key: ean
+      to: ean
+      name: none
+    - key: upc
+      to: upc
+      name: none
+    - key: unit
+      to: unit
+      name: none
+    - key: min-order-quantity
+      to: min_order_quantity
+      name: none
+    - key: step
+      to: step_quantity
+      name: none
+    - key: name
+      to: display_name
+      name: none
+    - key: description
+      to: short_description
+      name: none
+    - key: 'long description'
+      to: long_description
+      name: none
+    - key: status
+      to: online_flag
+      name: convert
+      params:
+        default: 'false'
+        values:
+          online: 'true'
+    - key: from
+      to: online_from
+      name: date
+      params:
+        format: '%Y-%m-%d'
+    - key: to
+      to: online_to
+      name: date
+      params:
+        format: '%Y-%m-%d'
+    - key: template
+      to: template
+      name: none
+    - key: 'tax class id'
+      to: tax_class_id
+      name: none
+    - key: brand
+      to: brand
+      name: none
+    - key: manufacturer
+      to: manufacturer_name
+      name: none
+    - key: SKU
+      to: manufacturer_sku
+      name: none
+    - key: organization
+      to: organization
+      name: none
+    - key: master_id
+      to: master_product_id
+      name: none
+    - key: color
+      to: color
+      name: none
+    - key: size
+      to: size
+      name: none
+    - key: stock
+      to: stock
+      name: none
+    - key: perpetual
+      to: perpetual
+      name: none
+    - key: price
+      to: price
+      name: none

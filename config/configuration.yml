@@ -1,0 +1,5 @@
+---
+log:
+  file: /dev/tty
+  date_format: '%Y-%m-%d %H:%M:%S'
+  level: INFO
