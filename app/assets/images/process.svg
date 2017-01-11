@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="25px" height="26px" viewBox="0 0 25 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
     <title>process</title>
     <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="-styles" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Elements" transform="translate(-998.000000, -847.000000)" stroke="">
-            <g id="process" transform="translate(998.000000, 847.000000)">
-                <path d="M20.4795918,21.4306122 C15.8020408,26.1081633 8.21020408,26.1081633 3.50816327,21.4306122 C-1.16938776,16.7530612 -1.16938776,9.18571429 3.50816327,4.50816327 C8.21020408,-0.169387755 15.8020408,-0.169387755 20.4795918,4.50816327 C25.1571429,9.18571429 25.1571429,16.7530612 20.4795918,21.4306122 Z" id="Shape" transform="translate(11.993878, 12.969388) rotate(-90.000000) translate(-11.993878, -12.969388) "></path>
+    <defs>
+        <path d="M22.3437979,22.3363171 C17.4688617,27.2212276 9.55666156,27.2212276 4.65620214,22.3363171 C-0.218734048,17.4514066 -0.218734048,9.54859335 4.65620214,4.66368286 C9.55666156,-0.221227621 17.4688617,-0.221227621 22.3437979,4.66368286 C27.218734,9.54859335 27.218734,17.4514066 22.3437979,22.3363171 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="25" height="25" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="GUI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Elements" transform="translate(-784.000000, -848.000000)" stroke="" stroke-width="2">
+            <g id="process" transform="translate(784.000000, 847.000000)">
+                <use id="Shape" mask="url(#mask-2)" transform="translate(13.500000, 13.500000) rotate(-90.000000) translate(-13.500000, -13.500000) " xlink:href="#path-1"></use>
             </g>
         </g>
     </g>
