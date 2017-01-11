@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/sawyer-effect/nagual.git
+  revision: f19cbe4591b3e16f967c569fd841fd49e43976ac
+  branch: develop
+  specs:
+    nagual (0.0.1)
+      activerecord (~> 5.0.0.1)
+      nokogiri (~> 1.6)
+      pg (~> 0.19.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -92,10 +102,6 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
-    nagual (0.0.1)
-      activerecord (~> 5.0.0.1)
-      nokogiri (~> 1.6)
-      pg (~> 0.19.0)
     nenv (0.3.0)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
@@ -213,7 +219,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
-  nagual (~> 0.0.1)
+  nagual (~> 0.0.1)!
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rspec-rails (~> 3.5)
