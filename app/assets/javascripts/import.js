@@ -48,7 +48,9 @@ var app = {
 
     importBox.change(function(e) {
       file = importBox[0].files[0];
-      upload(file);
+      if(file.name.endsWith('.csv')){
+        upload(file);
+      }
     });
 
   };
