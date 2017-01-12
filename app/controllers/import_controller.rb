@@ -6,13 +6,15 @@ class ImportController < ApplicationController
   end
 
   def upload
-    filename = params[:import_file]
+    import_file = params[:import_file]
 
-    File.open(Rails.root.join('data', 'incoming', filename.original_filename), 'wb') do |file|
-      file.write(filename.read)
-    end unless filename.to_s.empty?
+    return render status: 500, json: {error: 'File not provided'} if import_file.nil?
 
-    render json: { sucess: true }
+    File.open(Rails.root.join('data', 'incoming', import_file.original_filename), 'wb') do |f|
+      f.write(import_file.read)
+    end
+
+    render status: 200, json: { sucess: true }
 
   end
 
