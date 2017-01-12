@@ -40,7 +40,7 @@ RSpec.describe ImportController, :type => :controller do
 
       testfile = fixture_file_upload('files/test.csv', 'text/csv')
 
-      expect_any_instance_of(Nagual::API).to receive(:import)
+      expect(ImportJob).to receive(:perform_later)
 
       get :run, params: { import_file: testfile }
 

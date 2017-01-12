@@ -21,9 +21,8 @@ class ImportController < ApplicationController
   def run
     filename = params[:filename]
 
-    config = load_config
-    nagual = Nagual::API.new(config)
-    nagual.import filename
+    ImportJob.perform_later filename
+
 
     render json: { sucess: true }
   end
