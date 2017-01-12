@@ -40,10 +40,10 @@ var app = {
     var fileBrowse = $('#file-browse');
 
     fileBrowse.click(function (e) {
+      e.preventDefault();
       if (importBox) {
         importBox.click();
       }
-      e.preventDefault();
     });
 
     importBox.change(function(e) {

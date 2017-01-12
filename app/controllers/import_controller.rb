@@ -1,7 +1,5 @@
-require 'nagual/api'
 
 class ImportController < ApplicationController
-  include Nagual::Configuration
 
   def index
 
