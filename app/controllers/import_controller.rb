@@ -2,7 +2,7 @@
 class ImportController < ApplicationController
 
   def index
-
+    @history = JobHistoryEntry.last(5)
   end
 
   def upload

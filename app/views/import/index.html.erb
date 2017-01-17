@@ -43,27 +43,15 @@
         </tr>
       </thead>
       <tbody>
+        <% @history.each do |entry| %>
         <tr>
-          <td>products.csv</td>
-          <td>11/11/2016 11:11 am</td>
-          <td>15</td>
-          <td><%= image_tag "check.png" %></td>
+          <td><%= entry.processed_file_path %></td>
+          <td><%= entry.updated_at %></td>
+          <td>0</td>
+          <td><%= (entry.status == "success") ? image_tag("check.png") : image_tag("error.png") %></td>
           <td><%= image_tag "report.png" %></td>
         </tr>
-        <tr>
-          <td>variants.csv</td>
-          <td>11/12/2016 12:11 am</td>
-          <td>1215</td>
-          <td><%= image_tag "alert.png" %></td>
-          <td><%= image_tag "report.png" %></td>
-        </tr>
-        <tr>
-          <td>products.csv</td>
-          <td>12/12/2016 09:32 pm</td>
-          <td>2655</td>
-          <td><%= image_tag "check.png" %></td>
-          <td><%= image_tag "report.png" %></td>
-        </tr>
+      <% end %>
     </table>
   </div>
 </div>
