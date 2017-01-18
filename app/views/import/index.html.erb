@@ -45,11 +45,11 @@
       <tbody>
         <% @history.each do |entry| %>
         <tr>
-          <td><%= entry.processed_file_path %></td>
+          <td><a href="<%= entry.processed_file_path %>"><%= File.basename(entry.processed_file_path) %></a></td>
           <td><%= entry.updated_at %></td>
-          <td>0</td>
-          <td><%= (entry.status == "success") ? image_tag("check.png") : image_tag("error.png") %></td>
-          <td><%= image_tag "report.png" %></td>
+          <td><%= entry.processed_records %></td>
+          <td><%= (entry.status == 'success') ? image_tag("check.png") : image_tag("error.png") %></td>
+          <td><a href="<%= entry.report_file_path %>"><%= image_tag "report.png" %></a></td>
         </tr>
       <% end %>
     </table>

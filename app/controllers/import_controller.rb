@@ -23,7 +23,6 @@ class ImportController < ApplicationController
 
     ImportJob.perform_later filename
 
-
     render json: { sucess: true }
   end
 
