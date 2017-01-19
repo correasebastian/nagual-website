@@ -9,6 +9,7 @@ RSpec.describe ImportJob, type: :job do
 
       subject.perform 'file'
     end
+
   end
 
 end

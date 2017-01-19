@@ -1,5 +1,5 @@
 ---
 log:
-  file: 'import.log'
+  file: 'log/import.log'
   date_format: '%Y-%m-%d %H:%M:%S'
   level: DEBUG

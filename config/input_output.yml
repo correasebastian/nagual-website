@@ -52,4 +52,5 @@ output:
         - color
         - size
   error_report:
-    file: data_examples/error_report
+    path: reports
+    file_prefix: error_report
