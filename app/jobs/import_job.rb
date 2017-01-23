@@ -1,4 +1,5 @@
 require 'nagual/api'
+require 'nagual/models/result'
 
 class ImportJob < ApplicationJob
   include Nagual::Configuration
@@ -9,7 +10,12 @@ class ImportJob < ApplicationJob
 
     config = load_config
     nagual = Nagual::API.new(config)
-    nagual.import args[0]
-
+    result = nagual.import(args[0])
+    logger.error(">>> Ending perform: #{result.inspect}")
   end
+
+  after_perform do |job|
+    logger.error(">>> After perform: #{job.inspect}")
+  end
+
 end

@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   post 'import/upload'
 
-  get 'import/run'
-
   root 'import#index'
 
 end

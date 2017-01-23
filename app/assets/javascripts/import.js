@@ -80,7 +80,8 @@ var app = {
     $('.import-area-success > .copy').text(file.name + ' was uploaded');
     $('.import-area-success').show();
     $('.import-area-success > .import-icon > .check').click(function() {
-      importFile(file);
+      $('.import-area-success').hide();
+      $('.import-area-browse').show();
     });
   }
 
@@ -88,13 +89,6 @@ var app = {
     $('.import-area-browse').hide();
     $('.import-area-error > .copy').text('Error uploading file ' + file.name);
     $('.import-area-error').show();
-  }
-
-  function importFile(){
-    $.get("import/run?filename=" + file.name, function(data) {
-      $('.import-area-success').hide();
-      $('.import-area-browse').show();
-    });
   }
 
   function addUploadFileErrorListener() {

@@ -24,6 +24,8 @@ RSpec.describe ImportController, :type => :controller do
       allow(File).to receive(:open).and_yield file
       expect(file).to receive(:write)
 
+      expect(ImportJob).to receive(:perform_later)
+
       post :upload, import_file: testfile
 
       expect(response).to have_http_status(200)
@@ -34,21 +36,6 @@ RSpec.describe ImportController, :type => :controller do
 
       expect(response).to have_http_status(500)
       expect(response).not_to be_success
-    end
-
-  end
-
-  describe 'GET #run' do
-    it "runs import" do
-
-      testfile = fixture_file_upload('files/test.csv', 'text/csv')
-
-      expect(ImportJob).to receive(:perform_later)
-
-      get :run, params: { import_file: testfile }
-
-      expect(response).to be_success
-      expect(response).to have_http_status(200)
     end
 
   end
