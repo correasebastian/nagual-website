@@ -61,7 +61,7 @@ var app = {
     formData.append('import_file', file);
 
     $.ajax({
-      url: 'import/upload',
+      url: '/import/upload',
       data: formData,
       processData: false,
       contentType: false,
