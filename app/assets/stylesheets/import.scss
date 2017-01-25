@@ -52,6 +52,7 @@ body {
                 color: $white;
                 a {
                     color: $white;
+                    font-weight: 400;
                 }
             }
         }
@@ -141,7 +142,7 @@ body {
             }
             @-webkit-keyframes progressBar {
                 100% {
-                    background-position: -100px 0px;
+                    background-position: -10px 0px;
                 }
             }
         }
@@ -154,7 +155,19 @@ body {
                 color: #FD635D;
             }
             .progress-bar {
-                background: #FD635D !important;
+                background: #FD635D;
+            }
+            .fileIcon {
+                @include errorIcon;
+            }
+        }
+        .errorImport-file {
+            h2,
+            p {
+                color: #FD635D;
+            }
+            .progress-bar {
+                background: #FB5190;
             }
             .fileIcon {
                 @include errorIcon;
@@ -174,7 +187,7 @@ body {
                 color: #1CCEAF;
             }
             .progress-bar {
-                background: #1CCEAF !important;
+                background: #1CCEAF
             }
             .fileIcon {
                 @include successIcon;

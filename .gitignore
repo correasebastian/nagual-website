@@ -6,3 +6,5 @@ tmp/
 
 db/*.sqlite3
 .rspec
+
+.vscode/*

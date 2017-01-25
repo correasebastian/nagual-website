@@ -34,14 +34,16 @@ var app = {
         var importBox = $('#import-file');
         var fileBrowse = $('#file-browse');
         fileBrowse.click(function (e) {
+            e.preventDefault();
             if (importBox) {
                 importBox.click();
             }
-            e.preventDefault();
         });
         importBox.change(function (e) {
             file = importBox[0].files[0];
-            upload(file);
+            if (file.name.endsWith('.csv')) {
+                upload(file);
+            }
         });
     };
     $("#importStatus").hide();
@@ -49,10 +51,6 @@ var app = {
     function upload(file) {
         var formData = new FormData();
         formData.append('import_file', file);
-        //when the file is loading... 
-        $("#importStatus").show().addClass("loadingImport");
-        $("#import-area").remove();
-        $("#importStatus h2").text("Loading file…");
         $.ajax({
             url: 'import/upload'
             , data: formData
@@ -60,22 +58,49 @@ var app = {
             , contentType: false
             , type: 'POST'
             , success: function (data) {
-                //alert("File successfully uploaded");
-                $("#importStatus").show().addClass("successImport");
-                $("#importStatus h2").text("Loaded correctly");
+                uploadFileSuccess(file);
             }
             , error: function (data) {
-                //alert("Error uploading file");
-                $("#importStatus").show().addClass("errorImport");
-                $("#importStatus h2").text("Error uploading file");
-                $("#importStatus p").text("Try again.");
+                uploadFileError(file);
             }
         });
+    }
+
+    function uploadFileSuccess(file) {
+        $("#import-area").remove();
+        $("#importStatus").show().addClass("successImport");
+        $("#importStatus h2").text("Loaded correctly");
+        $(".nameFile").text(file.name + ' was uploaded');
+    }
+
+    function uploadFileError(file) {
+        $("#import-area").remove();
+        $("#importStatus").show().addClass("errorImport");
+        $("#importStatus h2").text("Error uploading file");
+        $(".nameFile").text(file.name + ' was uploaded');
+    }
+
+    function importFile() {
+        $.get("import/run?filename=" + file.name, function (data) {
+            $("#import-area").remove();
+            $("#importStatus").show().addClass("loadingImport");
+            $("#importStatus h2").text("Loading file…");
+            $(".nameFile").text(file.name + ' was uploaded');
+
+        });
+    }
+
+    function addUploadFileErrorListener() {
+        $('.import-area-error > .import-icon > .error').click(function () {
+    $('.import-area-browse').show();
+    $('.import-area-error').hide();
+});
     }
 
     function init() {
         initUploadFile();
         initDragFile();
+        addUploadFileErrorListener();
     }
     app.nagual.importer = importer;
 })(app);
