@@ -37,36 +37,23 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>File</th>
-          <th>Timestamp</th>
-          <th>Records processed</th>
+          <th>Source File (CSV)</th>
+          <th>Processed Date/time</th>
+          <th>Processed records</th>
           <th>Status</th>
-          <th>Actions</th>
+          <th>Error report</th>
         </tr>
       </thead>
       <tbody>
+        <% @history.each do |entry| %>
         <tr>
-          <td>products.csv</td>
-          <td>11/11/2016 11:11 am</td>
-          <td>15</td>
-<!--          <td><%= image_tag "check.svg" %></td>-->
-          <td><%= content_tag :div, nil, :class => 'errorIcon' %></td>
-          <td><%= content_tag :div, nil, :class => 'reportIcon' %></td>
+          <td><a href="<%= entry.processed_file_path %>"><%= File.basename(entry.processed_file_path) %></a></td>
+          <td><%= entry.updated_at %></td>
+          <td><%= entry.processed_records %></td>
+          <td><%= (entry.status == 'success') ? image_tag("check.png") : image_tag("error.png") %></td>
+          <td><a href="<%= entry.report_file_path %>"><%= image_tag "report.png" %></a></td>
         </tr>
-        <tr>
-          <td>variants.csv</td>
-          <td>11/12/2016 12:11 am</td>
-          <td>1215</td>
-          <td><%= content_tag :div, nil, :class => 'alertIcon' %></td>
-          <td><%= content_tag :div, nil, :class => 'reportIcon' %></td>
-        </tr>
-        <tr>
-          <td>products.csv</td>
-          <td>12/12/2016 09:32 pm</td>
-          <td>2655</td>
-          <td><%= content_tag :div, nil, :class => 'successIcon' %></td>
-          <td><%= content_tag :div, nil, :class => 'reportIcon' %></td>
-        </tr>
+      <% end %>
     </table>
   </div>
 </div>

@@ -2,7 +2,7 @@
 class ImportController < ApplicationController
 
   def index
-
+    @history = JobHistoryEntry.last(5)
   end
 
   def upload
@@ -10,21 +10,17 @@ class ImportController < ApplicationController
 
     return render status: 500, json: {error: 'File not provided'} if import_file.nil?
 
-    File.open(Rails.root.join('data', 'incoming', import_file.original_filename), 'wb') do |f|
+    logger.info(">>> Importing file: #{import_file}")
+    csv_file = Rails.root.join('data', 'incoming', import_file.original_filename)
+
+    File.open(csv_file, 'wb') do |f|
       f.write(import_file.read)
     end
 
+    ImportJob.perform_later import_file.original_filename
+
     render status: 200, json: { sucess: true }
 
-  end
-
-  def run
-    filename = params[:filename]
-
-    ImportJob.perform_later filename
-
-
-    render json: { sucess: true }
   end
 
 end

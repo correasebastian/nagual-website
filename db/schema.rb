@@ -10,6 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170117150519) do
+
+  create_table "job_history_entries", force: :cascade do |t|
+    t.string   "processed_file_path"
+    t.integer  "processed_records"
+    t.string   "status"
+    t.string   "report_file_path"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
 end

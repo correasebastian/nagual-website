@@ -86,15 +86,14 @@ var app = {
             $("#importStatus").show().addClass("loadingImport");
             $("#importStatus h2").text("Loading file…");
             $(".nameFile").text(file.name + ' was uploaded');
-
         });
     }
 
     function addUploadFileErrorListener() {
         $('.import-area-error > .import-icon > .error').click(function () {
-    $('.import-area-browse').show();
-    $('.import-area-error').hide();
-});
+            $('.import-area-browse').show();
+            $('.import-area-error').hide();
+        });
     }
 
     function init() {
