@@ -44,7 +44,3 @@ group :development do
   gem 'guard', '~> 2.14.0'
   gem 'guard-rspec', '~> 4.7.3'
 end
-
-group :production do
-  gem 'rails_12factor'
-end

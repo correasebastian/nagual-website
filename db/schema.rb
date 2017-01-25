@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170117150519) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "job_history_entries", force: :cascade do |t|
     t.string   "processed_file_path"
     t.integer  "processed_records"
