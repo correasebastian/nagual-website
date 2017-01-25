@@ -27,5 +27,5 @@ production:
   pool: 5
   timeout: 5000
   database: <%= ENV['NAGUAL_DATABASE_NAME'] %>
-  user:   database: <%= ENV['NAGUAL_DATABASE_USER'] %>
-  password:   database: <%= ENV['NAGUAL_DATABASE_PASSWORD'] %>
+  user: <%= ENV['NAGUAL_DATABASE_USER'] %>
+  password: <%= ENV['NAGUAL_DATABASE_PASSWORD'] %>
