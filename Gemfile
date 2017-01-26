@@ -25,7 +25,7 @@ gem 'rspec-rails', '~> 3.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'nagual', '~> 0.0.1', git: 'git@github.com:sawyer-effect/nagual.git'
+gem 'nagual', git: 'git@github.com:sawyer-effect/nagual.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

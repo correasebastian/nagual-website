@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:sawyer-effect/nagual.git
-  revision: 3a6da228677ee2e47e7128fe721800bf97f5b9d4
+  revision: 377b84f34a6e96efc373e0a24e002a8d5668e20f
   specs:
     nagual (0.0.1)
       activerecord (~> 5.0)
@@ -55,7 +55,7 @@ GEM
     builder (3.2.2)
     byebug (9.0.6)
     coderay (1.1.1)
-    concurrent-ruby (1.0.2)
+    concurrent-ruby (1.0.4)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     erubis (2.7.0)
@@ -221,7 +221,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
-  nagual (~> 0.0.1)!
+  nagual!
   puma (~> 3.4)
   rails (~> 5.0.0, >= 5.0.0.1)
   rspec-rails (~> 3.5)
