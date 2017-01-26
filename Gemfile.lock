@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:sawyer-effect/nagual.git
-  revision: 377b84f34a6e96efc373e0a24e002a8d5668e20f
+  revision: 8d6f95a8d6d7d8a11eef6f381cf31a449d8dcf30
   specs:
     nagual (0.0.1)
       activerecord (~> 5.0)
