@@ -1,0 +1,112 @@
+@font-face {
+    font-family: 'Montserrat', 'Montserrat Light', 'Montserrat Bold';
+    src: url('Montserrat-Regular.otf', 'Montserrat-Light.otf', 'Montserrat-Bold.otf');
+    //  font-weight: normal;
+    //  font-style: normal;
+    font-size: 16px;
+    //font-smoothing: antialiased;
+}
+
+// Colors
+$white: #FFFFFF;
+$lightWhite: #F2F2F2;
+$gray: #818181;
+$lightgray: #808080;
+//Logo colors
+$violet: #731773;
+$Pink: #FD4485;
+// Colors secundary
+$lightblue: #20E6EE;
+$turquoise: #1CCEAF;
+$red: #FD635D;
+$orange: #FF7411;
+$Yellow: #FFF35C;
+// Grandientes 
+@mixin gra-violePink {
+    background: linear-gradient(317.14deg, #FD4485 0%, #731773 100%);
+}
+
+@mixin gra-violetLila {
+    background: linear-gradient(134.72deg, #382EB4 0%, #CD7BDA 100%);
+}
+
+@mixin gra-pinkOrange {
+    background: linear-gradient(135deg, #FB5190 0%, #FF7411 100%);
+}
+
+@mixin gra-aquaLila {
+    background: linear-gradient(133.02deg, #31C4DA 0%, #C86DD7 100%);
+}
+
+body {
+    color: $white;
+    font-family: 'Montserrat';
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+// Icons
+@mixin errorIcon {
+    background: url(error.svg);
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+}
+
+@mixin loadingIcon {
+    background: url(pause.png);
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+}
+
+@mixin successIcon {
+    background: url(check.svg);
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+}
+
+@mixin processIcon {
+    background: url(process.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 26px;
+    height: 26px;
+}
+
+@mixin alertIcon {
+    background: url(alert.svg);
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+}
+
+@mixin closeIcon {
+    background: url(close.svg);
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+}
+
+@mixin reportIcon {
+    background: url(report.svg);
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+}
+
+@mixin uploadIcon {
+    background: url(upload.svg);
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+}

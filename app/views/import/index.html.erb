@@ -2,30 +2,32 @@
   <h1>Import files into Nagual</h1>
   <h3>Drag and drop a CSV file to the space below</h3>
 
-  <div class="import-area import-area-browse">
+
+<div id="import-box">
+      
+  <div id="import-area" class="import-area-browse">
     <p class="copy">Drag your CSV file here or <a id="file-browse" href="#">click to browse</a></p>
     <%= form_tag({action: :upload}, multipart: true) do %>
       <%= file_field_tag 'import-file', style: 'display: none' %>
     <% end %>
-    <div class="import">
-      <%=image_tag "check.png", class: 'check' %>
-    </div>
   </div>
 
-  <div class="import-area import-area-success">
-    <p class="copy">File uploaded</p>
-    <div class="import-icon">
-      <%=image_tag 'check.png', class: 'check' %>
-    </div>
-  </div>
+    <div id="importStatus" class="active">
+        <h2></h2>
+        <p></p>
 
-  <div class="import-area import-area-error">
-    <p class="copy">Error uploading file</p>
-    <div class="import-icon">
-      <%=image_tag 'error.png', class: 'error' %>
-    </div>
-  </div>
-
+        <div class="loadFile">
+          <div class="nameFile"></div>
+          <div class="fileIcon"></div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+</div>
+    
   <div id="import-area-hide">
     <p class="copy">Hide</p>
   </div>
