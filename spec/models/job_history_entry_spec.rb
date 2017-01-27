@@ -6,7 +6,7 @@ RSpec.describe JobHistoryEntry, type: :model do
 
     it 'creates an entry with default values' do
       job_history = described_class.create
-      expect(job_history.status).to eq(described_class::RUNNING)
+      expect(job_history.status).to eq('running')
       expect(job_history.processed_records).to eq(0)
       expect(job_history.processed_file_path).to be_empty
       expect(job_history.report_file_path).to be_empty
@@ -21,7 +21,7 @@ RSpec.describe JobHistoryEntry, type: :model do
         processed_file: 'products.csv',
         report_file: 'report.txt',
         processed_records: 10,
-        status: JobHistoryEntry::SUCCESS
+        status: 'success'
       }
     end
 
