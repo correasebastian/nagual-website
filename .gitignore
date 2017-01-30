@@ -1,11 +1,12 @@
-
-public/data/**/*
-log/**/*
-tmp/
-.idea/
 .DS_Store
-
-db/*.sqlite3
 .rspec
 
+.idea/
 .vscode/*
+
+
+db/*.sqlite3
+log/**/*
+public/data/**/*
+public/output
+tmp/
