@@ -35,7 +35,6 @@ app.helpers = {
 app.controller = {
   init: function() {
     this.postUrl = 'import/upload';
-    debugger;
     app.view.init();
   },
   upload: function(file) {
@@ -48,7 +47,9 @@ app.controller = {
     app.helpers.request('POST', this.postUrl, formData)
       .done(function(data) {
         app.view.renderUploadSuccess(file.name);
-        setTimeout(app.helpers.reloadPage, 3000)
+        window.setTimeout(function(){
+          app.helpers.reloadPage()
+        }, 3000)
       })
       .fail(function(data) {
         app.view.renderUploadError(file.name);
