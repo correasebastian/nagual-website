@@ -3,7 +3,7 @@ class ImportController < ApplicationController
   before_filter :authenticate
 
   def index
-    @history = JobHistoryEntry.last(5)
+    @history = JobHistoryEntry.last(5).reverse
   end
 
   def upload
