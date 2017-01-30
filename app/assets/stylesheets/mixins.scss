@@ -21,7 +21,7 @@ $turquoise: #1CCEAF;
 $red: #FD635D;
 $orange: #FF7411;
 $Yellow: #FFF35C;
-// Grandientes 
+// Grandientes
 @mixin gra-violePink {
     background: linear-gradient(317.14deg, #FD4485 0%, #731773 100%);
 }
@@ -109,4 +109,14 @@ body {
     background-repeat: no-repeat;
     width: 26px;
     height: 26px;
+}
+
+//colors
+
+.color-pink{
+  color:$Pink;
+}
+
+.bg-white{
+  background-color: $white;
 }

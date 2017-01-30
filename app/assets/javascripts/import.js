@@ -1,108 +1,167 @@
-var app = {
-    nagual: {}
-};
-(function (app) {
-    var importer = {
-        init: init
-    };
-
-    function initDragFile() {
-        var importFileArea = $('#import-area');
-        importFileArea.on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        });
-        importFileArea.on('dragover dragenter', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            importFileArea.addClass("upLoading");
-        });
-        importFileArea.on('dragleave dragend drop', function (e) {
-            if (e.originalEvent.dataTransfer) {
-                files = e.originalEvent.dataTransfer.files;
-                importFileArea.removeClass("upLoading");
-                if (files.length) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    upload(files[0]);
-                }
-            }
-        });
+var app = {};
+app.helpers = {
+  request: function(method, url, data) {
+    var ajaxcall = $.ajax({
+      url: url,
+      data: data,
+      processData: false,
+      contentType: false,
+      type: method,
+      xhr: function() {
+        var xhr = new window.XMLHttpRequest();
+        xhr.upload.addEventListener("progress", function(evt) {
+          if (evt.lengthComputable) {
+            var percentComplete = Math.ceil((evt.loaded / evt.total) * 100);
+            var percentString = percentComplete + '%';
+            app.view.renderProgress(percentString);
+            console.log('complete: ' + percentString);
+          }
+        }, false);
+        return xhr;
+      }
+    });
+    debugger;
+    return ajaxcall;
+  },
+  buildFormData: function(name, data) {
+    var formData = new FormData();
+    formData.append(name, data);
+    return formData;
+  },
+  reloadPage: function() {
+    window.location.reload();
+  }
+}
+app.controller = {
+  init: function() {
+    this.postUrl = 'import/upload';
+    debugger;
+    app.view.init();
+  },
+  upload: function(file) {
+    if (!this.isValidFile(file)) {
+      return;
     }
+    var formData = app.helpers.buildFormData('import_file', file);
 
-    function initUploadFile() {
-        var importBox = $('#import-file');
-        var fileBrowse = $('#file-browse');
-        fileBrowse.click(function (e) {
-            e.preventDefault();
-            if (importBox) {
-                importBox.click();
-            }
-        });
-        importBox.change(function (e) {
-            file = importBox[0].files[0];
-            if (file.name.endsWith('.csv')) {
-                upload(file);
-            }
-        });
-    };
-    $("#importStatus").hide();
-
-    function upload(file) {
-        var formData = new FormData();
-        formData.append('import_file', file);
-        $.ajax({
-            url: 'import/upload'
-            , data: formData
-            , processData: false
-            , contentType: false
-            , type: 'POST'
-            , success: function (data) {
-                uploadFileSuccess(file);
-            }
-            , error: function (data) {
-                uploadFileError(file);
-            }
-        });
+    app.view.beforeUpload();
+    app.helpers.request('POST', this.postUrl, formData)
+      .done(function(data) {
+        app.view.renderUploadSuccess(file.name);
+        setTimeout(app.helpers.reloadPage, 3000)
+      })
+      .fail(function(data) {
+        app.view.renderUploadError(file.name);
+      })
+  },
+  isValidFile: function(file) {
+    var valid = false;
+    if (!file) {
+      console.error('file is null or undefined');
+      return valid;
     }
-
-    function uploadFileSuccess(file) {
-        $("#import-area").remove();
-        $("#importStatus").show().addClass("successImport");
-        $("#importStatus h2").text("Loaded correctly");
-        $(".nameFile").text(file.name + ' was uploaded');
+    if (!file.name.endsWith('.csv')) {
+      console.error('file:' + file.name + ' is not a cvs file, only csv files are valid');
+      return valid;
     }
+    return !valid;
+  }
 
-    function uploadFileError(file) {
-        $("#import-area").remove();
-        $("#importStatus").show().addClass("errorImport");
-        $("#importStatus h2").text("Error uploading file");
-        $(".nameFile").text(file.name + ' was uploaded');
-    }
+}
 
-    function importFile() {
-        $.get("import/run?filename=" + file.name, function (data) {
-            $("#import-area").remove();
-            $("#importStatus").show().addClass("loadingImport");
-            $("#importStatus h2").text("Loading file…");
-            $(".nameFile").text(file.name + ' was uploaded');
-        });
-    }
+app.view = {
+  init: function() {
+    this.$importFileArea = $('#import-area');
+    this.$inputFile = $('#import-file');
+    this.$progressBar = $('#progress-bar');
+    this.$importStatus = $("#importStatus");
+    this.$headStatus = $("#head-status");
+    this.$nameFile = $(".nameFile");
+    this.aBrowseFile = $('#file-browse');
+    this.$aShowImportArea = $('#show-import-area');
+    this.$hideImportArea = $('#hide-import-zone');
+    this.$uploadZone = $('#upload-zone');
+    this.$historyZone = $('#history-zone');
+    this.successImportClass='successImport';
+    this.errorImportClass='errorImport';
+    this.setAttributes();
+    this.setListeners();
+  },
+  setAttributes: function() {
+    this.$inputFile.attr('accept', '.csv')
+  },
+  setListeners: function() {
+    this.$importFileArea.on('dragover dragenter', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      app.view.$importFileArea.addClass("upLoading");
+    });
+    this.$importFileArea.on('dragleave dragend drop', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.originalEvent.dataTransfer) {
+        files = e.originalEvent.dataTransfer.files;
+        app.view.$importFileArea.removeClass("upLoading");
+        if (files.length) {
+          var file = files[0];
+          app.controller.upload(file);
+        }
+      }
+    });
 
-    function addUploadFileErrorListener() {
-        $('.import-area-error > .import-icon > .error').click(function () {
-            $('.import-area-browse').show();
-            $('.import-area-error').hide();
-        });
-    }
+    this.aBrowseFile.click(function(e) {
+      e.preventDefault();
+      app.view.$inputFile.click();
+    })
 
-    function init() {
-        initUploadFile();
-        initDragFile();
-        addUploadFileErrorListener();
-    }
-    app.nagual.importer = importer;
-})(app);
-$(function () {
-    app.nagual.importer.init();
+    this.$inputFile.change(function(e) {
+      var file = app.view.$inputFile.get(0).files[0];
+      app.controller.upload(file);
+    })
+
+    this.$aShowImportArea.click(function(e) {
+      e.preventDefault();
+      app.view.toggleUploadZone();
+
+    });
+    this.$hideImportArea.click(function(e){
+      app.view.toggleUploadZone();
+    })
+
+  },
+  renderProgress: function(percentString) {
+    this.$progressBar.css('width', percentString).attr('aria-valuenow', percentString);
+    this.$nameFile.text(percentString);
+  },
+  renderUploadSuccess: function(filename) {
+    this.$inputFile.val('');
+    this.$importStatus.addClass(this.successImportClass);
+    this.renderUploadStatus('Loaded correctly', filename + ' was  uploaded, the page will be refreshed in 3 seconds ...');
+  },
+  renderUploadError: function(filename) {
+    this.$inputFile.val('');
+    this.$importStatus.addClass(this.errorImportClass);
+    this.renderUploadStatus('Error uploading file', filename + ' was not  uploaded');
+    this.$importFileArea.show();
+  },
+
+  renderUploadStatus: function(statusHeader, statusText) {
+    this.$headStatus.text(statusHeader);
+    this.$nameFile.text(statusText);
+  },
+  beforeUpload: function() {
+    this.$importFileArea.hide();
+    this.$importStatus.removeClass(this.successImportClass + ' ' + this.errorImportClass);
+    this.renderUploadStatus('uploading ...', '')
+    this.$importStatus.show();
+  },
+  toggleUploadZone: function() {
+    this.$importStatus.hide();
+    this.$uploadZone.toggleClass('hide');
+    this.$aShowImportArea.toggleClass('hide');
+  }
+
+}
+$(function() {
+  app.controller.init();
 });
