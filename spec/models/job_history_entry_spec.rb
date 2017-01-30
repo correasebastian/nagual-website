@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe JobHistoryEntry, type: :model do
-
   context 'create' do
-
     it 'creates an entry with default values' do
       job_history = described_class.create
       expect(job_history.status).to eq('running')
@@ -11,11 +9,9 @@ RSpec.describe JobHistoryEntry, type: :model do
       expect(job_history.processed_file_path).to be_empty
       expect(job_history.report_file_path).to be_empty
     end
-
   end
 
   context 'update from result' do
-
     let(:result_params) do
       {
         processed_file: 'products.csv',
@@ -40,7 +36,5 @@ RSpec.describe JobHistoryEntry, type: :model do
       expect(subject).to receive(:update).with(update_params)
       subject.update_from(result)
     end
-
   end
-
 end

@@ -3,7 +3,7 @@
 
 ## Uncomment and set this to only include directories you want to watch
 directories %w(app lib config test spec features) \
-  .select{|d| Dir.exists?(d) ? d : UI.warning("Directory #{d} does not exist")}
+  .select { |d| Dir.exist?(d) ? d : UI.warning("Directory #{d} does not exist") }
 
 guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'
@@ -18,5 +18,4 @@ guard :rspec, cmd: 'bundle exec rspec' do
   # Ruby files
   ruby = dsl.ruby
   dsl.watch_spec_files_for(ruby.lib_files)
-
 end

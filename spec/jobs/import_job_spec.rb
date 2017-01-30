@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ImportJob, type: :job do
-
   context 'import job' do
     let(:job_history) { instance_double(JobHistoryEntry) }
     let(:result)      { instance_double(Nagual::Models::Result, status: 'success') }

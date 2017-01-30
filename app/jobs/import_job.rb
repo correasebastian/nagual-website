@@ -18,5 +18,4 @@ class ImportJob < ApplicationJob
 
     job_history.update_from(result)
   end
-
 end
