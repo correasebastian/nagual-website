@@ -11,7 +11,10 @@ class ImportJob < ApplicationJob
 
     config = load_config
     nagual = Nagual::API.new(config)
+
     result = nagual.import(args[0])
+
+    nagual.export unless result.status == 'error'
 
     job_history.update_from(result)
   end
