@@ -1,13 +1,13 @@
 ---
 input:
-  incoming_path: data/incoming
-  processing_path: data/processing
-  archive_path: data/archive
-  error_path: data/error
+  incoming_path: public/data/incoming
+  processing_path: public/data/processing
+  archive_path: public/data/archive
+  error_path: public/data/error
 output:
   xml:
     catalog:
-      file: data/catalog.xml
+      file: public/data/catalog.xml
       encoding: UTF-8
       id: nagual-catalog
       xmlns: http://www.demandware.com/xml/impex/catalog/2006-10-31
@@ -23,7 +23,7 @@ output:
         extension: jpg
       variation_attribute: color
     inventory:
-      file: data/inventory.xml
+      file: public/data/inventory.xml
       encoding: UTF-8
       id: nagual-catalog
       xmlns: http://www.demandware.com/xml/impex/inventory/2007-05-31
@@ -33,7 +33,7 @@ output:
         description: Product Sku inventory
         use_bundle_inventory_only: false
     pricebooks:
-      file: data/pricebook.xml
+      file: public/data/pricebook.xml
       encoding: UTF-8
       xmlns: http://www.demandware.com/xml/impex/pricebook/2006-10-31
       header:
@@ -52,5 +52,5 @@ output:
         - color
         - size
   error_report:
-    path: data/reports
+    path: public/data/reports
     file_prefix: error_report
