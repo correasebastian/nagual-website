@@ -49,7 +49,9 @@
           <td><%= entry.updated_at %></td>
           <td><%= entry.processed_records %></td>
           <td><%= (entry.status == 'success') ? image_tag("check.png") : image_tag("error.png") %></td>
-          <td><a href="<%= entry.report_file_path %>"><%= image_tag "report.png" %></a></td>
+          <% if entry.status == 'error' %>
+            <td><a target="_blank" href="<%= entry.report_file_path %>"><%= image_tag "report.png" %></a></td>
+          <% end %>
         </tr>
       <% end %>
     </table>
