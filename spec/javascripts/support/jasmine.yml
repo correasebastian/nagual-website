@@ -131,5 +131,7 @@ boot_files:
 #
 # random: true
 #
-random:
+random: false
+stop_spec_on_expectation_failure: true
+
 
