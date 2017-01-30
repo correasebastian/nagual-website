@@ -5,6 +5,6 @@ Rails.application.load_tasks
 
 RSpec::Core::RakeTask.new(:spec)
 
-task build: [:spec]
+task build: [:spec,'jasmine:ci']
 
 task default: :build
