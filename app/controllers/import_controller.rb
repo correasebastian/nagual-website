@@ -1,4 +1,5 @@
 class ImportController < ApplicationController
+  include Nagual::Configuration
 
   before_filter :authenticate
 
@@ -13,6 +14,8 @@ class ImportController < ApplicationController
 
     logger.info(">>> Importing file: #{import_file}")
     csv_file = Rails.root.join('public', 'data', 'incoming', import_file.original_filename)
+
+    config = load_config
 
     File.open(csv_file, 'wb') do |f|
       f.write(import_file.read)
