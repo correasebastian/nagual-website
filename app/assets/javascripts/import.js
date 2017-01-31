@@ -10,17 +10,19 @@ app.helpers = {
       xhr: function() {
         var xhr = new window.XMLHttpRequest();
         xhr.upload.addEventListener("progress", function(evt) {
+          console.debug(evt)
+          console.log(JSON.stringify(evt))
           if (evt.lengthComputable) {
             var percentComplete = Math.ceil((evt.loaded / evt.total) * 100);
             var percentString = percentComplete + '%';
             app.view.renderProgress(percentString);
-            console.log('complete: ' + percentString);
+            // console.log('complete: ' + percentString);
           }
         }, false);
         return xhr;
       }
     });
-    debugger;
+    // debugger;
     return ajaxcall;
   },
   buildFormData: function(name, data) {
@@ -30,6 +32,11 @@ app.helpers = {
   },
   reloadPage: function() {
     window.location.reload();
+  },
+  errorLogger:function(data){
+    if(console && console.error){
+      console.error(data);
+    }
   }
 }
 app.controller = {
@@ -45,24 +52,25 @@ app.controller = {
 
     app.view.beforeUpload();
     app.helpers.request('POST', this.postUrl, formData)
-      .done(function(data) {
+      .done(function() {
         app.view.renderUploadSuccess(file.name);
         window.setTimeout(function(){
-          app.helpers.reloadPage()
+          app.helpers.reloadPage();
         }, 3000)
       })
       .fail(function(data) {
+        app.helpers.errorLogger(data);
         app.view.renderUploadError(file.name);
       })
   },
   isValidFile: function(file) {
     var valid = false;
     if (!file) {
-      console.error('file is null or undefined');
+      app.helpers.errorLogger('file is null or undefined');
       return valid;
     }
     if (!file.name.endsWith('.csv')) {
-      console.error('file:' + file.name + ' is not a cvs file, only csv files are valid');
+      app.helpers.errorLogger('file:' + file.name + ' is not a cvs file, only csv files are valid');
       return valid;
     }
     return !valid;
@@ -101,7 +109,7 @@ app.view = {
       e.preventDefault();
       e.stopPropagation();
       if (e.originalEvent.dataTransfer) {
-        files = e.originalEvent.dataTransfer.files;
+        var files = e.originalEvent.dataTransfer.files;
         app.view.$importFileArea.removeClass("upLoading");
         if (files.length) {
           var file = files[0];

@@ -1,8 +1,7 @@
 describe("Home Controller", function() {
-  var controller, view;
+  var controller;
   beforeEach(function() {
     controller = app.controller;
-    view = app.view;
   });
 
   it("should be define", function() {
@@ -29,7 +28,7 @@ describe("Home Controller", function() {
 
 
       beforeEach(function() {
-        spyOn(controller, 'isValidFile')
+        spyOn(controller, 'isValidFile');
       });
 
 
@@ -54,7 +53,7 @@ describe("Home Controller", function() {
 
           beforeEach(function() {
 
-            def = jQuery.Deferred();
+            def = $.Deferred();
             spyOn(app.helpers, 'request').and.returnValue(def);
             controller.isValidFile.and.returnValue(true);
             spyOn(app.helpers, 'buildFormData').and.returnValue(mockFormData);
@@ -87,10 +86,14 @@ describe("Home Controller", function() {
           it(' should start an xhr  request, and if the response is an Error  then call app.view.renderUploadSuccess and refresh the page  ', function() {
             def.reject();
             spyOn(app.view, 'renderUploadError');
+            spyOn(app.helpers, 'errorLogger');
 
             controller.upload(mockFile);
 
             expect(app.helpers.request).toHaveBeenCalledWith('POST', expectedUrl, mockFormData);
+
+            expect(app.helpers.errorLogger).toHaveBeenCalled();
+
             expect(app.view.renderUploadError).toHaveBeenCalledWith(mockFile.name);
 
           });
@@ -105,15 +108,23 @@ describe("Home Controller", function() {
           name:''
         }
 
+
+        beforeEach(function() {
+          spyOn(app.helpers, 'errorLogger');
+        });
+
+
       it('should return false if the file is falsy value', function() {
         result = controller.isValidFile();
         expect(result).toBe(false);
+         expect(app.helpers.errorLogger).toHaveBeenCalled();
       });
 
       it('should return false if the extension is different of .csv', function() {
         mockFile.name='not-a-csv.notcvs'
         result = controller.isValidFile(mockFile);
         expect(result).toBe(false);
+         expect(app.helpers.errorLogger).toHaveBeenCalled();
       });
 
        it('should return true if the extension is  .csv', function() {
