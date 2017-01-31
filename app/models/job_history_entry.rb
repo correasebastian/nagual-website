@@ -9,8 +9,14 @@ class JobHistoryEntry < ApplicationRecord
   end
 
   def update_from(result)
-    update(processed_file_path: result.processed_file,
-           report_file_path: result.report_file,
+    update(processed_file_path: strip_public_dir(result.processed_file),
+           report_file_path: strip_public_dir(result.report_file),
            processed_records: result.processed_records, status: result.status)
+  end
+
+  private
+
+  def strip_public_dir(path)
+    path.split('/')[1..-1].join('/')
   end
 end
