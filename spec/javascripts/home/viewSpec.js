@@ -108,12 +108,72 @@ describe('View', function() {
           view.setListeners();
         });
 
-        it('sholud set listener for  \'dragover dragenter\' ', function() {
-          expect($.fn.on).toHaveBeenCalledWith('dragover dragenter', jasmine.any(Function));
+
+        describe('for dragover dragenter events', function() {
+          it('should add the listener ', function() {
+            expect($.fn.on).toHaveBeenCalledWith('dragover dragenter', jasmine.any(Function));
+
+          });
 
         });
-        it('sholud set listener for  \'dragleave dragend drop\' ', function() {
-          expect($.fn.on).toHaveBeenCalledWith('dragleave dragend drop', jasmine.any(Function));
+
+
+        describe('for dragleave dragend drop events', function() {
+
+          it('sholud add the listener ', function() {
+            expect($.fn.on).toHaveBeenCalledWith('dragleave dragend drop', jasmine.any(Function));
+          });
+        });
+
+
+
+
+      });
+
+
+      describe('for aBrowseFile $aShowImportArea $hideImportArea   elements', function() {
+
+
+        var fnOnBrowseFile,
+          fnOnShowImportArea,
+          fnHideImportArea;
+
+        beforeEach(function() {
+          spyOn($.fn, 'click');
+          view.setListeners();
+
+
+          var fns = $.fn.click.calls.allArgs();
+
+          fnOnBrowseFile = fns[0][0];
+          fnOnShowImportArea = fns[1][0];
+          fnHideImportArea = fns[2][0];
+
+        });
+
+
+
+        it('should add  the listener to click event', function() {
+          expect($.fn.click).toHaveBeenCalledTimes(3);
+
+        });
+
+
+      });
+
+
+      describe('for $inputFile', function() {
+
+          beforeEach(function() {
+          spyOn($.fn, 'change');
+          view.setListeners();
+
+        });
+
+
+
+        it('should add  the listener to change event', function() {
+          expect($.fn.change).toHaveBeenCalledWith(jasmine.any(Function));
 
         });
 
