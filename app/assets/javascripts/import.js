@@ -1,113 +1,174 @@
-var app = {
-  nagual: {}
-};
+var app = {};
+app.helpers = {
+  request: function(method, url, data) {
+    var ajaxcall = $.ajax({
+      url: url,
+      data: data,
+      processData: false,
+      contentType: false,
+      type: method,
+      xhr: function() {
+        var xhr = new window.XMLHttpRequest();
+        xhr.upload.addEventListener("progress", function(evt) {
 
-(function(app) {
+          if (evt.lengthComputable) {
+            var percentComplete = Math.ceil((evt.loaded / evt.total) * 100);
+            var percentString = percentComplete + '%';
+            app.view.renderProgress(percentString);
+          }
+        }, false);
+        return xhr;
+      }
+    });
+    return ajaxcall;
+  },
+  buildFormData: function(name, data) {
+    var formData = new FormData();
+    formData.append(name, data);
+    return formData;
+  },
+  reloadPage: function() {
+    window.location.reload();
+  },
+  errorLogger:function(data){
+    if(console && console.error){
+      console.error(data);
+    }
+  }
+}
+app.controller = {
+  init: function() {
+    this.postUrl = 'import/upload';
+    app.view.init();
+  },
+  upload: function(file) {
+    if (!this.isValidFile(file)) {
+      return;
+    }
+    var formData = app.helpers.buildFormData('import_file', file);
 
-  var importer = {
-    init: init
-  };
+    app.view.beforeUpload();
+    app.helpers.request('POST', this.postUrl, formData)
+      .done(function() {
+        app.view.renderUploadSuccess(file.name);
+        window.setTimeout(function(){
+          app.helpers.reloadPage();
+        }, 3000)
+      })
+      .fail(function(data) {
+        app.helpers.errorLogger(data);
+        app.view.renderUploadError(file.name);
+      })
+  },
+  isValidFile: function(file) {
+    var valid = false;
+    if (!file) {
+      app.helpers.errorLogger('file is null or undefined');
+      return valid;
+    }
+    if (!file.name.endsWith('.csv')) {
+      app.helpers.errorLogger('file:' + file.name + ' is not a cvs file, only csv files are valid');
+      return valid;
+    }
+    return !valid;
+  }
 
-  function initDragFile() {
-    var importFileArea = $('#import-area');
+}
 
-    importFileArea.on( 'dragover', function(e) {
+app.view = {
+  init: function() {
+    this.$uploadZone = $('#upload-zone');
+    this.$importFileArea = $('#import-area');
+    this.$inputFile = $('#import-file');
+    this.$importStatus = $("#importStatus");
+    this.$headStatus = $("#head-status");
+    this.$progressBar = $('#progress-bar');
+    this.$nameFile = $(".nameFile");
+    this.aBrowseFile = $('#file-browse');
+    this.$hideImportArea = $('#hide-import-zone');
+
+    this.$historyZone = $('#history-zone');
+    this.$aShowImportArea = $('#show-import-area');
+    this.successImportClass='successImport';
+    this.errorImportClass='errorImport';
+    this.setAttributes();
+    this.setListeners();
+  },
+  setAttributes: function() {
+    this.$inputFile.attr('accept', '.csv')
+  },
+  setListeners: function() {
+    this.$importFileArea.on('dragover dragenter', function(e) {
       e.preventDefault();
       e.stopPropagation();
+      app.view.$importFileArea.addClass("upLoading");
     });
-
-    importFileArea.on( 'dragenter', function(e) {
+    this.$importFileArea.on('dragleave dragend drop', function(e) {
       e.preventDefault();
       e.stopPropagation();
-    });
-
-    importFileArea.on( 'drop', function(e) {
-
-      if(e.originalEvent.dataTransfer){
-        files = e.originalEvent.dataTransfer.files;
-        if(files.length) {
-          e.preventDefault();
-          e.stopPropagation();
-          upload(files[0]);
+      if (e.originalEvent.dataTransfer) {
+        var files = e.originalEvent.dataTransfer.files;
+        app.view.$importFileArea.removeClass("upLoading");
+        if (files.length) {
+          var file = files[0];
+          app.controller.upload(file);
         }
       }
     });
 
-  }
-
-  function initUploadFile() {
-    var importBox = $('#import-file');
-    var fileBrowse = $('#file-browse');
-
-    fileBrowse.click(function (e) {
+    this.aBrowseFile.click(function(e) {
       e.preventDefault();
-      if (importBox) {
-        importBox.click();
-      }
+      app.view.$inputFile.click();
+    })
+
+    this.$inputFile.change(function(e) {
+      var file = app.view.$inputFile.get(0).files[0];
+      app.controller.upload(file);
+    })
+
+    this.$aShowImportArea.click(function(e) {
+      e.preventDefault();
+      app.view.toggleUploadZone();
+
     });
+    this.$hideImportArea.click(function(e){
+      app.view.toggleUploadZone();
+    })
 
-    importBox.change(function(e) {
-      file = importBox[0].files[0];
-      if(file.name.endsWith('.csv')){
-        upload(file);
-      }
-    });
+  },
+  renderProgress: function(percentString) {
+    this.$progressBar.css('width', percentString).attr('aria-valuenow', percentString);
+    this.$nameFile.text(percentString);
+  },
+  renderUploadSuccess: function(filename) {
+    this.$inputFile.val('');
+    this.$importStatus.addClass(this.successImportClass);
+    this.renderUploadStatus('Loaded correctly', filename + ' was  uploaded, the page will be refreshed in 3 seconds ...');
+  },
+  renderUploadError: function(filename) {
+    this.$inputFile.val('');
+    this.$importStatus.addClass(this.errorImportClass);
+    this.renderUploadStatus('Error uploading file', filename + ' was not  uploaded');
+    this.$importFileArea.show();
+  },
 
-  };
-
-  function upload(file) {
-
-    var formData = new FormData();
-    formData.append('import_file', file);
-
-    $.ajax({
-      url: '/import/upload',
-      data: formData,
-      processData: false,
-      contentType: false,
-      type: 'POST',
-      success: function(data){
-        uploadFileSuccess(file);
-      }, error: function(data){
-        $('.import-area-browse').hide();
-        $('.import-area-error').show();
-      }
-    });
+  renderUploadStatus: function(statusHeader, statusText) {
+    this.$headStatus.text(statusHeader);
+    this.$nameFile.text(statusText);
+  },
+  beforeUpload: function() {
+    this.$importFileArea.hide();
+    this.$importStatus.removeClass(this.successImportClass + ' ' + this.errorImportClass);
+    this.renderUploadStatus('uploading ...', '')
+    this.$importStatus.show();
+  },
+  toggleUploadZone: function() {
+    this.$importStatus.hide();
+    this.$uploadZone.toggleClass('hide');
+    this.$aShowImportArea.toggleClass('hide');
   }
 
-  function uploadFileSuccess(file){
-    $('.import-area-browse').hide();
-    $('.import-area-success > .copy').text(file.name + ' was uploaded');
-    $('.import-area-success').show();
-    $('.import-area-success > .import-icon > .check').click(function() {
-      $('.import-area-success').hide();
-      $('.import-area-browse').show();
-    });
-  }
-
-  function uploadFileError(file) {
-    $('.import-area-browse').hide();
-    $('.import-area-error > .copy').text('Error uploading file ' + file.name);
-    $('.import-area-error').show();
-  }
-
-  function addUploadFileErrorListener() {
-    $('.import-area-error > .import-icon > .error').click(function() {
-      $('.import-area-browse').show();
-      $('.import-area-error').hide();
-    });
-  }
-
-  function init() {
-    initUploadFile();
-    initDragFile();
-    addUploadFileErrorListener();
-  }
-
-  app.nagual.importer = importer;
-
-})(app);
-
-$(function () {
-  app.nagual.importer.init();
+}
+$(function() {
+  app.controller.init();
 });
