@@ -10,8 +10,7 @@ app.helpers = {
       xhr: function() {
         var xhr = new window.XMLHttpRequest();
         xhr.upload.addEventListener("progress", function(evt) {
-          console.debug(evt)
-          console.log(JSON.stringify(evt))
+
           if (evt.lengthComputable) {
             var percentComplete = Math.ceil((evt.loaded / evt.total) * 100);
             var percentString = percentComplete + '%';
@@ -80,17 +79,18 @@ app.controller = {
 
 app.view = {
   init: function() {
+    this.$uploadZone = $('#upload-zone');
     this.$importFileArea = $('#import-area');
     this.$inputFile = $('#import-file');
-    this.$progressBar = $('#progress-bar');
     this.$importStatus = $("#importStatus");
     this.$headStatus = $("#head-status");
+    this.$progressBar = $('#progress-bar');
     this.$nameFile = $(".nameFile");
     this.aBrowseFile = $('#file-browse');
-    this.$aShowImportArea = $('#show-import-area');
     this.$hideImportArea = $('#hide-import-zone');
-    this.$uploadZone = $('#upload-zone');
+
     this.$historyZone = $('#history-zone');
+    this.$aShowImportArea = $('#show-import-area');
     this.successImportClass='successImport';
     this.errorImportClass='errorImport';
     this.setAttributes();
