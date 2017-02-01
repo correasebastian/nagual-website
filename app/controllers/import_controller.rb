@@ -1,6 +1,4 @@
 class ImportController < ApplicationController
-  before_filter :authenticate
-
   def index
     @history = JobHistoryEntry.last(5).reverse
   end
@@ -20,16 +18,5 @@ class ImportController < ApplicationController
     ImportJob.perform_later import_file.original_filename
 
     render status: 200, json: { sucess: true }
-  end
-
-  private
-
-  def authenticate
-    return unless Rails.env.production?
-
-    authenticate_or_request_with_http_basic do |username, password|
-      username == Rails.application.secrets.auth_user &&
-        password == Rails.application.secrets.auth_password
-    end
   end
 end
