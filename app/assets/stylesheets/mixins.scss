@@ -1,10 +1,22 @@
 @font-face {
-  font-family: 'Montserrat', 'Montserrat Light', 'Montserrat Bold';
-  src: url('Montserrat-Regular.otf', 'Montserrat-Light.otf', 'Montserrat-Bold.otf');
-  //  font-weight: normal;
-  //  font-style: normal;
-  font-size: 16px;
-  //font-smoothing: antialiased;
+  font-family: 'Montserrat';
+  src: url('Montserrat-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Montserrat-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family:'Montserrat';
+  src: url( 'Montserrat-Light.otf');
+  font-weight: 100;
+  font-style: normal;
 }
 
 // Colors
@@ -41,6 +53,7 @@ $Yellow: #FFF35C;
 body {
   color: $white;
   font-family: 'Montserrat';
+  font-size:14px;
   h1,
   h2,
   h3,
