@@ -1,0 +1,24 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  Excludes:
+    - bin/*
+    - db/**/*
+    - config/**/*
+Documentation:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 20
+Metrics/AbcSize:
+  Max: 35
+Metrics/LineLength:
+  Max: 100
+Style/ClassVars:
+  Enabled: false
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/FirstParameterIndentation:
+  Enabled: false
