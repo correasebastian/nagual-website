@@ -6,8 +6,9 @@ input:
   error_path: public/data/error
 output:
   xml:
+    path: public/data/output
     catalog:
-      file: public/output/catalog.xml
+      file: catalog.xml
       encoding: UTF-8
       id: nagual-catalog
       xmlns: http://www.demandware.com/xml/impex/catalog/2006-10-31
@@ -23,7 +24,7 @@ output:
         extension: jpg
       variation_attribute: color
     inventory:
-      file: public/output/inventory.xml
+      file: inventory.xml
       encoding: UTF-8
       id: nagual-catalog
       xmlns: http://www.demandware.com/xml/impex/inventory/2007-05-31
@@ -33,7 +34,7 @@ output:
         description: Product Sku inventory
         use_bundle_inventory_only: false
     pricebooks:
-      file: public/output/pricebook.xml
+      file: pricebook.xml
       encoding: UTF-8
       xmlns: http://www.demandware.com/xml/impex/pricebook/2006-10-31
       header:

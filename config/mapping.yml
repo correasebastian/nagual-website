@@ -3,31 +3,31 @@
     mappings:
     - key: id
       to: product_id
-      name: none
+      name: copy
     - key: ean
       to: ean
-      name: none
+      name: copy
     - key: upc
       to: upc
-      name: none
+      name: copy
     - key: unit
       to: unit
-      name: none
+      name: copy
     - key: min-order-quantity
       to: min_order_quantity
-      name: none
+      name: copy
     - key: step
       to: step_quantity
-      name: none
+      name: copy
     - key: name
       to: display_name
-      name: none
+      name: copy
     - key: description
       to: short_description
-      name: none
+      name: copy
     - key: 'long description'
       to: long_description
-      name: none
+      name: copy
     - key: status
       to: online_flag
       name: convert
@@ -39,45 +39,48 @@
       to: online_from
       name: date
       params:
-        format: '%Y-%m-%d'
+        format: '%Y/%m/%d'
     - key: to
       to: online_to
       name: date
       params:
-        format: '%Y-%m-%d'
+        format: '%Y/%m/%d'
     - key: template
       to: template
-      name: none
+      name: copy
     - key: 'tax class id'
       to: tax_class_id
-      name: none
+      name: copy
     - key: brand
       to: brand
-      name: none
+      name: copy
     - key: manufacturer
       to: manufacturer_name
-      name: none
+      name: copy
     - key: SKU
       to: manufacturer_sku
-      name: none
+      name: copy
     - key: organization
       to: organization
-      name: none
     - key: master_id
       to: master_product_id
-      name: none
+      name: copy
     - key: color
       to: color
-      name: none
+      name: copy
     - key: size
       to: size
-      name: none
+      name: copy
     - key: stock
       to: stock
-      name: none
+      name: copy
     - key: perpetual
       to: perpetual
-      name: none
+      name: convert
+      params:
+        default: 'false'
+        values:
+          TRUE: 'true'
     - key: price
       to: price
-      name: none
+      name: copy
