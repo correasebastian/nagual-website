@@ -15,7 +15,7 @@ RSpec.describe JobHistoryEntry, type: :model do
     let(:result_params) do
       {
         processed_file: 'public/data/archive/products.csv',
-        report_file: 'public/data/error/report.txt',
+        report_file: '',
         processed_records: 10,
         status: 'success'
       }
@@ -24,7 +24,7 @@ RSpec.describe JobHistoryEntry, type: :model do
     let(:update_params) do
       {
         processed_file_path: 'data/archive/products.csv',
-        report_file_path: 'data/error/report.txt',
+        report_file_path: '',
         processed_records: 10,
         status: 'success'
       }

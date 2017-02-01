@@ -17,6 +17,7 @@ class JobHistoryEntry < ApplicationRecord
   private
 
   def strip_public_dir(path)
+    return '' if path.blank?
     path.split('/')[1..-1].join('/')
   end
 end
