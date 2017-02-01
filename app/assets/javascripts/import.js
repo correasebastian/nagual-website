@@ -30,8 +30,8 @@ app.helpers = {
   reloadPage: function() {
     window.location.reload();
   },
-  errorLogger:function(data){
-    if(console && console.error){
+  errorLogger: function(data) {
+    if (console && console.error) {
       console.error(data);
     }
   }
@@ -51,7 +51,7 @@ app.controller = {
     app.helpers.request('POST', this.postUrl, formData)
       .done(function() {
         app.view.renderUploadSuccess(file.name);
-        window.setTimeout(function(){
+        window.setTimeout(function() {
           app.helpers.reloadPage();
         }, 3000)
       })
@@ -77,6 +77,7 @@ app.controller = {
 
 app.view = {
   init: function() {
+    this.$home = $('.home');
     this.$uploadZone = $('#upload-zone');
     this.$importFileArea = $('#import-area');
     this.$inputFile = $('#import-file');
@@ -89,8 +90,8 @@ app.view = {
 
     this.$historyZone = $('#history-zone');
     this.$aShowImportArea = $('#show-import-area');
-    this.successImportClass='successImport';
-    this.errorImportClass='errorImport';
+    this.successImportClass = 'successImport';
+    this.errorImportClass = 'errorImport';
     this.setAttributes();
     this.setListeners();
   },
@@ -131,13 +132,14 @@ app.view = {
       app.view.toggleUploadZone();
 
     });
-    this.$hideImportArea.click(function(e){
+    this.$hideImportArea.click(function(e) {
       app.view.toggleUploadZone();
     })
 
   },
   renderProgress: function(percentString) {
-    this.$progressBar.css('width', percentString).attr('aria-valuenow', percentString);
+    this.$progressBar.css('width', percentString);
+    this.$progressBar.attr('aria-valuenow', percentString);
     this.$nameFile.text(percentString);
   },
   renderUploadSuccess: function(filename) {
@@ -166,6 +168,7 @@ app.view = {
     this.$importStatus.hide();
     this.$uploadZone.toggleClass('hide');
     this.$aShowImportArea.toggleClass('hide');
+    this.$home.toggleClass('flex flex-col flex-center');
   }
 
 }
