@@ -14,7 +14,7 @@
         to: page_url
     images:
       - view_type: small
-        filter_key: online_flag
+        filter_key: 'online_flag'
         filter_value: true
         names:
           - standard

@@ -46,9 +46,10 @@ output:
       quantity: 1
 
     product:
-      lang: x-default
-      image: 'images/%{type}/%{id}_%{name}.png'
-      variant: '%{name}_%{modifier}'
+      images:
+        path: 'customers'
+        name: '%{product_id}'
+        extension: jpg
       variation_attributes:
         - color
         - size
