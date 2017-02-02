@@ -83,11 +83,12 @@ app.view = {
     this.$inputFile = $('#import-file');
     this.$importStatus = $("#importStatus");
     this.$headStatus = $("#head-status");
+    this.$errorIcon = $("#error-icon");
+    this.$successIcon = $("#success-icon");
     this.$progressBar = $('#progress-bar');
     this.$nameFile = $(".nameFile");
     this.aBrowseFile = $('#file-browse');
     this.$hideImportArea = $('#hide-import-zone');
-
     this.$historyZone = $('#history-zone');
     this.$aShowImportArea = $('#show-import-area');
     this.successImportClass = 'successImport';
@@ -102,39 +103,49 @@ app.view = {
     this.$importFileArea.on('dragover dragenter', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      app.view.$importFileArea.addClass("upLoading");
-    });
+      this.$importFileArea.addClass("upLoading");
+    }.bind(this));
+
     this.$importFileArea.on('dragleave dragend drop', function(e) {
       e.preventDefault();
       e.stopPropagation();
       if (e.originalEvent.dataTransfer) {
         var files = e.originalEvent.dataTransfer.files;
-        app.view.$importFileArea.removeClass("upLoading");
+        this.$importFileArea.removeClass("upLoading");
         if (files.length) {
           var file = files[0];
           app.controller.upload(file);
         }
       }
-    });
+    }.bind(this));
 
     this.aBrowseFile.click(function(e) {
       e.preventDefault();
-      app.view.$inputFile.click();
-    })
+      this.$inputFile.click();
+    }.bind(this))
 
     this.$inputFile.change(function(e) {
-      var file = app.view.$inputFile.get(0).files[0];
+      var file = this.$inputFile.get(0).files[0];
       app.controller.upload(file);
-    })
+    }.bind(this))
 
     this.$aShowImportArea.click(function(e) {
       e.preventDefault();
-      app.view.toggleUploadZone();
+      this.toggleUploadZone();
 
-    });
+    }.bind(this));
+
     this.$hideImportArea.click(function(e) {
-      app.view.toggleUploadZone();
-    })
+      this.toggleUploadZone();
+    }.bind(this));
+
+    this.$errorIcon.click(function(e) {
+      this.$errorIcon.hide();
+      this.$importStatus.hide();
+      this.$importFileArea.show();
+      this.renderProgress('0%');
+
+    }.bind(this))
 
   },
   renderProgress: function(percentString) {
@@ -145,13 +156,15 @@ app.view = {
   renderUploadSuccess: function(filename) {
     this.$inputFile.val('');
     this.$importStatus.addClass(this.successImportClass);
+    this.$successIcon.show();
     this.renderUploadStatus('Loaded correctly', filename + ' was  uploaded, the page will be refreshed in 3 seconds ...');
   },
   renderUploadError: function(filename) {
     this.$inputFile.val('');
     this.$importStatus.addClass(this.errorImportClass);
-    this.renderUploadStatus('Error uploading file', filename + ' was not  uploaded');
-    this.$importFileArea.show();
+    this.renderUploadStatus('Error uploading file, try again', filename + ' was not  uploaded');
+    this.$errorIcon.show();
+    // this.$importFileArea.show();
   },
 
   renderUploadStatus: function(statusHeader, statusText) {

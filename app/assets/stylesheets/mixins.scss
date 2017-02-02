@@ -1,20 +1,20 @@
 @font-face {
   font-family: 'Montserrat';
-  src: font-url('Montserrat-Regular.otf');
+  src: url('Montserrat-Regular.otf');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: font-url('Montserrat-Bold.otf');
+  src: url('Montserrat-Bold.otf');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family:'Montserrat';
-  src: font-url( 'Montserrat-Light.otf');
+  font-family: 'Montserrat';
+  src: url('Montserrat-Light.otf');
   font-weight: 100;
   font-style: normal;
 }
@@ -53,7 +53,7 @@ $Yellow: #FFF35C;
 body {
   color: $white;
   font-family: 'Montserrat';
-  font-size:14px;
+  font-size: 14px;
   h1,
   h2,
   h3,
@@ -64,6 +64,20 @@ body {
     margin: 0;
     padding: 0;
   }
+}
+
+.fileIcon {
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+}
+
+.error-icon{
+  background: url(error.svg);
+}
+
+.success-icon{
+  background: url(check.svg);
 }
 
 // Icons

@@ -18,6 +18,8 @@ describe('View', function() {
 
       var elementImportStatus = elementUploaZone.affix('#importStatus');
       elementImportStatus.affix('#head-status');
+      elementImportStatus.affix('#error-icon');
+      elementImportStatus.affix('#success-icon');
       elementImportStatus.affix('#progress-bar');
       elementImportStatus.affix('.nameFile');
       elementImportStatus.affix('#file-browse');
@@ -51,6 +53,8 @@ describe('View', function() {
         expect(view.$inputFile.get(0)).toBeDefined();
         expect(view.$importStatus.get(0)).toBeDefined();
         expect(view.$headStatus.get(0)).toBeDefined();
+        expect(view.$errorIcon.get(0)).toBeDefined();
+        expect(view.$successIcon.get(0)).toBeDefined();
         expect(view.$progressBar.get(0)).toBeDefined();
         expect(view.$nameFile.get(0)).toBeDefined();
         expect(view.aBrowseFile.get(0)).toBeDefined();
@@ -95,7 +99,9 @@ describe('View', function() {
 
     describe('setListeners', function() {
 
+      var mockEvent;
       beforeEach(function() {
+
         view.setListeners.and.callThrough();
 
 
@@ -104,9 +110,25 @@ describe('View', function() {
 
       describe('for $importFileArea element', function() {
 
+        var fnOnDragOver,
+          fnOnDragLeave,
+          files,
+          file;
+
         beforeEach(function() {
           spyOn($.fn, 'on');
+          mockEvent = jasmine.createSpyObj('mockEvent', ['preventDefault', 'stopPropagation']);
+          file = 'a-file';
+          files = [file];
+          mockEvent.originalEvent = {
+            dataTransfer: {
+              files: files
+            }
+          };
           view.setListeners();
+          var fns = $.fn.on.calls.allArgs();
+          fnOnDragOver = fns[0][1];
+          fnOnDragLeave = fns[1][1];
         });
 
 
@@ -116,6 +138,21 @@ describe('View', function() {
 
           });
 
+
+
+          it('should add the class upLoading', function() {
+            spyOn($.fn, 'addClass');
+
+            fnOnDragOver(mockEvent);
+
+            expect($.fn.addClass).toHaveBeenCalledWith("upLoading");
+            expect(mockEvent.preventDefault).toHaveBeenCalled();
+            expect(mockEvent.stopPropagation).toHaveBeenCalled();
+
+          });
+
+
+
         });
 
 
@@ -123,6 +160,20 @@ describe('View', function() {
 
           it('sholud add the listener ', function() {
             expect($.fn.on).toHaveBeenCalledWith('dragleave dragend drop', jasmine.any(Function));
+          });
+
+          it('should validate if there is a file available, and upload it', function() {
+            spyOn($.fn, 'removeClass');
+            spyOn(app.controller, 'upload');
+
+            fnOnDragLeave(mockEvent);
+
+            expect($.fn.removeClass).toHaveBeenCalledWith("upLoading");
+            expect(mockEvent.preventDefault).toHaveBeenCalled();
+            expect(mockEvent.stopPropagation).toHaveBeenCalled();
+            expect(app.controller.upload).toHaveBeenCalledWith(file);
+
+
           });
         });
 
@@ -132,30 +183,97 @@ describe('View', function() {
       });
 
 
-      describe('for aBrowseFile $aShowImportArea $hideImportArea   elements', function() {
+      describe('for aBrowseFile $aShowImportArea $hideImportArea  $errorIcon  elements', function() {
 
 
         var fnOnBrowseFile,
           fnOnShowImportArea,
-          fnHideImportArea;
+          fnHideImportArea,
+          fnErrorIcon;
 
         beforeEach(function() {
           spyOn($.fn, 'click');
           view.setListeners();
 
+          mockEvent = jasmine.createSpyObj('mockEvent', ['preventDefault', 'stopPropagation']);
 
           var fns = $.fn.click.calls.allArgs();
 
           fnOnBrowseFile = fns[0][0];
           fnOnShowImportArea = fns[1][0];
           fnHideImportArea = fns[2][0];
+          fnErrorIcon = fns[3][0];
 
         });
 
 
 
-        it('should add  the listener to click event', function() {
-          expect($.fn.click).toHaveBeenCalledTimes(3);
+        it('should add  the listeners to click events', function() {
+
+          expect($.fn.click).toHaveBeenCalledTimes(4);
+
+        });
+
+        describe('On click #file-browse', function() {
+
+          it('should trigger click on #import-file', function() {
+            $.fn.click.calls.reset()
+
+            fnOnBrowseFile(mockEvent);
+
+            expect($.fn.click).toHaveBeenCalled();
+            expect(mockEvent.preventDefault).toHaveBeenCalled();
+          });
+
+        });
+
+
+        describe('On click #show-import-area', function() {
+
+          it('should show the upload zone', function() {
+
+            spyOn(view, 'toggleUploadZone');
+            fnOnShowImportArea(mockEvent);
+
+            expect(mockEvent.preventDefault).toHaveBeenCalled();
+            expect(view.toggleUploadZone).toHaveBeenCalled();
+
+          });
+
+
+
+        });
+
+        describe('On click #hide-import-zone', function() {
+
+          it('should hide the upload zone', function() {
+
+            spyOn(view, 'toggleUploadZone');
+            fnHideImportArea(mockEvent);
+
+            expect(view.toggleUploadZone).toHaveBeenCalled();
+
+          });
+
+        });
+
+
+
+
+        describe('On click #error-icon', function() {
+
+          it('should hide the status area and show the import area', function() {
+            spyOn($.fn, 'show');
+            spyOn($.fn, 'hide');
+            spyOn(view, 'renderProgress');
+
+            fnErrorIcon();
+
+            expect($.fn.show).toHaveBeenCalled();
+            expect($.fn.hide).toHaveBeenCalledTimes(2);
+            expect(view.renderProgress).toHaveBeenCalledWith('0%');
+
+          });
 
         });
 
@@ -163,11 +281,12 @@ describe('View', function() {
       });
 
 
-      describe('for $inputFile', function() {
-
+      describe('for input[type="file"]#import-file', function() {
+        var onChange;
         beforeEach(function() {
           spyOn($.fn, 'change');
           view.setListeners();
+          onChange = $.fn.change.calls.argsFor(0)[0];
 
         });
 
@@ -177,6 +296,22 @@ describe('View', function() {
           expect($.fn.change).toHaveBeenCalledWith(jasmine.any(Function));
 
         });
+
+
+        it('should upload the file', function() {
+          var file = 'im-a-file';
+          spyOn(app.controller, 'upload');
+          spyOn($.fn, 'get').and.returnValue({
+            files: [file]
+          });
+
+          onChange(mockEvent);
+
+          expect($.fn.get).toHaveBeenCalledWith(0);
+          expect(app.controller.upload).toHaveBeenCalledWith(file);
+
+        });
+
 
       });
 
@@ -255,11 +390,10 @@ describe('View', function() {
       it('should reset the input file, add successclass to the import area, and display the success text ', function() {
         spyOn($.fn, 'val');
         spyOn($.fn, 'addClass');
-        spyOn($.fn, 'show');
         spyOn(view, 'renderUploadStatus');
 
         var mockFilename = 'random-name.csv';
-        var mockHeader = 'Error uploading file';
+        var mockHeader = 'Error uploading file, try again';
         var mockText = mockFilename + ' was not  uploaded'
 
         view.renderUploadError(mockFilename);
@@ -267,7 +401,6 @@ describe('View', function() {
         expect($.fn.val).toHaveBeenCalledWith('');
         expect($.fn.addClass).toHaveBeenCalledWith(view.errorImportClass);
         expect(view.renderUploadStatus).toHaveBeenCalledWith(mockHeader, mockText);
-        expect($.fn.show).toHaveBeenCalled();
 
       });
 

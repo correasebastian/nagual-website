@@ -93,6 +93,7 @@ body {
           float: left;
         }
         .fileIcon {
+          display:none;
           position: absolute;
           right: 0;
         }
@@ -158,9 +159,7 @@ body {
       .progress-bar {
         background: #FD635D;
       }
-      .fileIcon {
-        @include errorIcon;
-      }
+
     }
     .errorImport-file {
       h2,
@@ -190,9 +189,7 @@ body {
       .progress-bar {
         background: #1CCEAF
       }
-      .fileIcon {
-        @include successIcon;
-      }
+
     }
     div#import-area-hide {
       margin: 2em auto;
@@ -282,4 +279,8 @@ body {
     font-size: 30px;
     margin-top: 12px;
   }
+}
+
+#error-icon{
+  cursor: pointer;
 }
