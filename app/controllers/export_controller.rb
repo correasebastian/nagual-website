@@ -11,11 +11,15 @@ class ExportController < ApplicationController
     temp_file = Tempfile.new('catalog.zip')
 
     Zip::File.open(temp_file.path, Zip::File::CREATE) do |z|
-      Dir["#{Rails.application.config.nagual['output']['xml']['path']}/*"].each do |file|
+      Dir["#{xml_export_path}/*"].each do |file|
         z.add file.split('/').last, file
       end
     end
 
     temp_file.path
+  end
+
+  def xml_export_path
+    Rails.application.config.nagual['output']['xml']['path']
   end
 end

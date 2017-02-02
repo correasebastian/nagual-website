@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe ExportController, type: :controller do
   describe 'GET #index' do
-    let(:file) { fixture_file_upload('files/test.csv', 'text/csv') }
+    let(:file) { fixture_file_upload('files/test.zip', 'application/zip') }
     let(:config) do
       { 'output' => { 'xml' => { 'path' => file.path } } }
     end
