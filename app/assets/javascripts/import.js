@@ -1,4 +1,5 @@
 var app = {};
+
 app.helpers = {
   request: function(method, url, data) {
     var ajaxcall = $.ajax({
@@ -35,7 +36,8 @@ app.helpers = {
       console.error(data);
     }
   }
-}
+};
+
 app.controller = {
   init: function() {
     this.postUrl = 'import/upload';
@@ -73,7 +75,7 @@ app.controller = {
     return !valid;
   }
 
-}
+};
 
 app.view = {
   init: function() {
@@ -164,7 +166,6 @@ app.view = {
     this.$importStatus.addClass(this.errorImportClass);
     this.renderUploadStatus('Error uploading file, try again', filename + ' was not  uploaded');
     this.$errorIcon.show();
-    // this.$importFileArea.show();
   },
 
   renderUploadStatus: function(statusHeader, statusText) {
@@ -184,7 +185,8 @@ app.view = {
     this.$home.toggleClass('flex flex-col flex-center');
   }
 
-}
+};
+
 $(function() {
   app.controller.init();
 });

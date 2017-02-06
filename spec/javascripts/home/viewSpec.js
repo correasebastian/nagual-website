@@ -1,22 +1,19 @@
 describe('View', function() {
   var view = app.view;
 
-
   describe('Methods', function() {
-
 
     var elementHome;
 
     beforeEach(function() {
       elementHome = affix('.home');
-      var elementUploaZone = elementHome.affix('#upload-zone');
+      var elementUploadZone = elementHome.affix('#upload-zone');
 
-
-      var elementImportArea = elementUploaZone.affix('#import-area');
+      var elementImportArea = elementUploadZone.affix('#import-area');
       elementImportArea.affix('input#import-file[type="file"]');
       elementImportArea.affix('p a#file-browse');
 
-      var elementImportStatus = elementUploaZone.affix('#importStatus');
+      var elementImportStatus = elementUploadZone.affix('#importStatus');
       elementImportStatus.affix('#head-status');
       elementImportStatus.affix('#error-icon');
       elementImportStatus.affix('#success-icon');
@@ -24,8 +21,7 @@ describe('View', function() {
       elementImportStatus.affix('.nameFile');
       elementImportStatus.affix('#file-browse');
 
-      elementUploaZone.affix('p#hide-import-zone');
-
+      elementUploadZone.affix('p#hide-import-zone');
 
       var elementHistoryZone = elementHome.affix('#history-zone');
       elementHistoryZone.affix('a#show-import-area');
@@ -33,16 +29,12 @@ describe('View', function() {
       spyOn(view, 'setAttributes');
       spyOn(view, 'setListeners');
 
-
     });
-
 
     describe('init', function() {
       it('should get the elements from the html, and set attributes and listeners', function() {
 
-        // spyOn(window, '$').and.callThrough();
-
-        var errorClass = 'errorImport'
+        var errorClass = 'errorImport';
         var successClass = 'successImport';
 
         view.init();
@@ -74,28 +66,20 @@ describe('View', function() {
       });
     });
 
-
-
     describe('setAttributes', function() {
-
 
       beforeEach(function() {
         view.setAttributes.and.callThrough();
       });
 
-
-      it('should set some attibutes to input file element ', function() {
+      it('should set some attributes to input file element ', function() {
         spyOn($.fn, 'attr');
 
         view.setAttributes();
         expect($.fn.attr).toHaveBeenCalledWith('accept', '.csv');
       });
 
-
-
     });
-
-
 
     describe('setListeners', function() {
 
@@ -104,9 +88,7 @@ describe('View', function() {
 
         view.setListeners.and.callThrough();
 
-
       });
-
 
       describe('for $importFileArea element', function() {
 
@@ -131,14 +113,11 @@ describe('View', function() {
           fnOnDragLeave = fns[1][1];
         });
 
-
         describe('for dragover dragenter events', function() {
           it('should add the listener ', function() {
             expect($.fn.on).toHaveBeenCalledWith('dragover dragenter', jasmine.any(Function));
 
           });
-
-
 
           it('should add the class upLoading', function() {
             spyOn($.fn, 'addClass');
@@ -151,14 +130,11 @@ describe('View', function() {
 
           });
 
-
-
         });
-
 
         describe('for dragleave dragend drop events', function() {
 
-          it('sholud add the listener ', function() {
+          it('should add the listener ', function() {
             expect($.fn.on).toHaveBeenCalledWith('dragleave dragend drop', jasmine.any(Function));
           });
 
@@ -173,18 +149,12 @@ describe('View', function() {
             expect(mockEvent.stopPropagation).toHaveBeenCalled();
             expect(app.controller.upload).toHaveBeenCalledWith(file);
 
-
           });
         });
 
-
-
-
       });
 
-
       describe('for aBrowseFile $aShowImportArea $hideImportArea  $errorIcon  elements', function() {
-
 
         var fnOnBrowseFile,
           fnOnShowImportArea,
@@ -205,8 +175,6 @@ describe('View', function() {
           fnErrorIcon = fns[3][0];
 
         });
-
-
 
         it('should add  the listeners to click events', function() {
 
@@ -240,8 +208,6 @@ describe('View', function() {
 
           });
 
-
-
         });
 
         describe('On click #hide-import-zone', function() {
@@ -256,9 +222,6 @@ describe('View', function() {
           });
 
         });
-
-
-
 
         describe('On click #error-icon', function() {
 
@@ -277,9 +240,7 @@ describe('View', function() {
 
         });
 
-
       });
-
 
       describe('for input[type="file"]#import-file', function() {
         var onChange;
@@ -290,13 +251,10 @@ describe('View', function() {
 
         });
 
-
-
         it('should add  the listener to change event', function() {
           expect($.fn.change).toHaveBeenCalledWith(jasmine.any(Function));
 
         });
-
 
         it('should upload the file', function() {
           var file = 'im-a-file';
@@ -312,24 +270,15 @@ describe('View', function() {
 
         });
 
-
       });
-
-
-
 
     });
 
-
-
     describe('renderProgress', function() {
-
 
       beforeEach(function() {
         view.init();
       });
-
-
 
       it('should set the css width property , aria-valuenow attribute and the text ', function() {
         spyOn($.fn, 'css');
@@ -346,18 +295,13 @@ describe('View', function() {
 
       });
 
-
     });
 
-
     describe('renderUploadSuccess', function() {
-
 
       beforeEach(function() {
         view.init();
       });
-
-
 
       it('should reset the input file, add successclass to the import area, and display the success text ', function() {
         spyOn($.fn, 'val');
@@ -376,12 +320,9 @@ describe('View', function() {
 
       });
 
-
     });
 
-
     describe('renderUploadError', function() {
-
 
       beforeEach(function() {
         view.init();
@@ -425,15 +366,11 @@ describe('View', function() {
         expect($.fn.text).toHaveBeenCalledWith(mockHeader);
         expect($.fn.text).toHaveBeenCalledWith(mockText);
 
-
       });
-
 
     });
 
-
     describe('beforeUpload', function() {
-
 
       beforeEach(function() {
         view.init();
@@ -456,12 +393,10 @@ describe('View', function() {
 
       });
 
-
     });
 
 
     describe('toggleUploadZone', function() {
-
 
       beforeEach(function() {
         view.init();
@@ -471,19 +406,15 @@ describe('View', function() {
         spyOn($.fn, 'hide');
         spyOn($.fn, 'toggleClass');
 
-
         view.toggleUploadZone();
 
         expect($.fn.hide).toHaveBeenCalled();
         expect($.fn.toggleClass).toHaveBeenCalledWith('hide');
         expect($.fn.toggleClass).toHaveBeenCalledWith('flex flex-col flex-center');
 
-
       });
 
-
     });
-
 
   });
 
