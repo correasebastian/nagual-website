@@ -23,7 +23,7 @@
       brand: string.256
       manufacturer_name: string.256
       manufacturer_sku: string.256
-      master_id: string.256
+      master_product_id: string.256
       stock: decimal
       perpetual: boolean
       price: decimal

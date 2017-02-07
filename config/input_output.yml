@@ -44,10 +44,9 @@ output:
         online_flag: true
         xml_lang: x-default
       quantity: 1
-
     product:
       images:
-        path: 'customers'
+        path: 'images'
         name: '%{product_id}'
         extension: jpg
       variation_attributes:

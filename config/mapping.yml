@@ -62,6 +62,7 @@
       name: copy
     - key: organization
       to: organization
+      name: copy
     - key: master_id
       to: master_product_id
       name: copy
