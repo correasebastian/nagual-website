@@ -1,0 +1,15 @@
+---
+input:
+  incoming_path: public/data/incoming
+  processing_path: public/data/processing
+  archive_path: public/data/archive
+  error_path: public/data/error
+output:
+  path: public/data/output
+  error_report:
+    path: public/data/reports
+    file_prefix: error_report
+log:
+  file: log/import.log
+  date_format: '%Y-%m-%d %H:%M:%S'
+  level: DEBUG
