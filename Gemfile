@@ -25,7 +25,7 @@ gem 'rspec-rails', '~> 3.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'nagual', git: 'git@github.com:sawyer-effect/nagual.git'
+gem 'nagual', git: 'git@github.com:sawyer-effect/nagual.git', branch: 'master'
 
 gem 'rubyzip', '~> 1.2'
 

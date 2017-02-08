@@ -143,7 +143,7 @@ app.view = {
 
     }.bind(this));
 
-    this.$errorReportIcon.bind('click', function(e) {
+    this.$errorReportIcon.bind("click", function(e) {
       e.preventDefault();
       var url = e.currentTarget.dataset.url;
       app.helpers.request("GET", url)
