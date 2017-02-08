@@ -250,9 +250,7 @@ body {
 }
 
 
-#importStatus,
-#import-file,
- {
+#importStatus, #import-file {
   display: none;
 }
 
@@ -283,4 +281,18 @@ body {
 
 #error-icon{
   cursor: pointer;
+}
+
+div.modal {
+  color: $gray;
+
+  div#modal-body {
+    margin: 1em;
+    text-align: left;
+
+    textarea.modal-body-content {
+      width: 100%;
+      border-style: none;
+    }
+  }
 }

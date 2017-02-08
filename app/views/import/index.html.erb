@@ -1,79 +1,92 @@
 <div class="home flex flex-col flex-center">
 
-<section id="upload-zone" class='hide'>
+  <section id="upload-zone" class='hide'>
 
-  <div id="title-section">
-    <h1>Import files into Nagual</h1>
-    <h3>Drag and drop a CSV file to the space below</h3>
-  </div>
-
-  <div id="import-box">
-
-    <div id="import-area" class="import-area-browse">
-      <p class="copy">Drag your CSV file here or <a id="file-browse" href="#">click to browse</a></p>
-      <input type="file" name="import-file" id="import-file">
+    <div id="title-section">
+      <h1>Import files into Nagual</h1>
+      <h3>Drag and drop a CSV file to the space below</h3>
     </div>
 
-    <div id="importStatus" class="active">
-      <h2 id="head-status"></h2>
-      <p></p>
-      <div class="loadFile">
-        <div class="nameFile"></div>
-        <div id="error-icon" class="fileIcon error-icon">
-        </div>
-        <div id="success-icon" class="fileIcon success-icon">
-        </div>
+    <div id="import-box">
+
+      <div id="import-area" class="import-area-browse">
+        <p class="copy">Drag your CSV file here or <a id="file-browse" href="#">click to browse</a></p>
+        <input type="file" name="import-file" id="import-file">
       </div>
-      <div class="progress">
-        <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+
+      <div id="importStatus" class="active">
+        <h2 id="head-status"></h2>
+        <p></p>
+        <div class="loadFile">
+          <div class="nameFile"></div>
+          <div id="error-icon" class="fileIcon error-icon">
+          </div>
+          <div id="success-icon" class="fileIcon success-icon">
+          </div>
+        </div>
+        <div class="progress">
+          <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="import-area-hide">
-    <p id="hide-import-zone" class="copy">Hide</p>
-  </div>
-</section>
+    <div id="import-area-hide">
+      <p id="hide-import-zone" class="copy">Hide</p>
+    </div>
+  </section>
 
-<section id="history-zone" class="container">
-  <h2>History</h2>
-  <a id="show-import-area" class="btn-floating bg-white"><span class="glyphicon glyphicon-cloud-upload color-pink"></span></a>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Source File (CSV)</th>
-        <th>Processed Date/time</th>
-        <th>Processed records</th>
-        <th>Status</th>
-        <th>Error report</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @history.each do |entry| %>
-        <tr>
-          <td>
-            <a href="<%= entry.processed_file_path %>">
-              <%= File.basename(entry.processed_file_path) %>
-            </a>
-          </td>
-          <td>
-            <%= entry.updated_at %>
-          </td>
-          <td>
-            <%= entry.processed_records %>
-          </td>
-          <td>
-            <%= (entry.status == 'success') ? image_tag("check.png") : image_tag("error.png") %>
-          </td>
-          <td>
-            <% if entry.status == 'error' %>
-              <a target="_blank" href="<%= entry.report_file_path %>"><%= image_tag "report.png" %>
-              </a>
-            <% end %>
-          </td>
+  <section id="history-zone" class="container">
+    <h2>History</h2>
+    <a id="show-import-area" class="btn-floating bg-white"><span class="glyphicon glyphicon-cloud-upload color-pink"></span></a>
+    <table class="table table-hover">
+      <thead>
+        <tr
+          <th>Source File (CSV)</th>
+          <th>Processed Date/time</th>
+          <th>Processed records</th>
+          <th>Status</th>
+          <th>Error report</th>
         </tr>
-        <% end %>
-  </table>
-</section>
+      </thead>
+      <tbody>
+        <% @history.each do |entry| %>
+          <tr>
+            <td>
+              <a href="<%= entry.processed_file_path %>">
+                <%= File.basename(entry.processed_file_path) %>
+              </a>
+            </td>
+            <td><%= entry.updated_at %></td>
+            <td><%= entry.processed_records %></td>
+            <td>
+              <%= (entry.status == 'success') ? image_tag("check.png") : image_tag("error.png") %>
+            </td>
+            <td>
+              <% if entry.status == 'error' %>
+                <a href="#" class="error-report-icon" data-url="<%= entry.report_file_path %>" ><%= image_tag "report.png" %></a>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+    </table>
+
+    <div class="modal fade" id="error-report-modal" tabindex="-1" role="dialog" aria-labelledby="error-report-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="error-report-modal-title">Error report</h2>
+            <p>Here is a list of errors found when we imported your file</p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="modal-body">
+            <textarea class="modal-body-content"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
 </div>

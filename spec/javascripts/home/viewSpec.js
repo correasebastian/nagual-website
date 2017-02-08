@@ -54,6 +54,8 @@ describe('View', function() {
 
         expect(view.$historyZone.get(0)).toBeDefined();
         expect(view.$aShowImportArea.get(0)).toBeDefined();
+        expect(view.$errorReportModal.get(0)).toBeDefined();
+        expect(view.$errorReportIcon.get(0)).toBeDefined();
 
         expect(view.successImportClass).toBe(successClass);
         expect(view.errorImportClass).toBe(errorClass);

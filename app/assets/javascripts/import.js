@@ -59,11 +59,9 @@ app.controller = {
   isValidFile: function(file) {
     var valid = false;
     if (!file) {
-      app.helpers.errorLogger("file is null or undefined");
       return valid;
     }
     if (!file.name.endsWith(".csv")) {
-      app.helpers.errorLogger("file:" + file.name + " is not a cvs file, only csv files are valid");
       return valid;
     }
     return !valid;
@@ -87,6 +85,8 @@ app.view = {
     this.$hideImportArea = $("#hide-import-zone");
     this.$historyZone = $("#history-zone");
     this.$aShowImportArea = $("#show-import-area");
+    this.$errorReportModal = $("#error-report-modal");
+    this.$errorReportIcon = $(".error-report-icon");
     this.successImportClass = "successImport";
     this.errorImportClass = "errorImport";
     this.setAttributes();
@@ -141,6 +141,19 @@ app.view = {
       this.$importFileArea.show();
       this.renderProgress("0%");
 
+    }.bind(this));
+
+    this.$errorReportIcon.bind('click', function(e) {
+      e.preventDefault();
+      var url = e.currentTarget.dataset.url;
+      app.helpers.request("GET", url)
+        .done(function(data) {
+          $("#modal-body > .modal-body-content").text(data);
+        })
+        .fail(function() {
+          $("#modal-body > .modal-body-content").text("Unable to load report");
+        });
+      this.$errorReportModal.modal();
     }.bind(this));
 
   },

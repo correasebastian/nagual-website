@@ -13,7 +13,6 @@ describe('Helpers', function() {
 
     describe('request', function() {
 
-
       it('should call the $.ajax method with the config object, and respond to the progress event', function() {
 
         var method = 'method';
@@ -29,8 +28,7 @@ describe('Helpers', function() {
           lengthComputable: true,
           loaded: 4123854,
           total: 4123854
-        }
-
+        };
 
         spyOn($, 'ajax').and.callFake(function(config) {
 
@@ -60,7 +58,6 @@ describe('Helpers', function() {
         helpers.request(method, url, data);
 
       });
-
 
     });
 

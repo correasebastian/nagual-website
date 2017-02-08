@@ -24,16 +24,19 @@ $white: #FFFFFF;
 $lightWhite: #F2F2F2;
 $gray: #818181;
 $lightgray: #808080;
+
 //Logo colors
 $violet: #731773;
 $Pink: #FD4485;
-// Colors secundary
+
+// Secondary colors
 $lightblue: #20E6EE;
 $turquoise: #1CCEAF;
 $red: #FD635D;
 $orange: #FF7411;
 $Yellow: #FFF35C;
-// Grandientes
+
+// Gradients
 @mixin gra-violePink {
   background: linear-gradient(317.14deg, #FD4485 0%, #731773 100%);
 }
