@@ -14,7 +14,7 @@ app.helpers = {
 
           if (evt.lengthComputable) {
             var percentComplete = Math.ceil((evt.loaded / evt.total) * 100);
-            var percentString = percentComplete + '%';
+            var percentString = percentComplete + "%";
             app.view.renderProgress(percentString);
           }
         }, false);
@@ -30,46 +30,40 @@ app.helpers = {
   },
   reloadPage: function() {
     window.location.reload();
-  },
-  errorLogger: function(data) {
-    if (console && console.error) {
-      console.error(data);
-    }
   }
 };
 
 app.controller = {
   init: function() {
-    this.postUrl = 'import/upload';
+    this.postUrl = "import/upload";
     app.view.init();
   },
   upload: function(file) {
     if (!this.isValidFile(file)) {
       return;
     }
-    var formData = app.helpers.buildFormData('import_file', file);
+    var formData = app.helpers.buildFormData("import_file", file);
 
     app.view.beforeUpload();
-    app.helpers.request('POST', this.postUrl, formData)
+    app.helpers.request("POST", this.postUrl, formData)
       .done(function() {
         app.view.renderUploadSuccess(file.name);
         window.setTimeout(function() {
           app.helpers.reloadPage();
-        }, 3000)
+        }, 3000);
       })
-      .fail(function(data) {
-        app.helpers.errorLogger(data);
+      .fail(function() {
         app.view.renderUploadError(file.name);
-      })
+      });
   },
   isValidFile: function(file) {
     var valid = false;
     if (!file) {
-      app.helpers.errorLogger('file is null or undefined');
+      app.helpers.errorLogger("file is null or undefined");
       return valid;
     }
-    if (!file.name.endsWith('.csv')) {
-      app.helpers.errorLogger('file:' + file.name + ' is not a cvs file, only csv files are valid');
+    if (!file.name.endsWith(".csv")) {
+      app.helpers.errorLogger("file:" + file.name + " is not a cvs file, only csv files are valid");
       return valid;
     }
     return !valid;
@@ -79,36 +73,36 @@ app.controller = {
 
 app.view = {
   init: function() {
-    this.$home = $('.home');
-    this.$uploadZone = $('#upload-zone');
-    this.$importFileArea = $('#import-area');
-    this.$inputFile = $('#import-file');
+    this.$home = $(".home");
+    this.$uploadZone = $("#upload-zone");
+    this.$importFileArea = $("#import-area");
+    this.$inputFile = $("#import-file");
     this.$importStatus = $("#importStatus");
     this.$headStatus = $("#head-status");
     this.$errorIcon = $("#error-icon");
     this.$successIcon = $("#success-icon");
-    this.$progressBar = $('#progress-bar');
+    this.$progressBar = $("#progress-bar");
     this.$nameFile = $(".nameFile");
-    this.aBrowseFile = $('#file-browse');
-    this.$hideImportArea = $('#hide-import-zone');
-    this.$historyZone = $('#history-zone');
-    this.$aShowImportArea = $('#show-import-area');
-    this.successImportClass = 'successImport';
-    this.errorImportClass = 'errorImport';
+    this.aBrowseFile = $("#file-browse");
+    this.$hideImportArea = $("#hide-import-zone");
+    this.$historyZone = $("#history-zone");
+    this.$aShowImportArea = $("#show-import-area");
+    this.successImportClass = "successImport";
+    this.errorImportClass = "errorImport";
     this.setAttributes();
     this.setListeners();
   },
   setAttributes: function() {
-    this.$inputFile.attr('accept', '.csv')
+    this.$inputFile.attr("accept", ".csv");
   },
   setListeners: function() {
-    this.$importFileArea.on('dragover dragenter', function(e) {
+    this.$importFileArea.on("dragover dragenter", function(e) {
       e.preventDefault();
       e.stopPropagation();
       this.$importFileArea.addClass("upLoading");
     }.bind(this));
 
-    this.$importFileArea.on('dragleave dragend drop', function(e) {
+    this.$importFileArea.on("dragleave dragend drop", function(e) {
       e.preventDefault();
       e.stopPropagation();
       if (e.originalEvent.dataTransfer) {
@@ -124,12 +118,12 @@ app.view = {
     this.aBrowseFile.click(function(e) {
       e.preventDefault();
       this.$inputFile.click();
-    }.bind(this))
+    }.bind(this));
 
-    this.$inputFile.change(function(e) {
+    this.$inputFile.change(function() {
       var file = this.$inputFile.get(0).files[0];
       app.controller.upload(file);
-    }.bind(this))
+    }.bind(this));
 
     this.$aShowImportArea.click(function(e) {
       e.preventDefault();
@@ -137,34 +131,34 @@ app.view = {
 
     }.bind(this));
 
-    this.$hideImportArea.click(function(e) {
+    this.$hideImportArea.click(function() {
       this.toggleUploadZone();
     }.bind(this));
 
-    this.$errorIcon.click(function(e) {
+    this.$errorIcon.click(function() {
       this.$errorIcon.hide();
       this.$importStatus.hide();
       this.$importFileArea.show();
-      this.renderProgress('0%');
+      this.renderProgress("0%");
 
-    }.bind(this))
+    }.bind(this));
 
   },
   renderProgress: function(percentString) {
-    this.$progressBar.css('width', percentString);
-    this.$progressBar.attr('aria-valuenow', percentString);
+    this.$progressBar.css("width", percentString);
+    this.$progressBar.attr("aria-valuenow", percentString);
     this.$nameFile.text(percentString);
   },
   renderUploadSuccess: function(filename) {
-    this.$inputFile.val('');
+    this.$inputFile.val("");
     this.$importStatus.addClass(this.successImportClass);
     this.$successIcon.show();
-    this.renderUploadStatus('Loaded correctly', filename + ' was  uploaded, the page will be refreshed in 3 seconds ...');
+    this.renderUploadStatus("Loaded correctly", filename + " was  uploaded, the page will be refreshed in 3 seconds ...");
   },
   renderUploadError: function(filename) {
-    this.$inputFile.val('');
+    this.$inputFile.val("");
     this.$importStatus.addClass(this.errorImportClass);
-    this.renderUploadStatus('Error uploading file, try again', filename + ' was not  uploaded');
+    this.renderUploadStatus("Error uploading file, try again", filename + " was not  uploaded");
     this.$errorIcon.show();
   },
 
@@ -174,15 +168,15 @@ app.view = {
   },
   beforeUpload: function() {
     this.$importFileArea.hide();
-    this.$importStatus.removeClass(this.successImportClass + ' ' + this.errorImportClass);
-    this.renderUploadStatus('uploading ...', '')
+    this.$importStatus.removeClass(this.successImportClass + " " + this.errorImportClass);
+    this.renderUploadStatus("uploading ...", "");
     this.$importStatus.show();
   },
   toggleUploadZone: function() {
     this.$importStatus.hide();
-    this.$uploadZone.toggleClass('hide');
-    this.$aShowImportArea.toggleClass('hide');
-    this.$home.toggleClass('flex flex-col flex-center');
+    this.$uploadZone.toggleClass("hide");
+    this.$aShowImportArea.toggleClass("hide");
+    this.$home.toggleClass("flex flex-col flex-center");
   }
 
 };

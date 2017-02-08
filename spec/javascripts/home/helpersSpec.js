@@ -64,21 +64,6 @@ describe('Helpers', function() {
 
     });
 
-
-    describe('errorLogger', function() {
-
-
-      it('should write to the console if is defined', function() {
-        spyOn(console, 'error');
-        var data = 'hi error';
-        helpers.errorLogger(data);
-        expect(console.error).toHaveBeenCalledWith(data);
-
-      })
-
-    });
-
-
   });
 
 });

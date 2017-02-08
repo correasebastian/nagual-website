@@ -80,13 +80,10 @@ describe("Home Controller", function() {
           it(' should start an xhr request, and if the response is an Error  then call app.view.renderUploadSuccess and refresh the page  ', function() {
             def.reject();
             spyOn(app.view, 'renderUploadError');
-            spyOn(app.helpers, 'errorLogger');
 
             controller.upload(mockFile);
 
             expect(app.helpers.request).toHaveBeenCalledWith('POST', expectedUrl, mockFormData);
-
-            expect(app.helpers.errorLogger).toHaveBeenCalled();
 
             expect(app.view.renderUploadError).toHaveBeenCalledWith(mockFile.name);
 
@@ -97,25 +94,19 @@ describe("Home Controller", function() {
 
     describe('isValidFile', function() {
        var result;
-        var mockFile = {
-          name:''
-        }
-
-        beforeEach(function() {
-          spyOn(app.helpers, 'errorLogger');
-        });
+       var mockFile = {
+         name:''
+       }
 
       it('should return false if the file is falsy value', function() {
         result = controller.isValidFile();
         expect(result).toBe(false);
-         expect(app.helpers.errorLogger).toHaveBeenCalled();
       });
 
       it('should return false if the extension is different of .csv', function() {
         mockFile.name='not-a-csv.notcvs'
         result = controller.isValidFile(mockFile);
         expect(result).toBe(false);
-         expect(app.helpers.errorLogger).toHaveBeenCalled();
       });
 
        it('should return true if the extension is  .csv', function() {
