@@ -8,6 +8,6 @@ RSpec::Core::RakeTask.new(:spec)
 
 RuboCop::RakeTask.new(:rubocop)
 
-task build: [:rubocop, :spec, 'jasmine:ci']
+task build: [:rubocop, :spec]
 
 task default: :build
