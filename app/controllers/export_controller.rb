@@ -20,6 +20,6 @@ class ExportController < ApplicationController
   end
 
   def xml_export_path
-    Rails.application.config.nagual['output']['path']
+    Rails.root.join(NAGUAL_API.config['files']['output']['path']).to_s
   end
 end

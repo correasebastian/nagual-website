@@ -1,3 +1,1 @@
-config = Psych.load_file('./config/files.yml')
-
-Rails.application.config.nagual = config
+NAGUAL_API = Nagual::API.new("#{Rails.root.join('config', 'nagual', 'hb')}")
