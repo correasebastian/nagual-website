@@ -9,7 +9,7 @@ RSpec.describe ExportController, type: :controller do
     end
 
     before do
-      allow(Rails.application.config).to receive(:nagual).and_return(config)
+      stub_const('NAGUAL_API', instance_double(Nagual::API, config: config))
       allow(Zip::File).to receive(:open).with(anything, Zip::File::CREATE).and_return(file)
 
       get :index

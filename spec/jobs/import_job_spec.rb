@@ -7,7 +7,7 @@ RSpec.describe ImportJob, type: :job do
     let(:nagual_api)  { instance_double(Nagual::API) }
 
     before do
-      allow(Nagual::API).to receive(:new).and_return(nagual_api)
+      stub_const('NAGUAL_API', nagual_api)
       allow(JobHistoryEntry).to receive(:create).and_return(job_history)
 
       allow(nagual_api).to receive(:import).with('file').and_return(result)
