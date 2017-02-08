@@ -1,3 +1,11 @@
+describe('App Namespace', function() {
+
+  it('should be defined', function() {
+      expect(app).toBeDefined();
+  });
+
+});
+
 describe('Helpers', function() {
   var helpers = app.helpers;
 

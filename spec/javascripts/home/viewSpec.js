@@ -55,10 +55,8 @@ describe('View', function() {
         expect(view.$historyZone.get(0)).toBeDefined();
         expect(view.$aShowImportArea.get(0)).toBeDefined();
 
-
         expect(view.successImportClass).toBe(successClass);
         expect(view.errorImportClass).toBe(errorClass);
-
 
         expect(view.setAttributes).toHaveBeenCalled();
         expect(view.setListeners).toHaveBeenCalled();
@@ -194,7 +192,6 @@ describe('View', function() {
           });
 
         });
-
 
         describe('On click #show-import-area', function() {
 
@@ -390,11 +387,9 @@ describe('View', function() {
         expect($.fn.removeClass).toHaveBeenCalledWith(mockremoveclass);
         expect(view.renderUploadStatus).toHaveBeenCalledWith('uploading ...', '');
 
-
       });
 
     });
-
 
     describe('toggleUploadZone', function() {
 

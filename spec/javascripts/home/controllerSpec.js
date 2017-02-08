@@ -4,10 +4,9 @@ describe("Home Controller", function() {
     controller = app.controller;
   });
 
-  it("should be define", function() {
+  it("should be defined", function() {
     expect(controller).toBeDefined();
   });
-
 
   describe('Methods', function() {
     var expectedUrl = 'import/upload';
@@ -23,16 +22,13 @@ describe("Home Controller", function() {
 
     });
 
-
     describe('upload', function() {
-
 
       beforeEach(function() {
         spyOn(controller, 'isValidFile');
       });
 
-
-      describe('should validate if is a valid file before uploading ,', function() {
+      describe('should validate if is a valid file before uploading', function() {
         it(' should exit if is not a valid file', function() {
           var mockFile = 'im a file';
           controller.isValidFile.and.returnValue(false);
@@ -42,14 +38,12 @@ describe("Home Controller", function() {
           expect(controller.isValidFile).toHaveBeenCalledWith(mockFile);
         });
 
-
         describe('if is a valid file', function() {
           var mockFile = {
             name: 'im a file'
           };
           var mockFormData = 'im form data';
           var def;
-
 
           beforeEach(function() {
 
@@ -62,7 +56,7 @@ describe("Home Controller", function() {
 
           });
 
-          it(' should start an xhr  request, and if the response is OK then call app.view.renderUploadSuccess and refresh the page  ', function() {
+          it(' should start an xhr request, and if the response is OK then call app.view.renderUploadSuccess and refresh the page  ', function() {
 
             def.resolve();
             spyOn(app.helpers, 'reloadPage').and.returnValue('ok');
@@ -83,7 +77,7 @@ describe("Home Controller", function() {
 
           });
 
-          it(' should start an xhr  request, and if the response is an Error  then call app.view.renderUploadSuccess and refresh the page  ', function() {
+          it(' should start an xhr request, and if the response is an Error  then call app.view.renderUploadSuccess and refresh the page  ', function() {
             def.reject();
             spyOn(app.view, 'renderUploadError');
             spyOn(app.helpers, 'errorLogger');
@@ -101,18 +95,15 @@ describe("Home Controller", function() {
       });
     });
 
-
     describe('isValidFile', function() {
        var result;
-        var mockFile= {
+        var mockFile = {
           name:''
         }
-
 
         beforeEach(function() {
           spyOn(app.helpers, 'errorLogger');
         });
-
 
       it('should return false if the file is falsy value', function() {
         result = controller.isValidFile();
@@ -133,21 +124,9 @@ describe("Home Controller", function() {
         expect(result).toBe(true);
       });
 
-
     });
 
   });
 
 });
 
-
-// //demonstrates use of expected exceptions
-// describe("#resume", function() {
-//   it("should throw an exception if song is already playing", function() {
-//     player.play(song);
-
-//     expect(function() {
-//       player.resume();
-//     }).toThrowError("song is already playing");
-//   });
-// });
