@@ -1,9 +1,14 @@
 ---
 input:
-  incoming_path: public/data/incoming
-  processing_path: public/data/processing
-  archive_path: public/data/archive
-  error_path: public/data/error
+  csv:
+    :col_sep: ','
+    :encoding: 'UTF-8'
+    :quote_char: '"'
+  paths:
+    incoming: public/data/incoming
+    processing: public/data/processing
+    archive: public/data/archive
+    error: public/data/error
 output:
   path: public/data/output
   error_report:
@@ -12,4 +17,4 @@ output:
 log:
   file: log/import.log
   date_format: '%Y-%m-%d %H:%M:%S'
-  level: DEBUG
+  level: INFO
