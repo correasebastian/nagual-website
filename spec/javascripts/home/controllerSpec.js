@@ -1,5 +1,6 @@
 describe("Home Controller", function() {
   var controller;
+
   beforeEach(function() {
     controller = app.controller;
   });
@@ -10,6 +11,7 @@ describe("Home Controller", function() {
 
   describe('Methods', function() {
     var expectedUrl = 'import/upload';
+
     describe(' init', function() {
 
       it('should set the postUrl  and call app.view.init method', function() {

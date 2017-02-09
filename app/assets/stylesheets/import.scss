@@ -284,11 +284,11 @@ body {
 div.modal {
   color: $gray;
 
-  div#modal-body {
+  div#error-report-modal-body {
     margin: 1em;
     text-align: left;
 
-    textarea.modal-body-content {
+    textarea.error-report-modal-body-content {
       width: 100%;
       border-style: none;
     }

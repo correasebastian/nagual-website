@@ -416,6 +416,24 @@ describe('View', function() {
 
     });
 
+    describe('updateErrorReportModal', function() {
+
+      beforeEach(function() {
+        view.init();
+      });
+
+      it('should update the content of the error report dialog textarea ', function() {
+        var data = "updated";
+        spyOn($.fn, 'text');
+
+        view.updateErrorReportModal(data);
+
+        expect($.fn.text).toHaveBeenCalledWith(data);
+
+      });
+
+    });
+
   });
 
 });

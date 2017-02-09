@@ -87,6 +87,7 @@ app.view = {
     this.$aShowImportArea = $("#show-import-area");
     this.$errorReportModal = $("#error-report-modal");
     this.$errorReportIcon = $(".error-report-icon");
+    this.$errorReportModalBody = $("#error-report-modal-body > .error-report-modal-body-content");
     this.successImportClass = "successImport";
     this.errorImportClass = "errorImport";
     this.setAttributes();
@@ -128,7 +129,6 @@ app.view = {
     this.$aShowImportArea.click(function(e) {
       e.preventDefault();
       this.toggleUploadZone();
-
     }.bind(this));
 
     this.$hideImportArea.click(function() {
@@ -140,7 +140,6 @@ app.view = {
       this.$importStatus.hide();
       this.$importFileArea.show();
       this.renderProgress("0%");
-
     }.bind(this));
 
     this.$errorReportIcon.bind("click", function(e) {
@@ -148,10 +147,10 @@ app.view = {
       var url = e.currentTarget.dataset.url;
       app.helpers.request("GET", url)
         .done(function(data) {
-          $("#modal-body > .modal-body-content").text(data);
+          app.view.updateErrorReportModal(data);
         })
         .fail(function() {
-          $("#modal-body > .modal-body-content").text("Unable to load report");
+          app.view.updateErrorReportModal("Unable to load report");
         });
       this.$errorReportModal.modal();
     }.bind(this));
@@ -189,6 +188,9 @@ app.view = {
     this.$uploadZone.toggleClass("hide");
     this.$aShowImportArea.toggleClass("hide");
     this.$home.toggleClass("flex flex-col flex-center");
+  },
+  updateErrorReportModal: function(data) {
+    this.$errorReportModalBody.text(data);
   }
 
 };
