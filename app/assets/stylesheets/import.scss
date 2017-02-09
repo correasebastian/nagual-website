@@ -259,14 +259,12 @@ body {
 }
 
 .btn-floating {
+  float: right;
   display: inline-block;
-  margin: -23px 20px -23px auto;
+  margin: -23px 20px 20px auto;
   height: 60px;
   width: 60px;
   line-height: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
   overflow: hidden;
   z-index: 1;
   border-radius: 50%;

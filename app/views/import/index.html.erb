@@ -37,7 +37,10 @@
   </section>
 
   <section id="history-zone" class="container">
-    <h2>History</h2>
+    <h2>Recent Jobs</h2>
+    <%= link_to export_index_path, { id: 'export', class: 'btn-floating bg-white', target: '_blank'} do %>
+      <span class="glyphicon glyphicon-cloud-download"></span>
+    <% end %>
     <a id="show-import-area" class="btn-floating bg-white"><span class="glyphicon glyphicon-cloud-upload color-pink"></span></a>
     <table class="table table-hover">
       <thead>
