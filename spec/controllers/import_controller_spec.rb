@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ImportController, type: :controller do
   describe 'GET #index' do
     it 'responds successfully' do
-      expect(JobHistoryEntry).to receive(:last).with(5).and_return([])
+      expect(JobHistoryEntry).to receive(:last).with(10).and_return([])
 
       get :index
 

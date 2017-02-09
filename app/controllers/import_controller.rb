@@ -1,6 +1,6 @@
 class ImportController < ApplicationController
   def index
-    @history = JobHistoryEntry.last(5).reverse
+    @history = JobHistoryEntry.last(10).reverse
   end
 
   def upload
