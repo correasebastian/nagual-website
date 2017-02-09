@@ -18,7 +18,7 @@ RSpec.describe ImportController, type: :controller do
     it 'responds successfully when  file is uploaded' do
       expect(ImportJob).to receive(:perform_later)
 
-      post :upload, params: {import_file: file}
+      post :upload, params: { import_file: file }
 
       expect(response).to have_http_status(200)
     end
