@@ -50,7 +50,7 @@ app.controller = {
         app.view.renderUploadSuccess(file.name);
         window.setTimeout(function() {
           app.helpers.reloadPage();
-        }, 3000);
+        }, 1000);
       })
       .fail(function() {
         app.view.renderUploadError(file.name);
@@ -166,7 +166,7 @@ app.view = {
     this.$inputFile.val("");
     this.$importStatus.addClass(this.successImportClass);
     this.$successIcon.show();
-    this.renderUploadStatus("Loaded correctly", filename + " was  uploaded, the page will be refreshed in 3 seconds ...");
+    this.renderUploadStatus("Loaded correctly", filename + " was uploaded");
   },
   renderUploadError: function(filename) {
     this.$inputFile.val("");

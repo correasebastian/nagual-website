@@ -71,7 +71,7 @@ describe("Home Controller", function() {
             expect(app.view.beforeUpload).toHaveBeenCalled();
             expect(app.helpers.request).toHaveBeenCalledWith('POST', expectedUrl, mockFormData);
             expect(app.view.renderUploadSuccess).toHaveBeenCalledWith(mockFile.name);
-            expect(window.setTimeout).toHaveBeenCalledWith(jasmine.any(Function), 3000);
+            expect(window.setTimeout).toHaveBeenCalledWith(jasmine.any(Function), 1000);
             expect(app.helpers.reloadPage).toHaveBeenCalled();
 
 

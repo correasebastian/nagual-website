@@ -312,7 +312,7 @@ describe('View', function() {
 
         var mockFilename = 'random-name.csv';
         var mockHeader = 'Loaded correctly';
-        var mockText = mockFilename + ' was  uploaded, the page will be refreshed in 3 seconds ...'
+        var mockText = mockFilename + ' was uploaded'
 
         view.renderUploadSuccess(mockFilename);
 

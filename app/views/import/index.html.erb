@@ -60,7 +60,7 @@
             <td><%= entry.updated_at %></td>
             <td><%= entry.processed_records %></td>
             <td>
-              <%= (entry.status == 'success') ? image_tag("check.png") : image_tag("error.png") %>
+              <%= status_image(entry.status) %>
             </td>
             <td>
               <% if entry.status == 'error' %>
