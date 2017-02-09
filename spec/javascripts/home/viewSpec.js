@@ -26,8 +26,8 @@ describe('View', function() {
       var elementHistoryZone = elementHome.affix('#history-zone');
       elementHistoryZone.affix('a#show-import-area');
 
-      var errorReportModal = elementHome.affix('#error-report-modal');
-      var errorReportIcon = elementHome.affix('.error-report-icon');
+      elementHome.affix('#error-report-modal');
+      elementHome.affix('.error-report-icon');
 
       spyOn(view, 'setAttributes');
       spyOn(view, 'setListeners');

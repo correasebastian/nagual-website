@@ -76,7 +76,6 @@ describe("Home Controller", function() {
             expect(window.setTimeout).toHaveBeenCalledWith(jasmine.any(Function), 1000);
             expect(app.helpers.reloadPage).toHaveBeenCalled();
 
-
           });
 
           it(' should start an xhr request, and if the response is an Error  then call app.view.renderUploadSuccess and refresh the page  ', function() {
@@ -115,6 +114,30 @@ describe("Home Controller", function() {
         mockFile.name = 'im-a-csv.csv'
         result = controller.isValidFile(mockFile);
         expect(result).toBe(true);
+      });
+
+    });
+
+    describe('showErrorReport', function() {
+      var url = "/data/reports/errors.html";
+
+      beforeEach(function() {
+        def = $.Deferred();
+        spyOn(app.helpers, 'request').and.returnValue(def);
+        spyOn(app.view, 'updateErrorReportModal');
+      });
+
+      it('should update error report modal on success', function() {
+        var data = "success";
+        def.resolve(data);
+        controller.showErrorReport(url);
+        expect(app.view.updateErrorReportModal).toHaveBeenCalledWith(data);
+      });
+
+      it('should update error report modal on error', function() {
+        def.reject();
+        controller.showErrorReport(url);
+        expect(app.view.updateErrorReportModal).toHaveBeenCalledWith("Unable to load report");
       });
 
     });

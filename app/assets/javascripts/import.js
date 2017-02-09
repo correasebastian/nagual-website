@@ -65,6 +65,15 @@ app.controller = {
       return valid;
     }
     return !valid;
+  },
+  showErrorReport: function(url) {
+    app.helpers.request("GET", url)
+      .done(function(data) {
+        app.view.updateErrorReportModal(data);
+      })
+      .fail(function() {
+        app.view.updateErrorReportModal("Unable to load report");
+      });
   }
 
 };
@@ -145,13 +154,7 @@ app.view = {
     this.$errorReportIcon.bind("click", function(e) {
       e.preventDefault();
       var url = e.currentTarget.dataset.url;
-      app.helpers.request("GET", url)
-        .done(function(data) {
-          app.view.updateErrorReportModal(data);
-        })
-        .fail(function() {
-          app.view.updateErrorReportModal("Unable to load report");
-        });
+      app.controller.showErrorReport(url);
       this.$errorReportModal.modal();
     }.bind(this));
 
