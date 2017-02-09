@@ -13,17 +13,12 @@ RSpec.describe ImportController, type: :controller do
   end
 
   describe 'POST #upload' do
-    let(:file) { double('csvfile', read: 'read') }
+    let(:file) { fixture_file_upload('files/test.csv', 'text/csv') }
 
-    xit 'responds successfully when  file is uploaded' do
-      testfile = fixture_file_upload('files/test.csv', 'text/csv')
-
-      allow(File).to receive(:open).and_yield file
-      expect(file).to receive(:write)
-
+    it 'responds successfully when  file is uploaded' do
       expect(ImportJob).to receive(:perform_later)
 
-      post :upload, import_file: testfile
+      post :upload, params: {import_file: file}
 
       expect(response).to have_http_status(200)
     end
