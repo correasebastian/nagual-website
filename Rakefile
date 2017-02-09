@@ -5,4 +5,6 @@ Rails.application.load_tasks
 
 RuboCop::RakeTask.new(:rubocop)
 
-task default: :rubocop
+task build: [:rubocop, 'jasmine:ci']
+
+task default: :build
