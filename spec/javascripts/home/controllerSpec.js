@@ -131,12 +131,14 @@ describe("Home Controller", function() {
         var data = "success";
         def.resolve(data);
         controller.showErrorReport(url);
+        expect(app.view.updateErrorReportModal).toHaveBeenCalledWith("");
         expect(app.view.updateErrorReportModal).toHaveBeenCalledWith(data);
       });
 
       it('should update error report modal on error', function() {
         def.reject();
         controller.showErrorReport(url);
+        expect(app.view.updateErrorReportModal).toHaveBeenCalledWith("");
         expect(app.view.updateErrorReportModal).toHaveBeenCalledWith("Unable to load report");
       });
 

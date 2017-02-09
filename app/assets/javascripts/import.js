@@ -67,6 +67,7 @@ app.controller = {
     return !valid;
   },
   showErrorReport: function(url) {
+    app.view.updateErrorReportModal("");
     app.helpers.request("GET", url)
       .done(function(data) {
         app.view.updateErrorReportModal(data);
