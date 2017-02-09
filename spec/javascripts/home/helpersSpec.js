@@ -1,7 +1,7 @@
 describe('App Namespace', function() {
 
   it('should be defined', function() {
-      expect(app).toBeDefined();
+    expect(app).toBeDefined();
   });
 
 });

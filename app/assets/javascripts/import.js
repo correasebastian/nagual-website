@@ -174,7 +174,6 @@ app.view = {
     this.renderUploadStatus("Error uploading file, try again", filename + " was not  uploaded");
     this.$errorIcon.show();
   },
-
   renderUploadStatus: function(statusHeader, statusText) {
     this.$headStatus.text(statusHeader);
     this.$nameFile.text(statusText);

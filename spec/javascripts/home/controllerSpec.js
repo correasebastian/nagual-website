@@ -93,10 +93,10 @@ describe("Home Controller", function() {
     });
 
     describe('isValidFile', function() {
-       var result;
-       var mockFile = {
-         name:''
-       }
+      var result;
+      var mockFile = {
+        name: ''
+      }
 
       it('should return false if the file is falsy value', function() {
         result = controller.isValidFile();
@@ -104,13 +104,13 @@ describe("Home Controller", function() {
       });
 
       it('should return false if the extension is different of .csv', function() {
-        mockFile.name='not-a-csv.notcvs'
+        mockFile.name = 'not-a-csv.notcvs'
         result = controller.isValidFile(mockFile);
         expect(result).toBe(false);
       });
 
-       it('should return true if the extension is  .csv', function() {
-        mockFile.name='im-a-csv.csv'
+      it('should return true if the extension is  .csv', function() {
+        mockFile.name = 'im-a-csv.csv'
         result = controller.isValidFile(mockFile);
         expect(result).toBe(true);
       });

@@ -38,22 +38,22 @@
 
   <section id="history-zone" class="container">
     <h2>Recent Jobs</h2>
-    <%= link_to export_index_path, { id: 'export', class: 'btn-floating bg-white', target: '_blank'} do %>
-      <span class="glyphicon glyphicon-cloud-download"></span>
+    <%= link_to export_index_path, {id: 'export', class: 'btn-floating bg-white', target: '_blank'} do %>
+        <span class="glyphicon glyphicon-cloud-download"></span>
     <% end %>
     <a id="show-import-area" class="btn-floating bg-white"><span class="glyphicon glyphicon-cloud-upload color-pink"></span></a>
     <table class="table table-hover">
       <thead>
-        <tr>
-          <th>Source File (CSV)</th>
-          <th>Processed Date/time</th>
-          <th>Processed records</th>
-          <th>Status</th>
-          <th>Error report</th>
-        </tr>
+      <tr>
+        <th>Source File (CSV)</th>
+        <th>Processed Date/time</th>
+        <th>Processed records</th>
+        <th>Status</th>
+        <th>Error report</th>
+      </tr>
       </thead>
       <tbody>
-        <% @history.each do |entry| %>
+      <% @history.each do |entry| %>
           <tr>
             <td>
               <a href="<%= entry.processed_file_path %>">
@@ -67,11 +67,12 @@
             </td>
             <td>
               <% if entry.status == 'error' %>
-                <a href="#" class="error-report-icon" data-url="<%= entry.report_file_path %>" ><%= image_tag "report.png" %></a>
+                  <a href="#" class="error-report-icon" data-url="<%= entry.report_file_path %>"><%= image_tag "report.png" %></a>
               <% end %>
             </td>
           </tr>
-          <% end %>
+      <% end %>
+      </tbody>
     </table>
 
     <div class="modal fade" id="error-report-modal" tabindex="-1" role="dialog" aria-labelledby="error-report-modal-label" aria-hidden="true">
