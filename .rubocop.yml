@@ -1,8 +1,11 @@
 AllCops:
   TargetRubyVersion: 2.2
-  Excludes:
-    - bin/*
+  Exclude:
     - db/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - bin/**/*
+    - log/**/*
     - config/**/*
 Documentation:
   Enabled: false
