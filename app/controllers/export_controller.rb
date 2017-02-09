@@ -8,7 +8,7 @@ class ExportController < ApplicationController
   private
 
   def export_zip
-    temp_file = Tempfile.new('catalog.zip')
+    temp_file = Tempfile.new(['catalog', '.zip'])
 
     Zip::File.open(temp_file.path, Zip::File::CREATE) do |z|
       Dir["#{xml_export_path}/*"].each do |file|

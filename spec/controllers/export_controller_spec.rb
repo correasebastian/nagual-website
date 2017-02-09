@@ -19,7 +19,7 @@ RSpec.describe ExportController, type: :controller do
 
       expect(response).to be_success
       expect(response).to have_http_status(200)
-      expect(response.headers['Content-Type']).to eq('application/octet-stream')
+      expect(response.headers['Content-Type']).to eq('application/zip')
     end
   end
 end
