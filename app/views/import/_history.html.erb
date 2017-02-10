@@ -30,7 +30,7 @@
             <%= status_image(entry.status) %>
           </td>
           <td>
-            <% if entry.status != 'success' %>
+            <% if entry.status == 'warning' || entry.status == 'error' %>
                 <a href="#" class="error-report-icon" data-url="<%= entry.report_file_path %>"><%= image_tag "report.png" %></a>
             <% end %>
           </td>
