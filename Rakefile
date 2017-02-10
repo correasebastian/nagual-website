@@ -1,9 +1,11 @@
 require_relative 'config/application'
-require 'rubocop/rake_task'
+
+if ENV['RACK_ENV'] != 'production'
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new(:rubocop)
+end
 
 Rails.application.load_tasks
-
-RuboCop::RakeTask.new(:rubocop)
 
 task build: [:rubocop, 'jasmine:ci']
 
