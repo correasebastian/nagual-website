@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="progress">
-          <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+          <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
           </div>
         </div>
       </div>
@@ -41,7 +41,9 @@
     <%= link_to export_index_path, {id: 'export', class: 'btn-floating bg-white', target: '_blank'} do %>
         <span class="glyphicon glyphicon-cloud-download"></span>
     <% end %>
-    <a id="show-import-area" class="btn-floating bg-white"><span class="glyphicon glyphicon-cloud-upload color-pink"></span></a>
+    <a id="show-import-area" class="btn-floating bg-white">
+      <span class="glyphicon glyphicon-cloud-upload color-pink"></span>
+    </a>
     <table class="table table-hover">
       <thead>
       <tr>
@@ -66,7 +68,7 @@
               <%= status_image(entry.status) %>
             </td>
             <td>
-              <% if entry.status == 'error' %>
+              <% if entry.status != 'success' %>
                   <a href="#" class="error-report-icon" data-url="<%= entry.report_file_path %>"><%= image_tag "report.png" %></a>
               <% end %>
             </td>

@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:sawyer-effect/nagual.git
-  revision: b4c28a69816a27d5559245e286cd7a2001bb2171
+  revision: 8e512f01cd8ba41c046588df44336f7bc059a637
   branch: master
   specs:
     nagual (0.0.1)
