@@ -19,7 +19,7 @@ namespace :import do
 
       if host && user && password && pattern && remote_path && local_path
         file_name = SFTP::Download.new(host, user, password)
-          .download_last(pattern, remote_path, local_path)
+                                  .download_last(pattern, remote_path, local_path)
 
         log.info "File successfully downloaded from SFTP location: #{file_name}"
 
