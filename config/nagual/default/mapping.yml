@@ -3,31 +3,22 @@
     mappings:
     - key: id
       to: product_id
-      name: copy
     - key: ean
       to: ean
-      name: copy
     - key: upc
       to: upc
-      name: copy
     - key: unit
       to: unit
-      name: copy
     - key: min-order-quantity
       to: min_order_quantity
-      name: copy
     - key: step
       to: step_quantity
-      name: copy
     - key: name
       to: display_name
-      name: copy
     - key: description
       to: short_description
-      name: copy
     - key: 'long description'
       to: long_description
-      name: copy
     - key: status
       to: online_flag
       name: convert
@@ -47,34 +38,24 @@
         format: '%Y/%m/%d'
     - key: template
       to: template
-      name: copy
     - key: 'tax class id'
       to: tax_class_id
-      name: copy
     - key: brand
       to: brand
-      name: copy
     - key: manufacturer
       to: manufacturer_name
-      name: copy
     - key: SKU
       to: manufacturer_sku
-      name: copy
     - key: organization
       to: organization
-      name: copy
     - key: master_id
       to: master_product_id
-      name: copy
     - key: color
       to: color
-      name: copy
     - key: size
       to: size
-      name: copy
     - key: stock
       to: stock
-      name: copy
     - key: perpetual
       to: perpetual
       name: convert
@@ -84,4 +65,3 @@
           TRUE: 'true'
     - key: price
       to: price
-      name: copy

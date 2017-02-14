@@ -21,5 +21,3 @@
     variations:
       - color
     overwrite: []
-    division:
-      strategy: none
