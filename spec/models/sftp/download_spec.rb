@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SFTP do
+RSpec.describe SFTP::Download do
   context '#download_last' do
 
     let(:file_name)  { 'MASTER_FULL_20170214.csv' }
@@ -44,7 +44,7 @@ RSpec.describe SFTP do
       end
 
       it 'raises an error' do
-        expect { subject }.to raise_error('no file was found to be downloaded')
+        expect { subject }.to raise_error(SFTP::MissingFileError)
       end
     end
   end
