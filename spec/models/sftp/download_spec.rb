@@ -22,18 +22,22 @@ RSpec.describe SFTP::Download do
       before do
         allow(connection.dir).to receive(:glob).with('remote', pattern)
           .and_return([file])
-
-        subject
       end
 
       it 'starts connection correctly' do
+        subject
         expect(Net::SFTP).to have_received(:start)
           .with('host', 'user', password: 'password')
       end
 
       it 'downloads file' do
+        subject
         expect(connection).to have_received(:download!)
           .with("remote/#{file_name}", "local/#{file_name}")
+      end
+
+      it 'returns file name' do
+        expect(subject).to eq(file_name)
       end
     end
 

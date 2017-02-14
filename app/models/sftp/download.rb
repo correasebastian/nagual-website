@@ -19,8 +19,11 @@ module SFTP
 
         raise MissingFileError if last_file.nil?
 
-        sftp.download!("#{remote_path}/#{last_file.name}",
-                       "#{local_path}/#{last_file.name}")
+        name = last_file.name
+        sftp.download!("#{remote_path}/#{name}",
+                       "#{local_path}/#{name}")
+
+        return name
       end
     rescue Net::SSH::ConnectionTimeout
       raise ConnectionError
