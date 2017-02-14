@@ -26,7 +26,7 @@ module SFTP
         return name
       end
     rescue Net::SFTP::StatusException
-      raise MissingFileError
+      raise ConnectionError
     rescue Net::SSH::ConnectionTimeout
       raise ConnectionError
     end

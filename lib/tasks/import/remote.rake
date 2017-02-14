@@ -3,6 +3,10 @@ namespace :import do
   task remote: :environment do
     begin
       log = ActiveSupport::Logger.new('log/import_remote.log')
+      log.formatter = proc do |severity, datetime, _, msg|
+        date_format = datetime.strftime('%Y-%m-%d %H:%M:%S')
+        "[#{date_format}] #{severity} : #{msg}\n"
+      end
 
       log.info "Task started at #{Time.now}"
 
@@ -22,10 +26,16 @@ namespace :import do
         ImportJob.perform_now file_name
         log.info "ImportJob triggered for #{file_name}"
       else
-        log.error "Required configuration missing"
+        log.error 'Required configuration missing'
       end
-    rescue Exception => e
-      log.error "There was an unexpected error"
+    rescue SFTP::ConnectionError => e
+      log.error 'Connection to get SFTP file failed.'
+      log.debug e.backtrace.inspect
+    rescue SFTP::MissingFileError => e
+      log.warn 'File to be downloaded was not found.'
+      log.debug e.backtrace.inspect
+    rescue StandardError => e
+      log.error 'There was an unexpected error'
       log.error e.message
       log.debug e.backtrace.inspect
     ensure
