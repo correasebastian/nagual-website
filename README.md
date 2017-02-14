@@ -20,3 +20,10 @@ Rails-web application for Nagual project
 * Restart service as root:
   * `exit`
   * `service nagual restart`
+
+## How to use alternate configuration
+
+* Create a new folder with configuration files in the server (Ex. './config/client_x')
+* Create an environment variable to use that configuration: `NAGUAL_CONFIG_FOLDER=./config/client_x`
+* Restart the server and Nagual will use that new configuration.
+* By default nagual-web will use `./config/default` folder to load configuration files
