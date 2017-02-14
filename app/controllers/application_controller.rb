@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate
 
+  def data
+    filename = "#{params[:file]}.#{params[:format]}"
+
+    send_file Rails.root.join('data', filename)
+  end
+
   private
 
   def authenticate

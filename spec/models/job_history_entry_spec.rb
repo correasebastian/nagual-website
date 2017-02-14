@@ -14,7 +14,7 @@ RSpec.describe JobHistoryEntry, type: :model do
   context 'update from result' do
     let(:result_params) do
       {
-        processed_file: 'public/data/archive/products.csv',
+        processed_file: 'data/archive/products.csv',
         report_file: '',
         processed_records: 10,
         status: 'success'

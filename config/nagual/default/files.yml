@@ -5,14 +5,14 @@ input:
     :encoding: 'UTF-8'
     :quote_char: '"'
   paths:
-    incoming: public/data/incoming
-    processing: public/data/processing
-    archive: public/data/archive
-    error: public/data/error
+    incoming: data/incoming
+    processing: data/processing
+    archive: data/archive
+    error: data/error
 output:
-  path: public/data/output
+  path: data/output
   error_report:
-    path: public/data/reports
+    path: data/reports
     file_prefix: error_report
 log:
   file: log/import.log

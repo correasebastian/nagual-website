@@ -9,7 +9,7 @@ class ImportController < ApplicationController
     return render status: 500, json: { error: 'File not provided' } if import_file.nil?
 
     logger.info(">>> Importing file: #{import_file}")
-    csv_file = Rails.root.join('public', 'data', 'incoming', import_file.original_filename)
+    csv_file = Rails.root.join('data', 'incoming', import_file.original_filename)
 
     File.open(csv_file, 'wb') do |f|
       f.write(import_file.read)
