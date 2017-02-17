@@ -1,22 +1,15 @@
 div#header {
-  height: 80px;
+  height: $nav-height;
   padding: 16px 0 0 30px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  position: fixed;
-  top: 0;
   width: 100%;
   background: $white;
   div#header-logo {
     display: block;
     float: left;
-    width: 75%;
   }
   div#header-menu {
-    width: 25%;
     display: block;
-    float: left;
-    text-align: right;
     padding-top: 20px;
     padding-right: 40px;
     font-weight: 300;

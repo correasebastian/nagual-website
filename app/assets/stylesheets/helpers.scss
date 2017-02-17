@@ -6,4 +6,7 @@
   &.flex-center{
     justify-content: center;
   }
+  .flex-spacer{
+    flex-grow: 1;
+  }
 }

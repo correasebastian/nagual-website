@@ -1,13 +1,15 @@
 body {
   .home {
-    margin: 80px 0 0 0;
+    margin: 0 0 0 0;
     width: 100%;
     padding-top: 3em;
-    height: calc(100vh - 168px);
+    // height: calc(100vh - 168px);
     text-align: center;
     background: -webkit-linear-gradient(315.28deg, #3023AE 0%, #C86DD7 100%);
     background: linear-gradient(134.72deg, #3023AE 0%, #C86DD7 100%);
-
+    min-height: 35em;
+    background-repeat: no-repeat;
+    background-position-y: -200px;
     h1 {
       margin: 0;
       // padding-top: 1em;
@@ -93,7 +95,7 @@ body {
           float: left;
         }
         .fileIcon {
-          display:none;
+          display: none;
           position: absolute;
           right: 0;
         }
@@ -159,7 +161,6 @@ body {
       .progress-bar {
         background: #FD635D;
       }
-
     }
     .errorImport-file {
       h2,
@@ -189,7 +190,6 @@ body {
       .progress-bar {
         background: #1CCEAF
       }
-
     }
     div#import-area-hide {
       margin: 2em auto;
@@ -206,10 +206,11 @@ body {
         opacity: 1;
       }
     }
-    .container {
-      position: relative;
+    .history-zone {
       padding-bottom: 4em;
       table {
+        margin: 0 auto;
+        width: 90%;
         box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
         margin-top: 2em;
       }
@@ -249,8 +250,8 @@ body {
   }
 }
 
-
-#importStatus, #import-file {
+#importStatus,
+#import-file {
   display: none;
 }
 
@@ -277,20 +278,28 @@ body {
   }
 }
 
-#error-icon{
+#error-icon {
   cursor: pointer;
 }
 
 div.modal {
   color: $gray;
-
   div#error-report-modal-body {
     margin: 1em;
     text-align: left;
-
     textarea.error-report-modal-body-content {
       width: 100%;
       border-style: none;
     }
+  }
+}
+
+
+@media screen and (max-width: 767px){
+
+  .table-responsive {
+      width: 98%;
+      margin: 0 auto;
+      border: 0;
   }
 }

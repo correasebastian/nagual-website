@@ -1,40 +1,3 @@
-@font-face {
-  font-family: 'Montserrat';
-  src: font-url('Montserrat-Regular.otf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: font-url('Montserrat-Bold.otf');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: font-url('Montserrat-Light.otf');
-  font-weight: 100;
-  font-style: normal;
-}
-
-// Colors
-$white: #FFFFFF;
-$lightWhite: #F2F2F2;
-$gray: #818181;
-$lightgray: #808080;
-
-//Logo colors
-$violet: #731773;
-$Pink: #FD4485;
-
-// Secondary colors
-$lightblue: #20E6EE;
-$turquoise: #1CCEAF;
-$red: #FD635D;
-$orange: #FF7411;
-$Yellow: #FFF35C;
 
 // Gradients
 @mixin gra-violePink {
@@ -53,21 +16,7 @@ $Yellow: #FFF35C;
   background: linear-gradient(133.02deg, #31C4DA 0%, #C86DD7 100%);
 }
 
-body {
-  color: $white;
-  font-family: 'Montserrat';
-  font-size: 14px;
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    margin: 0;
-    padding: 0;
-  }
-}
+
 
 .fileIcon {
   background-repeat: no-repeat;
@@ -141,11 +90,4 @@ body {
   height: 26px;
 }
 
-//colors
-.color-pink {
-  color: $Pink;
-}
 
-.bg-white {
-  background-color: $white;
-}
