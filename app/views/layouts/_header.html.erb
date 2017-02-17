@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Nagual</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <div id="header">
-      <div id="header-logo">
-        <%= image_tag "nagual_logo.svg" %>
-      </div>
-      <div id="header-menu">
-        <span><%= link_to 'Import', root_path %></span>
-        <span><%= link_to 'History', root_path %></span>
-      </div>
-    </div>
+<div id="header">
+  <div id="header-logo">
+    <%= image_tag "nagual_logo.svg" %>
+  </div>
+  <div id="header-menu">
+    <span><%= link_to 'Import', root_path %></span>
+    <span><%= link_to 'History', root_path %></span>
+  </div>
+</div>
