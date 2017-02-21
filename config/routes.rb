@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   get 'export/index'
 
   get  'import/index'
