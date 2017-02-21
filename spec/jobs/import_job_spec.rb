@@ -28,13 +28,5 @@ RSpec.describe ImportJob, type: :job do
     it 'triggers export' do
       expect(nagual_api).to have_received(:export)
     end
-
-    context 'with error result' do
-      let(:result) { instance_double(Nagual::Models::Result, status: 'error') }
-
-      it 'skips export' do
-        expect(nagual_api).not_to have_received(:export)
-      end
-    end
   end
 end

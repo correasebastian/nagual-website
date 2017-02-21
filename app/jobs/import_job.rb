@@ -8,7 +8,7 @@ class ImportJob < ApplicationJob
     job_history = JobHistoryEntry.create
     result      = NAGUAL_API.import(args[0])
 
-    NAGUAL_API.export unless result.status == 'error'
+    NAGUAL_API.export
 
     job_history.update_from(result)
   end
