@@ -19,8 +19,6 @@
   font-style: normal;
 }
 
-
-
 body{
   padding-top: $nav-height;
   color: $white;
@@ -46,4 +44,13 @@ body{
 
 .bg-white {
   background-color: $white;
+}
+
+div#login-form{
+  color: black;
+  padding: 20px 0;
+
+  .field {
+    padding: 0.5em 0;
+  }
 }
