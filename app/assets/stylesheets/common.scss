@@ -36,7 +36,6 @@ body{
   }
 }
 
-
 //colors
 .color-pink {
   color: $Pink;
@@ -44,13 +43,4 @@ body{
 
 .bg-white {
   background-color: $white;
-}
-
-div#login-form{
-  color: black;
-  padding: 20px 0;
-
-  .field {
-    padding: 0.5em 0;
-  }
 }
