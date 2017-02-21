@@ -10,11 +10,7 @@ RSpec.describe ExportController, type: :controller do
     end
 
     before do
-      @user = double('user')
-      allow(request.env['warden']).to receive(:authenticate!).and_return(@user)
-      allow(controller).to receive(:current_user).and_return(@user)
-
-      sign_in @user
+      sign_in
 
       stub_const('NAGUAL_API', instance_double(Nagual::API, config: config))
       allow(Zip::File).to receive(:open).with(anything, Zip::File::CREATE).and_return(file)

@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ImportController, type: :controller do
 
-  before do
-    @user = double('user')
-    allow(request.env['warden']).to receive(:authenticate!).and_return(@user)
-    allow(controller).to receive(:current_user).and_return(@user)
-
-    sign_in @user
-  end
+  before { sign_in }
 
   describe 'GET #index' do
 
