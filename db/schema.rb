@@ -100,10 +100,12 @@ ActiveRecord::Schema.define(version: 20170221155127) do
   end
 
   create_table "variation_attributes", force: :cascade do |t|
+    t.string "product_id"
     t.string "attribute_id"
     t.string "variation_attribute_id"
     t.string "display_value"
-    t.string "product_id"
+    t.index ["product_id", "attribute_id"], name: "index_variation_attributes_on_product_id_and_attribute_id", unique: true, using: :btree
+    t.index ["product_id"], name: "index_variation_attributes_on_product_id", using: :btree
   end
 
 end

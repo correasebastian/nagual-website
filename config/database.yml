@@ -1,11 +1,5 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
 
 development:
   adapter: postgresql
@@ -16,15 +10,17 @@ development:
   user: nagual
   password: nagual
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: db/test.sqlite3
+  adapter: postgresql
+  database: nagual_test
+  host: localhost
+  pool: 5
+  timeout: 5000
+  user: nagual
+  password: nagual
 
 production:
-  adapter: 'postgresql'
+  adapter: postgresql
   pool: 5
   timeout: 5000
   database: <%= ENV['NAGUAL_DATABASE_NAME'] %>
