@@ -1,7 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe ImportController, type: :controller do
+
+  before do
+    @user = double('user')
+    allow(request.env['warden']).to receive(:authenticate!).and_return(@user)
+    allow(controller).to receive(:current_user).and_return(@user)
+
+    sign_in @user
+  end
+
   describe 'GET #index' do
+
     it 'responds successfully' do
       expect(JobHistoryEntry).to receive(:last).with(10).and_return([])
 
