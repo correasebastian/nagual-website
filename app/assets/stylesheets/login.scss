@@ -1,4 +1,6 @@
 div#login-modal {
+  @include gra-violetLila;
+
   div.modal-header {
 
     div.logo {
@@ -6,7 +8,7 @@ div#login-modal {
     }
 
     p {
-      padding: 1em;
+      padding: 2em 0 1em 0;
       text-align: center;
 
       &.alert {
@@ -16,7 +18,13 @@ div#login-modal {
       }
     }
 
+    div.container-fluid {
+      width: 50%;
+      margin: auto;
+    }
+
     div.row {
+
       div {
         padding: 0.5em 0;
 
