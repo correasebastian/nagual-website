@@ -6,9 +6,9 @@
   <div id="header-menu">
     <span>
     <% if user_signed_in? %>
-      Welcome <strong><%= current_user.email %></strong> | <%= link_to 'Help', help_path %> | <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      Welcome <strong><%= current_user.email %></strong> | Help | <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
     <% else %>
-      <strong>Sign in</strong> | <%= link_to 'Help', help_path %>
+      <strong>Sign in</strong> | Help
     <% end %>
     </span>
   </div>
