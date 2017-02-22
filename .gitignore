@@ -1,6 +1,7 @@
 .DS_Store
 .rspec
 .env
+.bundle
 
 .idea/
 .vscode/*
@@ -12,3 +13,4 @@ log
 data
 output
 tmp
+vendor
