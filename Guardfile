@@ -2,7 +2,7 @@
 # More info at https://github.com/guard/guard#readme
 
 ## Uncomment and set this to only include directories you want to watch
-directories %w(app lib config test spec features) \
+directories %w(app lib config spec) \
   .select { |d| Dir.exist?(d) ? d : UI.warning("Directory #{d} does not exist") }
 
 guard :rubocop do
@@ -12,6 +12,7 @@ end
 
 guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'
+
   dsl = Guard::RSpec::Dsl.new(self)
 
   # RSpec files
