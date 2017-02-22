@@ -7,14 +7,19 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="container-fluid">
               <div class="row">
+                <% if alert %>
+                  <div class="col-md-12">
+                    <p class="alert"><%= alert %></p>
+                  </div>
+                <% end %>
                 <div class="col-md-3">
-                  <%= f.label :email %>
+                  <span class="required">* </span><%= f.label :email %>
                 </div>
                 <div class="col-md-9">
                   <%= f.email_field :email, autofocus: true, class: 'form-control' %>
                 </div>
                 <div class="col-md-3">
-                  <%= f.label :password %>
+                  <span class="required">* </span><%= f.label :password %>
                 </div>
                 <div class="col-md-9">
                   <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
