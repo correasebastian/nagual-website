@@ -3,16 +3,15 @@ body {
     margin: 0 0 0 0;
     width: 100%;
     padding-top: 3em;
-    // height: calc(100vh - 168px);
     text-align: center;
     background: -webkit-linear-gradient(315.28deg, #3023AE 0%, #C86DD7 100%);
     background: linear-gradient(134.72deg, #3023AE 0%, #C86DD7 100%);
     min-height: 35em;
     background-repeat: no-repeat;
     background-position-y: -200px;
+
     h1 {
       margin: 0;
-      // padding-top: 1em;
       font-size: 36px;
       font-weight: 600;
       text-align: center;
@@ -20,11 +19,12 @@ body {
       line-height: 44px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
+
     h2 {
       font-size: 24px;
       text-transform: capitalize;
-      //padding: 0.5em;
     }
+
     h3 {
       font-weight: 300;
       font-size: 16px;
@@ -32,6 +32,7 @@ body {
       line-height: 19px;
       color: $lightblue;
     }
+
     div#import-area {
       margin: 3.5em auto 0 auto;
       padding: 2.5em;
@@ -59,6 +60,7 @@ body {
         }
       }
     }
+
     #import-area.upLoading {
       border: 1px solid $white;
       background-color: $white;
@@ -69,6 +71,7 @@ body {
         }
       }
     }
+
     #importStatus {
       width: 60%;
       background: white;
@@ -250,8 +253,7 @@ body {
   }
 }
 
-#importStatus,
-#import-file {
+#importStatus, #import-file {
   display: none;
 }
 
