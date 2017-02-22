@@ -20,7 +20,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'rspec-rails', '~> 3.5'
 
-gem 'nagual', git: 'git@github.com:sawyer-effect/nagual.git', tag: '0.3'
+gem 'nagual', git: 'git@github.com:sawyer-effect/nagual.git', tag: '0.4'
 
 gem 'rubyzip', '~> 1.2'
 gem 'net-sftp', '~> 2.1'
