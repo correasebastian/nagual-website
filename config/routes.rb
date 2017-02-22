@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   get  'data/*file' => 'application#data'
 
+  get 'help', to: 'help#index'
+
   root 'import#index'
 end
