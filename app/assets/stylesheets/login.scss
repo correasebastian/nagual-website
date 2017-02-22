@@ -1,23 +1,37 @@
 div#login-modal {
+  div.modal-header {
 
-  h2.modal-title {
-    text-align: center
-  }
+    div.logo {
+      text-align: center;
+    }
 
-  p.alert {
-    padding: 0;
-    margin: 0;
-    color: $red;
-  }
-
-  div.row {
-    div {
-      padding: 1em 0;
-
-      span.required {
+    p {
+      padding: 1em;
+      text-align: center;
+      &.alert {
+        padding: 0;
+        margin: 0;
         color: $red;
       }
     }
-  }
 
+    div.row {
+      div {
+        padding: 0.5em 0;
+
+        span.required {
+          color: $red;
+        }
+        .form-control {
+          border: solid 1px $violet;
+          border-radius: 1em;
+        }
+
+        .btn {
+          color: $white;
+          background-color: $violet;
+        }
+      }
+    }
+  }
 }

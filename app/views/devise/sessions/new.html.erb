@@ -2,35 +2,30 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="login-modal-title">Welcome to Nagual</h2>
-        <div class="modal-body">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="container-fluid">
-              <div class="row">
-                <% if alert %>
-                  <div class="col-md-12">
-                    <p class="alert"><%= alert %></p>
-                  </div>
-                <% end %>
-                <div class="col-md-3">
-                  <span class="required">* </span><%= f.label :email %>
-                </div>
-                <div class="col-md-9">
-                  <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-                </div>
-                <div class="col-md-3">
-                  <span class="required">* </span><%= f.label :password %>
-                </div>
-                <div class="col-md-9">
-                  <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
-                </div>
-                <div class="modal-footer">
-                  <%= f.submit 'Log in', class: 'btn btn-primary' %>
+        <div class="logo">
+          <%= image_tag "nagual_logo.svg" %>
+        </div>
+        <p>Welcome to Nagual. Please sign in.</p>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="container-fluid">
+            <div class="row">
+              <% if alert %>
+                <div class="col-md-12">
+                  <p class="alert"><%= alert %></p>
                 </div>
               <% end %>
+              <div class="col-md-12">
+                <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'username' %>
+              </div>
+              <div class="col-md-12">
+                <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'password' %>
+              </div>
+              <div class="col-md-12">
+                <%= f.submit 'Sign in', class: 'btn form-control' %>
               </div>
             </div>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
