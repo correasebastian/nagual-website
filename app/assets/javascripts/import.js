@@ -61,9 +61,6 @@ app.controller = {
     if (!file) {
       return valid;
     }
-    if (!file.name.endsWith(".csv")) {
-      return valid;
-    }
     return !valid;
   },
   showErrorReport: function(url) {
@@ -100,11 +97,7 @@ app.view = {
     this.$errorReportModalBody = $("#error-report-modal-body > .error-report-modal-body-content");
     this.successImportClass = "successImport";
     this.errorImportClass = "errorImport";
-    this.setAttributes();
     this.setListeners();
-  },
-  setAttributes: function() {
-    this.$inputFile.attr("accept", ".csv");
   },
   setListeners: function() {
     this.$importFileArea.on("dragover dragenter", function(e) {

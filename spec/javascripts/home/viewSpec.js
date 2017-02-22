@@ -29,9 +29,7 @@ describe('View', function() {
       elementHome.affix('#error-report-modal');
       elementHome.affix('.error-report-icon');
 
-      spyOn(view, 'setAttributes');
       spyOn(view, 'setListeners');
-
     });
 
     describe('init', function() {
@@ -63,25 +61,8 @@ describe('View', function() {
         expect(view.successImportClass).toBe(successClass);
         expect(view.errorImportClass).toBe(errorClass);
 
-        expect(view.setAttributes).toHaveBeenCalled();
         expect(view.setListeners).toHaveBeenCalled();
-
       });
-    });
-
-    describe('setAttributes', function() {
-
-      beforeEach(function() {
-        view.setAttributes.and.callThrough();
-      });
-
-      it('should set some attributes to input file element ', function() {
-        spyOn($.fn, 'attr');
-
-        view.setAttributes();
-        expect($.fn.attr).toHaveBeenCalledWith('accept', '.csv');
-      });
-
     });
 
     describe('setListeners', function() {

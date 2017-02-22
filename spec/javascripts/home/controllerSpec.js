@@ -104,18 +104,6 @@ describe("Home Controller", function() {
         expect(result).toBe(false);
       });
 
-      it('should return false if the extension is different of .csv', function() {
-        mockFile.name = 'not-a-csv.notcvs'
-        result = controller.isValidFile(mockFile);
-        expect(result).toBe(false);
-      });
-
-      it('should return true if the extension is  .csv', function() {
-        mockFile.name = 'im-a-csv.csv'
-        result = controller.isValidFile(mockFile);
-        expect(result).toBe(true);
-      });
-
     });
 
     describe('showErrorReport', function() {
