@@ -1,22 +1,25 @@
 div#header {
   height: $nav-height;
-  padding: 16px 0 0 30px;
+  padding: 10px 0 0 30px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   width: 100%;
   background: $white;
+
   div#header-logo {
     display: block;
     float: left;
   }
+
   div#header-menu {
     display: block;
-    padding-top: 20px;
     padding-right: 40px;
     font-weight: 300;
+
     span {
       padding-left: 1em;
       color: $violet;
     }
+
     a {
       color: $violet;
       text-decoration: none;
