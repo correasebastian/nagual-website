@@ -184,7 +184,7 @@ app.view = {
     this.$importStatus.hide();
     this.$uploadZone.toggleClass("hide");
     this.$aShowImportArea.toggleClass("hide");
-    this.$home.toggleClass("flex flex-col flex-center");
+    this.$home.toggleClass("flex flex-col");
   },
   updateErrorReportModal: function(data) {
     this.$errorReportModalBody.text(data);

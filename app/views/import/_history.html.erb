@@ -1,16 +1,15 @@
 <section id="history-zone" class="history-zone">
 
-<div class="history-header">
- <h2>History</h2>
-  <%= link_to export_index_path, {id: 'export', class: 'btn-floating bg-white', target: '_blank'} do %>
-      <span class="glyphicon glyphicon-cloud-download"></span>
-  <% end %>
-  <a id="show-import-area" class="btn-floating bg-white btn-upload hide">
-  <%= image_tag "upload.png" %>
-  </a>
-</div>
+  <div class="history-header">
+    <h2>History</h2>
+    <%= link_to export_index_path, {id: 'export', class: 'btn-floating bg-white', target: '_blank'} do %>
+        <span class="glyphicon glyphicon-cloud-download"></span>
+    <% end %>
+    <a id="show-import-area" class="btn-floating bg-white btn-upload hide">
+      <%= image_tag "upload.png" %>
+    </a>
+  </div>
 
-<div class="clearfix"></div>
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
@@ -53,7 +52,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h2 class="modal-title" id="error-report-modal-title">Error report</h2>
+          <h3 class="modal-title" id="error-report-modal-title">Error report</h3>
           <p>Here is a list of errors found when we imported your file</p>
         </div>
         <div id="error-report-modal-body">

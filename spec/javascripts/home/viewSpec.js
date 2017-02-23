@@ -391,7 +391,7 @@ describe('View', function() {
 
         expect($.fn.hide).toHaveBeenCalled();
         expect($.fn.toggleClass).toHaveBeenCalledWith('hide');
-        expect($.fn.toggleClass).toHaveBeenCalledWith('flex flex-col flex-center');
+        expect($.fn.toggleClass).toHaveBeenCalledWith('flex flex-col');
 
       });
 
