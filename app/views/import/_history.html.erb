@@ -29,7 +29,7 @@
                 <%= File.basename(entry.processed_file_path) %>
               </a>
             </td>
-            <td><%= entry.updated_at %></td>
+            <td><%= local_time(entry.updated_at) %></td>
             <td><%= entry.processed_records %></td>
             <td>
               <%= status_image(entry.status) %>

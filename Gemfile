@@ -20,6 +20,7 @@ gem 'rubyzip', '~> 1.2'
 gem 'net-sftp', '~> 2.1'
 gem 'devise', '~> 4.2.0'
 gem 'kaminari', '~> 1.0'
+gem 'local_time', '~> 1.0.3'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
