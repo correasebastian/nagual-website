@@ -25,7 +25,7 @@
       <% @history.each do |entry| %>
           <tr>
             <td>
-              <a href="<%= entry.processed_file_path %>">
+              <a href="/<%= entry.processed_file_path %>">
                 <%= File.basename(entry.processed_file_path) %>
               </a>
             </td>

@@ -10,7 +10,7 @@ describe("Home Controller", function() {
   });
 
   describe('Methods', function() {
-    var expectedUrl = 'import/upload';
+    var expectedUrl = '/import/upload';
 
     describe(' init', function() {
 

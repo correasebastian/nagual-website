@@ -35,7 +35,7 @@ app.helpers = {
 
 app.controller = {
   init: function() {
-    this.postUrl = "import/upload";
+    this.postUrl = "/import/upload";
     app.view.init();
   },
   upload: function(file) {
@@ -147,7 +147,7 @@ app.view = {
 
     this.$errorReportIcon.bind("click", function(e) {
       e.preventDefault();
-      var url = e.currentTarget.dataset.url;
+      var url = '/' + e.currentTarget.dataset.url;
       app.controller.showErrorReport(url);
       this.$errorReportModal.modal();
     }.bind(this));
