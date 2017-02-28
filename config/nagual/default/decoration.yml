@@ -12,12 +12,4 @@
           - organization
         pattern: 'http://host/%{organization}/%{product_id}'
         to: page_url
-    images:
-      - view_type: small
-        filter_key: online_flag
-        filter_value: 'true'
-        names:
-          - standard
-    variations:
-      - color
     overwrite: []

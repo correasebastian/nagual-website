@@ -1,4 +1,5 @@
 ---
+pipeline: import
 input:
   csv:
     :col_sep: ','

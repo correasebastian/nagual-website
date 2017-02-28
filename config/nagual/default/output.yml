@@ -4,17 +4,21 @@ catalog:
   encoding: UTF-8
   id: nagual-catalog
   xmlns: http://www.demandware.com/xml/impex/catalog/2006-10-31
-  images:
-    path: /images
-    alt: ${productname}
-    title: ${productname}
-    view_types:
-      - large
-      - medium
-      - small
-      - swatch
-    extension: jpg
-  variation_attribute: color
+  header:
+    images:
+      alt: ${productname}
+      title: ${productname}
+      base_path: /
+      variation_attribute_id: color
+      view_types:
+        - name: large
+          path: 'products/%{master_product_id}_%{variation_value}_%{view_type}.jpg'
+        - name: medium
+          path: 'products/%{master_product_id}_%{variation_value}_%{view_type}.jpg'
+        - name: small
+          path: 'products/%{master_product_id}_%{variation_value}_%{view_type}.jpg'
+        - name: swatch
+          path: 'products/%{master_product_id}_%{variation_value}_%{view_type}.jpg'
 inventory:
   file: inventory.xml
   encoding: UTF-8
@@ -36,11 +40,3 @@ pricebooks:
     online_flag: true
     xml_lang: x-default
   quantity: 1
-product:
-  images:
-    path: 'customers'
-    name: '%{product_id}'
-    extension: jpg
-  variation_attributes:
-    - color
-    - size
