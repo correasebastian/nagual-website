@@ -25,6 +25,7 @@ gem 'nagual', git: 'git@github.com:sawyer-effect/nagual.git', tag: '0.5'
 gem 'rubyzip', '~> 1.2'
 gem 'net-sftp', '~> 2.1'
 gem 'devise', '~> 4.2.0'
+gem 'kaminari', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

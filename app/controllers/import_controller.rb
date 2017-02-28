@@ -1,6 +1,6 @@
 class ImportController < ApplicationController
   def index
-    @history = JobHistoryEntry.last(10).reverse
+    @history = JobHistoryEntry.order(created_at: :desc).page params[:page]
   end
 
   def upload
