@@ -38,7 +38,7 @@
                 <%= File.basename(entry.processed_file_path) %>
               </a>
             </td>
-            <td><%= local_time(entry.updated_at, '%m/%d/%Y %l:%M%P') %></td>
+            <td><%= local_time(entry.updated_at, '%m/%d/%Y %H:%M') %></td>
             <td><%= entry.processed_records %></td>
             <td>
               <%= status_image(entry.status) %>
@@ -53,7 +53,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="3" class="left">Last update: <%= local_time_ago(@last_update) %></td>
+          <td colspan="3" class="left">Last update: <%= local_time(@last_update, '%m/%d/%Y %H:%M') %></td>
           <td colspan="2"><%= paginate @history, window: 2 %></td>
         </tr>
       </tfoot>
