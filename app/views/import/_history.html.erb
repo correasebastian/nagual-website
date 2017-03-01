@@ -54,7 +54,7 @@
       <tfoot>
         <tr>
           <td colspan="3" class="left">Last update: <%= local_time_ago(@history.first.updated_at) %></td>
-          <td colspan="2"><%= paginate @history %></td>
+          <td colspan="2"><%= paginate @history, window: 2 %></td>
         </tr>
       </tfoot>
     </table>
