@@ -23,8 +23,8 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>File</th>
-          <th>Last update</th>
+          <th class="left">Source File (CSV)</th>
+          <th>Processed Date/Time</th>
           <th>Records processed</th>
           <th>Status</th>
           <th>Error report</th>
@@ -33,12 +33,12 @@
       <tbody>
         <% @history.each do |entry| %>
           <tr>
-            <td>
+            <td class="left">
               <a href="/<%= entry.processed_file_path %>">
                 <%= File.basename(entry.processed_file_path) %>
               </a>
             </td>
-            <td><%= local_time(entry.updated_at) %></td>
+            <td><%= local_time(entry.updated_at, '%m/%d/%Y %l:%M%P') %></td>
             <td><%= entry.processed_records %></td>
             <td>
               <%= status_image(entry.status) %>
@@ -50,8 +50,13 @@
             </td>
           </tr>
         <% end %>
-        <tr><td><%= paginate @history %></td></tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" class="left">Last update: <%= local_time_ago(@history.first.updated_at) %></td>
+          <td colspan="2"><%= paginate @history %></td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 
