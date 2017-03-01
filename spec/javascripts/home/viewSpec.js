@@ -24,7 +24,7 @@ describe('View', function() {
       elementUploadZone.affix('p#hide-import-zone');
 
       var elementHistoryZone = elementHome.affix('#history-zone');
-      elementHistoryZone.affix('a#show-import-area');
+      elementHistoryZone.affix('a.show-import-area');
 
       elementHome.affix('#error-report-modal');
       elementHome.affix('.error-report-icon');
@@ -179,7 +179,7 @@ describe('View', function() {
 
         });
 
-        describe('On click #show-import-area', function() {
+        describe('On click .show-import-area', function() {
 
           it('should show the upload zone', function() {
 

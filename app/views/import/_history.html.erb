@@ -1,28 +1,37 @@
 <section id="history-zone" class="history-zone">
 
-  <div class="history-header">
-    <h2>History</h2>
-    <%= link_to export_index_path, {id: 'export', class: 'btn-floating bg-white', target: '_blank'} do %>
-        <span class="glyphicon glyphicon-cloud-download"></span>
-    <% end %>
-    <a id="show-import-area" class="btn-floating bg-white btn-upload hide">
-      <%= image_tag "upload.png" %>
-    </a>
+  <div class="history-header flex navbar">
+    <nav class="flex">
+      <h2>Job History</h2>
+    </nav>
+    <span class="flex-spacer"></span>
+    <nav class="show-import-area flex">
+      Import file
+      <a class="btn-floating bg-white btn-upload">
+        <%= image_tag "upload.png" %>
+      </a>
+    </nav>
+    <nav class="show-import-area flex">
+      Download XML
+      <%= link_to export_index_path, {id: 'export', class: 'btn-floating bg-white', target: '_blank'} do %>
+        <%= image_tag "download.png" %>
+      <% end %>
+    </nav>
   </div>
 
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
-      <tr>
-        <th>File</th>
-        <th>Last update</th>
-        <th>Records processed</th>
-        <th>Status</th>
-        <th>Error report</th>
-      </tr>
+        <tr>
+          <th>File</th>
+          <th>Last update</th>
+          <th>Records processed</th>
+          <th>Status</th>
+          <th>Error report</th>
+        </tr>
       </thead>
       <tbody>
-      <% @history.each do |entry| %>
+        <% @history.each do |entry| %>
           <tr>
             <td>
               <a href="/<%= entry.processed_file_path %>">

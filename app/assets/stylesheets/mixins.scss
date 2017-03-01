@@ -87,3 +87,10 @@
   width: 26px;
   height: 26px;
 }
+
+@mixin downloadIcon {
+  background: url(download.svg);
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+}
