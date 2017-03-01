@@ -4,12 +4,14 @@
   </div>
   <span class="flex-spacer"></span>
   <div id="header-menu">
-    <span>
-    <% if user_signed_in? %>
-      Welcome <strong><%= current_user.email %></strong> | Help | <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-    <% else %>
-      <strong>Sign in</strong> | Help
-    <% end %>
-    </span>
+    <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
+        <li><a>Welcome <strong><%= current_user.email %></strong></a></li>
+        <li><a>Help</a></li>
+        <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+      <% else %>
+        <strong>Sign in</strong> | Help
+      <% end %>
+    </ul>
   </div>
 </div>
