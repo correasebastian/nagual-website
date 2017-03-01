@@ -6,8 +6,11 @@ RSpec.describe ImportController, type: :controller do
 
   describe 'GET #index' do
 
+    let(:entry) { double('entry', updated_at: DateTime.now) }
+
     it 'responds successfully' do
       expect(JobHistoryEntry).to receive_message_chain(:order, :page)
+      expect(JobHistoryEntry).to receive(:last).and_return(entry)
 
       get :index
 
