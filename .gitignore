@@ -1,15 +1,5 @@
 .DS_Store
-.rspec
-.env
-.bundle
 
 .idea/
 .vscode/*
 *.iml
-*.sqlite3
-
-log
-data
-output
-tmp
-vendor
