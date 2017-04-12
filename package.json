@@ -50,5 +50,8 @@
     "node-sass": "4.5.2",
     "postcss-loader": "1.3.3",
     "sass-loader": "6.0.3"
+  },
+  "engines": {
+    "node": "6.10.2"
   }
 }
