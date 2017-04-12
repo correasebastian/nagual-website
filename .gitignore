@@ -3,3 +3,8 @@
 .idea/
 .vscode/*
 *.iml
+
+dist/
+node_modules/
+src/
+temp/
