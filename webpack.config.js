@@ -14,7 +14,7 @@ const {
 } = require('webpack-config-utils');
 const autoprefixer = require('autoprefixer');
 
-var mainFolder = 'src'
+var mainFolder = 'src';
 
 // const OfflinePlugin = require('offline-plugin/runtime').install();
 
@@ -30,7 +30,7 @@ module.exports = env => {
       // app: './bootstrap.js'    // 'jquery-mobile',
       // vendor: ['jquery', 'bootstrap', 'rrssb'],
 
-      app: ['./js/app.js', 'webpack-hot-middleware/client?reload=true']
+      app: ifProd(['./js/app.js'], ['./js/app.js', 'webpack-hot-middleware/client?reload=true'])
     },
     output: {
       filename: ifProd('bundle.[name].[chunkhash].js', 'bundle.[name].js'),
