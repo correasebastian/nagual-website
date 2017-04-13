@@ -8,14 +8,14 @@
     "lint": "eslint  src buildScripts",
     "build:dev": "NODE_ENV=development webpack --env.dev -w",
     "prebuild": "npm run lint && npm run test && rimraf dist",
-    "build": "NODE_ENV=production webpack --env.prod -p",
+    "build": "BABEL_ENV=production NODE_ENV=production webpack --env.prod -p",
     "predev:server": "npm run lint",
     "dev:server": "node buildScripts/dev-server.js",
     "security:check": "nsp check",
     "predeploy": "npm run build",
     "deploy": "surge -p dist -d ",
     "deploy:staging": "npm run deploy --   https://ngl-staging.surge.sh",
-    "test": "mocha --require babel-register --reporter progress  \"src/**/*.spec.js\"",
+    "test": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"src/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {

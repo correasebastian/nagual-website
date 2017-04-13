@@ -1,5 +1,13 @@
 {
-  "presets": ["latest"],
+  "presets": [
+    [
+      "latest", {
+        "es2015": {
+          "modules": false
+        }
+      }
+    ]
+  ],
   "env": {
     "testing": {
       "presets": [
@@ -9,16 +17,6 @@
         ["__coverage__", {
           "ignore": "*.+(test|stub).*"
         }]
-      ]
-    },
-
-    "production": {
-      "presets": [
-        ["es2015", {
-          "modules": false
-        }],
-        "es2016",
-        "stage-2"
       ]
     }
   }
