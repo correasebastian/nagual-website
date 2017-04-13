@@ -1,27 +1,25 @@
 {
-	"presets": [
-		["es2015", {
-			"modules": false
-		}],
-		"es2016",
-		"stage-2"
-	],
-	"env": {
-		"testing": {
-			"presets": [
-				"es2015"
-			],
-			"plugins": [
-				["__coverage__", {
-					"ignore": "*.+(test|stub).*"
-				}]
-			]
-		},
-    	"development": {
-			"presets": [
-				"es2015"
-			]
-		}
-	}
-}
+  "presets": ["latest"],
+  "env": {
+    "testing": {
+      "presets": [
+        "es2015"
+      ],
+      "plugins": [
+        ["__coverage__", {
+          "ignore": "*.+(test|stub).*"
+        }]
+      ]
+    },
 
+    "production": {
+      "presets": [
+        ["es2015", {
+          "modules": false
+        }],
+        "es2016",
+        "stage-2"
+      ]
+    }
+  }
+}

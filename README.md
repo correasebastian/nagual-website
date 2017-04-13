@@ -23,6 +23,12 @@ it will help to keep consistency in our code across the team
 * you can check your code running  --> ``` npm run lint ```
 
 
+## Test
+Using:
+* [mocha](https://mochajs.org/) -> in order to be compatible with the latest es syntax we need to run mocha with this flag "--require babel-register", it will look for all the ``` ./src/**/*.spec.js  ```  files.
+* [jsdom](https://github.com/tmpvar/jsdom) --> in memory Dom
+* [chai](http://chaijs.com/) --> assertion library
+
 ## Deploy
 
 for the deploy we are using an npm task  --> ``` npm run deploy:staging ``` this task will be executed by the CI tool, in our case CircleCI,
