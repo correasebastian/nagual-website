@@ -15,7 +15,7 @@
     "security:check": "nsp check",
     "predeploy": "npm run build",
     "deploy": "surge -p dist -d ",
-    "deploy:staging": "npm run deploy --  ngl-staging.surge.sh"
+    "deploy:staging": "npm run deploy --   https://ngl-staging.surge.sh"
   },
   "repository": {
     "type": "git",
