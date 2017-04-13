@@ -16,3 +16,8 @@ we are using webpack to bundle the application with two different configuration
 it will help to keep consistency in our settings across the team
 
 * check all the plugins available for many editor and ide [editorconfig](http://editorconfig.org/#download) and install it, it will help to handle the ```.editorconfig ```  file
+
+
+## [Eslint](http://eslint.org/docs/user-guide/configuring)
+it will help to keep consistency in our code across the team
+* you can check your code running  --> ``` npm run lint ```
