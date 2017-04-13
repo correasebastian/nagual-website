@@ -8,6 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const glob = require('glob');
+const PurifyCSSPlugin = require('purifycss-webpack');
 const {
   getIfUtils,
   removeEmpty
@@ -95,6 +97,11 @@ module.exports = env => {
       	}),*/
       new ProgressBarPlugin(),
       new ExtractTextPlugin(ifProd('styles.[name].[chunkhash].css', 'styles.[name].css')),
+      ifProd(new PurifyCSSPlugin({
+        // Give paths to parse for rules. These should be absolute!
+        paths: glob.sync(resolve(__dirname, 'src/*.html')),
+        minimize: true
+      })),
       ifProd(new InlineManifestWebpackPlugin()),
       ifNotProd(new webpack.HotModuleReplacementPlugin()),
       ifProd(new webpack.optimize.CommonsChunkPlugin({
