@@ -96,7 +96,7 @@ module.exports = env => {
       		'window.jQuery': 'jquery'
       	}),*/
       new ProgressBarPlugin(),
-      new ExtractTextPlugin(ifProd('styles.[name].[chunkhash].css', 'styles.[name].css')),
+      new ExtractTextPlugin(ifProd('styles.[name].[contenthash].css', 'styles.[name].css')),
       ifProd(new PurifyCSSPlugin({
         // Give paths to parse for rules. These should be absolute!
         paths: glob.sync(resolve(__dirname, 'src/*.html')),
