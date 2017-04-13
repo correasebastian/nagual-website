@@ -83,6 +83,7 @@ module.exports = env => {
       })),
       new HtmlWebpackPlugin({
         template: './index.html',
+        filename: 'index.html',
         inject: 'body',
       }),
       // new OfflinePlugin(),
