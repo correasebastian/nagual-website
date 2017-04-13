@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"TODO\" && exit 0",
     "prebuild:dev": "rimraf temp",
-    "build:dev": "webpack --env.dev -w",
+    "build:dev": "NODE_ENV=development webpack --env.dev -w",
     "prebuild": "rimraf dist",
-    "build": "webpack --env.prod -p",
+    "build": "NODE_ENV=production webpack --env.prod -p",
     "dev:server": "node buildScripts/dev-server.js",
     "security:check":"nsp check"
   },

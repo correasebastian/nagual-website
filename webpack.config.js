@@ -23,6 +23,7 @@ module.exports = env => {
     ifNotProd
   } = getIfUtils(env);
   const config = {
+    target: 'web',
     context: resolve(mainFolder),
     entry: {
       // app: './bootstrap.js'    // 'jquery-mobile',
@@ -119,5 +120,7 @@ module.exports = env => {
     console.log(config);
     debugger // eslint-disable-line
   }
+
+
   return config;
 };
