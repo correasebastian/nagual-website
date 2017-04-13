@@ -7,6 +7,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {
   getIfUtils,
   removeEmpty
@@ -104,7 +105,11 @@ module.exports = env => {
           context: '/',
           postcss: () => [autoprefixer],
         }
-      })
+      }),
+      new CopyWebpackPlugin([{
+        from: 'images',
+        to: 'images'
+      }])
     ]),
 
 
