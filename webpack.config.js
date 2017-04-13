@@ -27,7 +27,8 @@ module.exports = env => {
     entry: {
       // app: './bootstrap.js'    // 'jquery-mobile',
       // vendor: ['jquery', 'bootstrap', 'rrssb'],
-      app: './js/app.js'
+
+      app: ['./js/app.js', 'webpack-hot-middleware/client?reload=true']
     },
     output: {
       filename: ifProd('bundle.[name].[chunkhash].js', 'bundle.[name].js'),
@@ -76,6 +77,7 @@ module.exports = env => {
       new ProgressBarPlugin(),
       new ExtractTextPlugin(ifProd('styles.[name].[chunkhash].css', 'styles.[name].css')),
       ifProd(new InlineManifestWebpackPlugin()),
+      ifNotProd(new webpack.HotModuleReplacementPlugin()),
       ifProd(new webpack.optimize.CommonsChunkPlugin({
         names: ['vendor', 'manifest'],
       })),
