@@ -15,7 +15,19 @@ const {
 const autoprefixer = require('autoprefixer');
 
 const mainFolder = 'src';
-const myBaseCssLoader = 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap';
+const myBaseCssPipeline = [{
+  loader: 'css-loader',
+  options: {
+    sourceMap: true
+  }
+}, {
+  loader: 'postcss-loader'
+}, {
+  loader: 'sass-loader',
+  options: {
+    sourceMap: true
+  }
+}];
 
 // const OfflinePlugin = require('offline-plugin/runtime').install();
 
@@ -66,9 +78,12 @@ module.exports = env => {
         loader: 'file-loader?name=[name].[ext]'
       }, {
         test: /\.scss$/,
-        loader: ifProd(ExtractTextPlugin.extract({
-          loader: myBaseCssLoader
-        }), `style-loader!${myBaseCssLoader}`),
+        use: ifProd(ExtractTextPlugin.extract({
+          use: myBaseCssPipeline,
+          fallback: 'style-loader'
+        }), [{
+          loader: 'style-loader'
+        }].concat(myBaseCssPipeline)),
       }],
     },
 
