@@ -5363,6 +5363,12 @@
       "resolved": "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz",
       "dev": true
     },
+    "style-loader": {
+      "version": "0.16.1",
+      "from": "style-loader@latest",
+      "resolved": "https://registry.npmjs.org/style-loader/-/style-loader-0.16.1.tgz",
+      "dev": true
+    },
     "supports-color": {
       "version": "3.2.3",
       "from": "supports-color@>=3.2.3 <4.0.0",

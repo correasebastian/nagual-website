@@ -14,7 +14,8 @@ const {
 } = require('webpack-config-utils');
 const autoprefixer = require('autoprefixer');
 
-var mainFolder = 'src';
+const mainFolder = 'src';
+const myBaseCssLoader = 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap';
 
 // const OfflinePlugin = require('offline-plugin/runtime').install();
 
@@ -65,11 +66,12 @@ module.exports = env => {
         loader: 'file-loader?name=[name].[ext]'
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          loader: 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap',
-        }),
+        loader: ifProd(ExtractTextPlugin.extract({
+          loader: myBaseCssLoader
+        }), `style-loader!${myBaseCssLoader}`),
       }],
     },
+
     plugins: removeEmpty([
       /*	new webpack.ProvidePlugin({ // eslint disabled
       		jQuery: 'jquery',
