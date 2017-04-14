@@ -97,11 +97,19 @@ module.exports = env => {
       	}),*/
       new ProgressBarPlugin(),
       new ExtractTextPlugin(ifProd('styles.[name].[contenthash].css', 'styles.[name].css')),
-      ifProd(new PurifyCSSPlugin({
+
+      /**
+       * problems with some classes like embed-responsive embed-responsive-16by9
+
+        ifProd(new PurifyCSSPlugin({
         // Give paths to parse for rules. These should be absolute!
         paths: glob.sync(resolve(__dirname, 'src/*.html')),
         minimize: true
-      })),
+        })),
+       *
+       */
+
+
       ifProd(new InlineManifestWebpackPlugin()),
       ifNotProd(new webpack.HotModuleReplacementPlugin()),
       ifProd(new webpack.optimize.CommonsChunkPlugin({
