@@ -13,13 +13,27 @@
 </head>
 
 <body>
-  <div class="site-wrapper">
+
+  <header class="main-header">
+    <nav class="navbar flex-row justify-content-center justify-content-sm-start navbar-light bg-alpha">
+      <a class="navbar-brand" href="#">
+
+        <picture>
+          <source media="(min-width: 576px)" srcset="images/logo-nagual.svg" >
+          <img src="images/logo-nagual-iso.svg" alt="Nagual Logo" >
+        </picture>
+      </a>
+
+    </nav>
+  </header>
+
+  <!-- <div class="site-wrapper">
 
     <div class="site-wrapper-inner">
       <div class="cover-container">
 
         <div class="inner cover">
-          <img class="logo" src="images/logo.png" />
+          <img class="logo" src="images/logo.svg" />
           <p>Your Salesforce Commerce Cloud Catalog Tool </p>
           <p class="lead">
             <a href="http://demo.nagual.io" class="btn btn-lg btn-secondary">Demo</a>
@@ -28,7 +42,7 @@
 
       </div>
     </div>
-  </div>
+  </div>-->
   <%=htmlWebpackPlugin.files.webpackManifest%>
 </body>
 
