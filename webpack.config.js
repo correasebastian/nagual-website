@@ -172,6 +172,8 @@ module.exports = env => {
       new CopyWebpackPlugin([{
         from: 'images',
         to: 'images'
+      },{
+        from: 'favicons'
       }])
     ]),
 
