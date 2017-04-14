@@ -1,5 +1,6 @@
 $color-primary:#3023AE;
 $color-third:#FFFFFF;
+$color-fourth:#F5F7FA;
 $text-color-primary:#9B9B9B;
 .color-third {
   color: $color-third
@@ -8,3 +9,10 @@ $text-color-primary:#9B9B9B;
 .color-primary {
   color: $color-primary
 }
+
+
+@mixin bg-solid-as-gradient($color){
+  background-image: linear-gradient(to bottom, $color 0%, $color 100%);
+  background-repeat: no-repeat;
+}
+
