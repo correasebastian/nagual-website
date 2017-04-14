@@ -31,10 +31,13 @@ body {
 }
 
 body {
-  color: #fff;
+  color: $text-color-primary;
   text-align: center;
 }
 
+h1,h2,h3,h4,h5,h6{
+  font-weight: bold;
+}
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 
@@ -108,4 +111,8 @@ body {
 
 .btn-shadow {
   box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.1)
+}
+
+.video-shadow{
+  box-shadow: 5px 6px 5px -2px rgba(128,120,128,0.61);
 }

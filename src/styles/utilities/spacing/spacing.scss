@@ -10,3 +10,7 @@
 .px-8p {
   @include paddingXpercentage(8%);
 }
+
+.px-16p {
+  @include paddingXpercentage(16%);
+}

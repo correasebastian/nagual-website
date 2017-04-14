@@ -1,6 +1,10 @@
+$color-primary:#3023AE;
 $color-third:#FFFFFF;
+$text-color-primary:#9B9B9B;
+.color-third {
+  color: $color-third
+}
 
-
-.color-third{
-  color:$color-third
+.color-primary {
+  color: $color-primary
 }
