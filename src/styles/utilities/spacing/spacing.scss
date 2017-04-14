@@ -1,0 +1,12 @@
+@mixin paddingXpercentage ($percentage) {
+  padding-left: $percentage;
+  padding-right: $percentage;
+}
+
+.px-4p {
+  @include paddingXpercentage(4%);
+}
+
+.px-8p {
+  @include paddingXpercentage(8%);
+}

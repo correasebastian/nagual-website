@@ -1,3 +1,10 @@
+$bg-video-y-offset:5vw;
+
+
+%bg-gradient {
+  background: linear-gradient(134.72deg, #3023AE 0%, #C86DD7 100%);
+}
+
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
@@ -7,7 +14,7 @@
   border: solid 1px #731773;
   border-radius: 2em;
   height: 45px;
-  font-size: 14px;
+  font-size: ($font-base-size) + px;
   width: 200px;
 }
 
@@ -20,6 +27,7 @@ body {
   // background: linear-gradient(134.72deg, #382EB4 0%, #CD7BDA 100%);
   height: 100%;
   font-family: 'Montserrat';
+  font-size: 14px;
 }
 
 body {
@@ -79,3 +87,25 @@ body {
   width: 160px;
 }
 
+.hm-main {
+  // border: green 2px solid;
+  @extend %bg-gradient;
+  // background-position-y: -$bg-video-y-offset;
+  background-repeat: no-repeat;
+  background-size: 100% 85%;
+}
+
+.btn-get-started {
+  @extend %bg-gradient;
+  position: relative;
+  margin-top:remy(-20);
+  height: remy(50);
+}
+
+.btn-elipsis {
+  border-radius: 100px;
+}
+
+.btn-shadow {
+  box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.1)
+}
