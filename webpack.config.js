@@ -111,6 +111,18 @@ module.exports = env => {
         template: './index.html',
         filename: 'index.html',
         inject: 'body',
+        minify: ifProd({
+          removeComments: true,
+          collapseWhitespace: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          keepClosingSlash: true,
+          minifyJS: true,
+          minifyCSS: true,
+          minifyURLs: true
+        }, {})
       }),
       // new OfflinePlugin(),
       new webpack.DefinePlugin({
