@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="14px" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="z" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing-" transform="translate(-756.000000, -3428.000000)" fill="#FFFFFF">
+            <g id="footer" transform="translate(0.000000, 3326.000000)">
+                <g id="Input-Field" transform="translate(480.000000, 85.000000)">
+                    <g id="Arrow" transform="translate(276.000000, 16.000000)">
+                        <path d="M17.932,8.294 C17.893,8.397 17.836,8.495 17.752,8.579 L11.528,14.752 C11.216,15.064 10.709,15.064 10.397,14.752 C10.084,14.443 10.084,13.941 10.397,13.631 L15.317,8.75 L0.766,8.75 C0.343,8.75 0,8.407 0,7.984 C0,7.561 0.343,7.218 0.766,7.218 L15.312,7.218 L10.397,2.342 C10.084,2.032 10.084,1.53 10.397,1.22 C10.709,0.91 11.216,0.91 11.528,1.22 L17.752,7.394 C17.834,7.475 17.892,7.571 17.931,7.673 C17.974,7.768 18,7.872 18,7.984 C18,8.095 17.974,8.199 17.932,8.294 L17.932,8.294 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

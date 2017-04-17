@@ -19,6 +19,14 @@ a {
   color: #ccc;
 }
 
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: 'Montserrat';
+}
+
 html,
 body {
   // background: linear-gradient(134.72deg, #382EB4 0%, #CD7BDA 100%);
@@ -165,22 +173,45 @@ h6 {
 }
 
 $radius:15px;
-
 .email-input {
   border-bottom-left-radius: $radius;
   border-top-left-radius: $radius;
   border: 1px;
   background-color: $color-bg-footer-lighter;
-  &:focus{
+  &:focus {
     background-color: $color-bg-footer-lighter;
     color: $color-third;
   }
+  &::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $text-color-primary;
+  }
+  &::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $text-color-primary;
+  }
+  &:-ms-input-placeholder {
+    /* IE 10+ */
+    color: $text-color-primary;
+  }
+  &:-moz-placeholder {
+    /* Firefox 18- */
+    color: $text-color-primary;
+  }
 }
 
-
-.email-submit
-{
+.email-submit {
   border-bottom-right-radius: $radius;
   border-top-right-radius: $radius;
   background-color: $color-bg-footer-lighter;
+}
+
+.ngl-logo {
+  // height
+  height: 3.5rem;
+}
+
+.btn-demo {
+  background-color: transparent;
+  border: 1px solid $color-third
 }

@@ -32,13 +32,18 @@
 <body>
 
   <header class="main-header">
-    <nav class="navbar flex-row justify-content-center justify-content-sm-start navbar-light bg-alpha">
-      <a class="navbar-brand" href="#">
+    <nav class="navbar ng-navbar p-3 flex-row justify-content-between navbar-light bg-alpha">
+      <a class="" href="#">
         <picture>
           <source media="(min-width: 576px)" srcset="images/logos/logo-nagual.svg">
-          <img src="images/logos/logo-nagual-iso.svg" alt="Nagual Logo">
+          <img class="ngl-logo" src="images/logos/logo-nagual-iso.svg" alt="Nagual Logo">
         </picture>
       </a>
+
+
+      <button type="button" class="btn btn-elipsis btn-demo color-third px-5">
+        BOOK A DEMO
+      </button>
     </nav>
   </header>
 
@@ -53,7 +58,7 @@
         <iframe src="https://www.youtube.com/embed/ff3C-Kyv8wI" class="embed-responsive-item" width="560" height="315" frameborder="0" allowfullscreen></iframe>
       </div>
 
-      <button type="button" class="btn btn-md btn-get-started btn-shadow btn-elipsis  border-0 color-third px-8p">GET STARTED</button>
+      <button type="button" class="btn btn-md btn-get-started btn-shadow btn-elipsis  border-0 color-third px-5">GET STARTED</button>
 
     </section>
 
@@ -187,8 +192,8 @@
         <div class="input-group ">
           <input type="email" class="email-input form-control color-third" id="email" aria-describedby="emailHelp" placeholder="Your E-mail" required>
           <div class="input-group-btn">
-            <input type="image" src="images/utilities/bullet.svg" class="btn border-0 email-submit color-third" type="button" >
-          </input>
+            <input type="image" src="images/utilities/right-long-arrow.svg" class="btn border-0 email-submit color-third" type="button">
+            </input>
           </div>
         </div>
         <small id="emailHelp" class="form-text sr-only text-muted">We'll never share your email with anyone else.</small>
