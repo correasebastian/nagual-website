@@ -30,7 +30,6 @@ body {
 
 body {
   color: $text-color-primary;
-  text-align: center;
 }
 
 h1,
@@ -122,10 +121,30 @@ h6 {
 }
 
 .ngl-details {
-  border: green solid 3px;
+  // border: green solid 3px;
   @include bg-solid-as-gradient($color-fourth);
   // @include bg-solid-as-gradient(#C86DD7);
-  background-position-y: 5rem;
+  background-position-y: 8rem;
   background-size: 100%;
   // background-color: $color-fourth;
+  padding-bottom: 3rem;
+}
+
+.list-no-decoration {
+  list-style: none;
+}
+
+.ngl-interface-item {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: .35rem;
+    background-image: url('../images/utilities/bullet.svg');
+    background-repeat: no-repeat;
+    height: .75rem;
+    width: .75rem;
+    background-size: .75rem .75rem;
+  }
 }
