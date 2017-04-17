@@ -29,6 +29,9 @@ Using:
 * [jsdom](https://github.com/tmpvar/jsdom) --> in memory Dom
 * [chai](http://chaijs.com/) --> assertion library
 
+## Git Hooks
+We are using the npm package [Husky](https://github.com/typicode/husky) to run the precommit and prepush hooks and run our lint and test taks
+
 ## Deploy
 
 for the deploy we are using an npm task  --> ``` npm run deploy:staging ``` this task will be executed by the CI tool, in our case CircleCI,
