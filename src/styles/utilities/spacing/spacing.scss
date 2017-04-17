@@ -21,10 +21,6 @@
 }
 
 
-.p-3 {
-  padding: $spacer-y $spacer-x !important;
-}
-
 .pt-6{
   @include paddingTrem(3.5);
 }
