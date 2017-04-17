@@ -3,6 +3,11 @@
   padding-right: $percentage;
 }
 
+@mixin paddingTrem ($base) {
+  padding-top: ($spacer-x * $base) !important
+
+}
+
 .px-4p {
   @include paddingXpercentage(4%);
 }
@@ -13,4 +18,13 @@
 
 .px-16p {
   @include paddingXpercentage(16%);
+}
+
+
+.p-3 {
+  padding: $spacer-y $spacer-x !important;
+}
+
+.pt-6{
+  @include paddingTrem(3.5);
 }
