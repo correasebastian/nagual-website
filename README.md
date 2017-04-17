@@ -31,7 +31,7 @@ Using:
 
 
 ## standarized Commits
-in order to sntandarized commits we are using the npm package  [commitizen](https://www.npmjs.com/package/commitizen);
+in order to standarized commits we are using the npm package  [commitizen](https://www.npmjs.com/package/commitizen);
 * from the command line add you changes as usual ``` git add <options> ```
 * from the command line run ``` npm run cm ```
 
