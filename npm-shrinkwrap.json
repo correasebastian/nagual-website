@@ -986,6 +986,12 @@
       "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-1.6.1.tgz",
       "dev": true
     },
+    "ci-info": {
+      "version": "1.0.0",
+      "from": "ci-info@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/ci-info/-/ci-info-1.0.0.tgz",
+      "dev": true
+    },
     "cipher-base": {
       "version": "1.0.3",
       "from": "cipher-base@>=1.0.0 <2.0.0",
@@ -1955,6 +1961,12 @@
       "version": "0.1.1",
       "from": "find-cache-dir@>=0.1.1 <0.2.0",
       "resolved": "https://registry.npmjs.org/find-cache-dir/-/find-cache-dir-0.1.1.tgz",
+      "dev": true
+    },
+    "find-parent-dir": {
+      "version": "0.3.0",
+      "from": "find-parent-dir@>=0.3.0 <0.4.0",
+      "resolved": "https://registry.npmjs.org/find-parent-dir/-/find-parent-dir-0.3.0.tgz",
       "dev": true
     },
     "find-up": {
@@ -3135,6 +3147,20 @@
       "resolved": "https://registry.npmjs.org/https-browserify/-/https-browserify-0.0.1.tgz",
       "dev": true
     },
+    "husky": {
+      "version": "0.13.3",
+      "from": "husky@latest",
+      "resolved": "https://registry.npmjs.org/husky/-/husky-0.13.3.tgz",
+      "dev": true,
+      "dependencies": {
+        "normalize-path": {
+          "version": "1.0.0",
+          "from": "normalize-path@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/normalize-path/-/normalize-path-1.0.0.tgz",
+          "dev": true
+        }
+      }
+    },
     "i": {
       "version": "0.3.5",
       "from": "i@>=0.3.0 <0.4.0",
@@ -3271,6 +3297,12 @@
       "version": "1.0.0",
       "from": "is-builtin-module@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/is-builtin-module/-/is-builtin-module-1.0.0.tgz",
+      "dev": true
+    },
+    "is-ci": {
+      "version": "1.0.10",
+      "from": "is-ci@>=1.0.9 <2.0.0",
+      "resolved": "https://registry.npmjs.org/is-ci/-/is-ci-1.0.10.tgz",
       "dev": true
     },
     "is-domain": {
