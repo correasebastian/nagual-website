@@ -4,8 +4,9 @@
   "description": "Nagual Website",
   "main": "index.js",
   "scripts": {
-    "precommit":"npm run test",
-    "prepush":"npm run test",
+    "precommit": "npm run test",
+    "cm":"git cz",
+    "prepush": "npm run test",
     "prebuild:dev": " rimraf temp",
     "lint": "eslint  src buildScripts",
     "build:dev": "NODE_ENV=development webpack --env.dev -w",
@@ -54,8 +55,10 @@
     "babel-preset-stage-2": "6.24.1",
     "babel-register": "https://registry.npmjs.org/babel-register/-/babel-register-6.24.1.tgz",
     "chai": "3.5.0",
+    "commitizen": "2.9.6",
     "copy-webpack-plugin": "4.0.1",
     "css-loader": "0.28.0",
+    "cz-conventional-changelog": "https://registry.npmjs.org/cz-conventional-changelog/-/cz-conventional-changelog-2.0.0.tgz",
     "eslint": "3.19.0",
     "express": "4.15.2",
     "extract-text-webpack-plugin": "2.1.0",
@@ -82,5 +85,10 @@
   },
   "engines": {
     "node": "6.10.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

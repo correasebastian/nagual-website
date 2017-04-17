@@ -29,6 +29,13 @@ Using:
 * [jsdom](https://github.com/tmpvar/jsdom) --> in memory Dom
 * [chai](http://chaijs.com/) --> assertion library
 
+
+## standarized Commits
+in order to sntandarized commits we are using the npm package  [commitizen](https://www.npmjs.com/package/commitizen);
+* from the command line add you changes as usual ``` git add <options> ```
+* from the command line run ``` npm run cm ```
+
+
 ## Git Hooks
 We are using the npm package [Husky](https://github.com/typicode/husky) to run the precommit and prepush hooks and run our lint and test taks
 
