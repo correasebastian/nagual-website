@@ -3,19 +3,18 @@ $bg-video-y-offset:5vw;
   background: linear-gradient(134.72deg, #3023AE 0%, #C86DD7 100%);
 }
 
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #FFFFFF;
-  background-color: #731773;
-  opacity: 1;
-  border: solid 1px #731773;
-  border-radius: 2em;
-  height: 45px;
-  font-size: ($font-base-size) + px;
-  width: 200px;
-}
-
+// .btn-secondary,
+// .btn-secondary:hover,
+// .btn-secondary:focus {
+//   color: #FFFFFF;
+//   background-color: #731773;
+//   opacity: 1;
+//   border: solid 1px #731773;
+//   border-radius: 2em;
+//   height: 45px;
+//   font-size: ($font-base-size) + px;
+//   width: 200px;
+// }
 a {
   color: #ccc;
 }
@@ -150,7 +149,38 @@ h6 {
   }
 }
 
-
-.salesforce-logo{
+.salesforce-logo {
   max-width: 50%;
+}
+
+.main-footer {
+  background-color: $color-bg-footer;
+  p {
+    font-size: .8rem;
+  }
+}
+
+.follow-us {
+  max-width: 125px;
+}
+
+$radius:15px;
+
+.email-input {
+  border-bottom-left-radius: $radius;
+  border-top-left-radius: $radius;
+  border: 1px;
+  background-color: $color-bg-footer-lighter;
+  &:focus{
+    background-color: $color-bg-footer-lighter;
+    color: $color-third;
+  }
+}
+
+
+.email-submit
+{
+  border-bottom-right-radius: $radius;
+  border-top-right-radius: $radius;
+  background-color: $color-bg-footer-lighter;
 }
