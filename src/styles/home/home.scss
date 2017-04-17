@@ -102,8 +102,8 @@ h6 {
 }
 
 .hm-main {
-  // border: green 2px solid;
-  @extend %bg-gradient;
+  // @extend %bg-gradient;
+  background-image: url('../images/home/bg.png');
   // background-position-y: -$bg-video-y-offset;
   background-repeat: no-repeat;
   background-size: 100% 85%;
@@ -113,6 +113,8 @@ h6 {
   @extend %bg-gradient;
   position: relative;
   margin-top: remy(-20);
+  margin-left: auto;
+  margin-right: auto;
   height: remy(50);
   width: 200px;
 }

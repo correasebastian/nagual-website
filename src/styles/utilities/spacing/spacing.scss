@@ -5,7 +5,6 @@
 
 @mixin paddingTrem ($base) {
   padding-top: ($spacer-x * $base) !important
-
 }
 
 .px-4p {
@@ -20,7 +19,13 @@
   @include paddingXpercentage(16%);
 }
 
-
-.pt-6{
+.pt-6 {
   @include paddingTrem(3.5);
+}
+
+// media sm and up
+@include media-breakpoint-up(sm) {
+  .px-sm-8p {
+    @include paddingXpercentage(8%);
+  }
 }
