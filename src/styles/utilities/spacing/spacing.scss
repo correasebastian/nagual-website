@@ -28,4 +28,7 @@
   .px-sm-8p {
     @include paddingXpercentage(8%);
   }
+  .px-sm-16p {
+    @include paddingXpercentage(16%);
+  }
 }
