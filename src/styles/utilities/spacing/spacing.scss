@@ -45,3 +45,32 @@ $bs4-base:15px;
     @include paddingTrem(5);
   }
 }
+
+
+// media lg and up
+@include media-breakpoint-up(lg) {
+  .px-lg-2p {
+    @include paddingXpercentage(2%);
+  }
+  .px-lg-4p {
+    @include paddingXpercentage(4%);
+  }
+  .px-lg-6p {
+    @include paddingXpercentage(6%);
+  }
+  .px-lg-8p {
+    @include paddingXpercentage(8%);
+  }
+  .px-lg-16p {
+    @include paddingXpercentage(16%);
+  }
+  .pt-lg-6 {
+    @include paddingTrem(3.5);
+  }
+  .pt-lg-7 {
+    @include paddingTrem(4);
+  }
+  .pt-lg-8 {
+    @include paddingTrem(5);
+  }
+}
