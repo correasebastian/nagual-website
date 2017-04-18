@@ -146,12 +146,17 @@ a {
 }
 
 $radius:15px;
+
+.input-group-email{
+  max-width: 320px;
+}
+
 .email-input {
   border-bottom-left-radius: $radius;
   border-top-left-radius: $radius;
   border: 1px;
   background-color: $color-bg-footer-lighter;
-  max-width: 250px;
+
   &:focus {
     background-color: $color-bg-footer-lighter;
     color: $color-third;
