@@ -30,11 +30,20 @@ $bs4-base:15px;
 
 // media sm and up
 @include media-breakpoint-up(sm) {
+  .px-sm-2p {
+    @include paddingXpercentage(2%);
+  }
   .px-sm-4p {
     @include paddingXpercentage(4%);
   }
   .px-sm-8p {
     @include paddingXpercentage(8%);
+  }
+  .pl-sm-4p {
+    padding-left: 4%;
+  }
+  .pl-sm-8p {
+    padding-left: 8%;
   }
   .px-sm-16p {
     @include paddingXpercentage(16%);
@@ -52,7 +61,6 @@ $bs4-base:15px;
     @include paddingTrem(5);
   }
 }
-
 
 // media lg and up
 @include media-breakpoint-up(lg) {
@@ -83,9 +91,7 @@ $bs4-base:15px;
   .pt-lg-10 {
     @include paddingTrem(6);
   }
-
   .mt-lg-10 {
     @include marginTrem(6);
   }
-
 }

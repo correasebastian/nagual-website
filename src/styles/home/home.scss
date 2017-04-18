@@ -151,6 +151,7 @@ $radius:15px;
   border-top-left-radius: $radius;
   border: 1px;
   background-color: $color-bg-footer-lighter;
+  max-width: 250px;
   &:focus {
     background-color: $color-bg-footer-lighter;
     color: $color-third;
