@@ -14,4 +14,8 @@
     line-height: 1.8rem;
     letter-spacing: 2px;
   }
+  // $triangle:1rem;
+  .btn-play {
+    @include btnPlay(4rem);
+  }
 }

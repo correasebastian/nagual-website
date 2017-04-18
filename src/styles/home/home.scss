@@ -146,8 +146,7 @@ a {
 }
 
 $radius:15px;
-
-.input-group-email{
+.input-group-email {
   max-width: 320px;
 }
 
@@ -156,7 +155,6 @@ $radius:15px;
   border-top-left-radius: $radius;
   border: 1px;
   background-color: $color-bg-footer-lighter;
-
   &:focus {
     background-color: $color-bg-footer-lighter;
     color: $color-third;
@@ -204,4 +202,29 @@ $radius:15px;
   font-size: 1.3rem;
   line-height: 1.75rem;
   letter-spacing: 1px;
+}
+
+@mixin btnPlay ($base) {
+  width: $base;
+  height: $base;
+  top: calc(50% - (#{$base} / 2));
+  left: calc(50% - (#{$base} / 2));
+  $triangle: ($base / 4);
+  .arrow-right {
+    margin-left: ($triangle / 2);
+    width: 0;
+    height: 0;
+    border-top: $triangle solid transparent;
+    border-bottom: $triangle solid transparent;
+    border-left: ($triangle + ($triangle * 0.35)) solid $color-third;
+  }
+}
+
+// $triangle:1rem;
+.btn-play {
+  position: absolute;
+  border-radius: 50%;
+  @extend %bg-gradient;
+  border: 0;
+  @include btnPlay(3rem);
 }
