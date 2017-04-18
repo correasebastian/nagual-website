@@ -3,3 +3,9 @@
 @import "shadows/shadows.scss";
 @import "spacing/index.scss";
 @import "buttons.scss";
+
+
+.ngl-row{
+  margin-right: -$bs4-base;
+    margin-left: -$bs4-base;
+}
