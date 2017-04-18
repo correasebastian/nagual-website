@@ -1,0 +1,53 @@
+$font-size-base:14px;
+html {
+  font-size: $font-size-base;
+  body {
+    font-family: 'Montserrat';
+  }
+  p {
+    font-size: 1rem; // test 1.1
+  }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: 'Montserrat';
+}
+
+body {
+  color: $text-color-primary;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    // font-size: $font-size-base + 1;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: $font-size-base + 1;
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: $font-size-base + 2;
+  }
+}
