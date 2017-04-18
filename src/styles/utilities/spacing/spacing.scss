@@ -76,4 +76,8 @@ $bs4-base:15px;
   .pt-lg-9 {
     @include paddingTrem(6);
   }
+
+  .pt-lg-10 {
+    @include paddingTrem(7);
+  }
 }
