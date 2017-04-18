@@ -1,0 +1,121 @@
+import {
+  expect
+} from 'chai';
+import jsdom from 'jsdom';
+import fs from 'fs';
+import {
+  Home
+} from './home';
+import {
+  stub,
+  assert,
+  match
+} from 'sinon';
+
+describe.only('Home ', () => {
+
+  var w; // this is gonna have the reference to the window object;
+  var document;
+  beforeEach((done) => {
+    const index = fs.readFileSync('./src/index.html', 'utf-8');
+    jsdom.env(index, function(err, window) {
+      w = window;
+      document = w.document;
+      global.document = document;
+      done();
+    });
+  });
+
+  afterEach(() => {
+    w.close();
+  });
+
+
+  describe('Element references', () => {
+    it('should have one video#home-video element with 2 sources children elements with the proper src attributte', () => {
+      const $video = document.querySelector('video#home-video');
+      const sources = $video.querySelectorAll('source');
+      const srcArray = Array.from(sources).map(ele => ele.getAttribute('src'));
+      expect($video).to.exist;
+      expect(sources.length).to.be.at.least(2);
+      expect(srcArray).to.include('images/home/se-intro-final.webm');
+      expect(srcArray).to.include('images/home/se-intro-final.mp4');
+
+    });
+
+    it('should have one button.btn-play element ', () => {
+      const $btnPlay = document.querySelector('button.btn-play');
+      expect($btnPlay).to.exist;
+
+    });
+
+  });
+
+
+  describe('Home Class', () => {
+
+    var home;
+    var $video;
+    var $btnPlay;
+    beforeEach(() => {
+      home = new Home();
+      $video = document.querySelector('video#home-video');
+      $btnPlay = document.querySelector('button.btn-play');
+    });
+
+    describe('Methods', function() {
+
+      describe('Init', function() {
+        it('should get references of the elements', () => {
+          stub(home, 'setListeners');
+
+          home.init();
+
+          expect(home.$video).to.equal($video);
+          expect(home.$btnPlay).to.equal($btnPlay);
+          assert.calledOnce(home.setListeners);
+
+          home.setListeners.restore();
+        });
+      });
+
+
+      describe('after Init', function() {
+
+
+        beforeEach(function() {
+          home.init();
+        });
+
+        describe('setListeners', function() {
+          it('click  btn-play', () => {
+
+            stub($btnPlay, 'addEventListener');
+
+            home.setListeners();
+
+            assert.calledWith($btnPlay.addEventListener, 'click', match.func);
+            $btnPlay.addEventListener.restore();
+          });
+
+          it('on click  btn-play', () => {
+
+            stub($video, 'play');
+
+            home.setListeners();
+
+            var e = new w.Event('click');
+
+            $btnPlay.dispatchEvent(e);
+
+            assert.called($video.play);
+          });
+
+
+        });
+      });
+
+    });
+  });
+
+});
