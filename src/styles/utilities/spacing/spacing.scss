@@ -8,6 +8,10 @@ $bs4-base:15px;
   padding-top: ($spacer-x * $base) !important
 }
 
+@mixin marginTrem ($base) {
+  margin-top: ($spacer-x * $base) !important
+}
+
 .px-4p {
   @include paddingXpercentage(4%);
 }
@@ -41,6 +45,9 @@ $bs4-base:15px;
   .pt-sm-7 {
     @include paddingTrem(4);
   }
+  .mt-sm-7 {
+    @include marginTrem(4);
+  }
   .pt-sm-8 {
     @include paddingTrem(5);
   }
@@ -73,11 +80,12 @@ $bs4-base:15px;
   .pt-lg-8 {
     @include paddingTrem(5);
   }
-  .pt-lg-9 {
+  .pt-lg-10 {
     @include paddingTrem(6);
   }
 
-  .pt-lg-10 {
-    @include paddingTrem(7);
+  .mt-lg-10 {
+    @include marginTrem(6);
   }
+
 }
