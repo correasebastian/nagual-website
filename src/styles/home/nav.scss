@@ -1,13 +1,44 @@
-$nav-bg-color:rgba(48,35,174,0.3);
+$nav-bg-color:rgba(48, 35, 174, 0.3);
+$nav-heigth-xs:77px;
+$nav-heigth-sm:83px;
+$nav-heigth-md:92px;
 
-
-
-.main-header{
-  .navbar{
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: $zindex-navbar;
+  .navbar {
     // flex-direction: row;
   }
 }
 
-.bg-alpha{
+.bg-alpha {
   background-color: $nav-bg-color;
+}
+
+.pt-nav {
+  &::before {
+    content: '';
+    height: $nav-heigth-xs;
+    display: block;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .pt-nav {
+    &::before {
+      height: $nav-heigth-sm;
+    }
+  }
+}
+
+
+@include media-breakpoint-up(md) {
+  .pt-nav {
+    &::before {
+      height: $nav-heigth-md;
+    }
+  }
 }

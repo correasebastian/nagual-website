@@ -76,7 +76,7 @@ a {
   background-image: url('../images/home/bg.png');
   // background-position-y: -$bg-video-y-offset;
   background-repeat: no-repeat;
-  background-size: 100% 85%;
+  background-size: 100% 90%;
 }
 
 .btn-get-started {
@@ -200,8 +200,8 @@ $radius:15px;
 
 .ngl-main-title {
   font-size: 1.3rem;
-  line-height: 1.75rem;
-  letter-spacing: 1px;
+  line-height: 1.2;
+  letter-spacing: .15rem;
 }
 
 @mixin btnPlay ($base) {
