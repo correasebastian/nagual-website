@@ -49,6 +49,12 @@ describe.only('Home ', () => {
 
     });
 
+    it('should have one button.btn-get-started element ', () => {
+      const $btnDemo = document.querySelector('button.btn-get-started');
+      expect($btnDemo).to.exist;
+
+    });
+
   });
 
 
@@ -57,10 +63,12 @@ describe.only('Home ', () => {
     var home;
     var $video;
     var $btnPlay;
+    var $btnDemo;
     beforeEach(() => {
       home = new Home();
       $video = document.querySelector('video#home-video');
       $btnPlay = document.querySelector('button.btn-play');
+      $btnDemo = document.querySelector('button.btn-get-started');
     });
 
     describe('Methods', function() {
@@ -112,6 +120,7 @@ describe.only('Home ', () => {
 
             stub($video, 'play');
             stub($btnPlay.classList, 'add');
+            stub($btnDemo.classList, 'add');
             stub($video, 'setAttribute');
 
             home.setListeners();
@@ -122,10 +131,12 @@ describe.only('Home ', () => {
 
             assert.called($video.play);
             assert.calledWith($btnPlay.classList.add, 'hidden-xs-up');
+            assert.calledWith($btnDemo.classList.add, 'playing');
             assert.calledWith($video.setAttribute, 'controls', '');
 
             $video.play.restore();
             $btnPlay.classList.add.restore();
+            $btnDemo.classList.add.restore();
             $video.setAttribute.restore();
 
           });
@@ -133,6 +144,8 @@ describe.only('Home ', () => {
           it('on ended  video', () => {
 
             stub($btnPlay.classList, 'remove');
+            stub($btnDemo.classList, 'remove');
+            stub($video, 'removeAttribute');
 
             home.setListeners();
 
@@ -141,8 +154,12 @@ describe.only('Home ', () => {
             $video.dispatchEvent(e);
 
             assert.calledWith($btnPlay.classList.remove, 'hidden-xs-up');
+            assert.calledWith($btnDemo.classList.remove, 'playing');
+            assert.calledWith($video.removeAttribute, 'controls');
 
             $btnPlay.classList.remove.restore();
+            $btnDemo.classList.remove.restore();
+            $video.removeAttribute.restore();
 
           });
 

@@ -87,6 +87,11 @@ a {
   margin-right: auto;
   height: remy(50);
   width: 200px;
+  transition: margin-top .2s;
+
+  &.playing{
+    margin-top: .9rem;
+  }
 }
 
 .btn-elipsis {
