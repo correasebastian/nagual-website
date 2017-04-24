@@ -12,7 +12,7 @@ import {
   match
 } from 'sinon';
 
-describe.only('Home ', () => {
+describe('Home ', () => {
 
   var w; // this is gonna have the reference to the window object;
   var document;

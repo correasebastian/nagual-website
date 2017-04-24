@@ -88,8 +88,7 @@ a {
   height: remy(50);
   width: 200px;
   transition: margin-top .2s;
-
-  &.playing{
+  &.playing {
     margin-top: .9rem;
   }
 }
@@ -155,6 +154,25 @@ $radius:15px;
   max-width: 320px;
 }
 
+@mixin placeholder ($color) {
+  &::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $color;
+  }
+  &::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    /* IE 10+ */
+    color: $color;
+  }
+  &:-moz-placeholder {
+    /* Firefox 18- */
+    color: $color;
+  }
+}
+
 .email-input {
   border-bottom-left-radius: $radius;
   border-top-left-radius: $radius;
@@ -164,22 +182,7 @@ $radius:15px;
     background-color: $color-bg-footer-lighter;
     color: $color-third;
   }
-  &::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    color: $text-color-primary;
-  }
-  &::-moz-placeholder {
-    /* Firefox 19+ */
-    color: $text-color-primary;
-  }
-  &:-ms-input-placeholder {
-    /* IE 10+ */
-    color: $text-color-primary;
-  }
-  &:-moz-placeholder {
-    /* Firefox 18- */
-    color: $text-color-primary;
-  }
+  @include placeholder($text-color-primary);
 }
 
 .email-submit {
@@ -232,4 +235,47 @@ $radius:15px;
   @extend %bg-gradient;
   border: 0;
   @include btnPlay(3rem);
+}
+
+// demo form
+.demo-form-container {
+  max-width: 610px;
+  border-radius: 1.3rem;
+  @extend %bg-gradient;
+  .form-control {
+    border-radius: 1rem;
+    background-color: transparent;
+    @include placeholder($color-third);
+    color: $color-third;
+    border: 1px solid $color-third;
+  }
+}
+
+.btn-demo-submit {
+  background-color: $color-third;
+  color: $color-primary;
+}
+
+.color-required {
+  color: $color-required;
+}
+
+@mixin aHover ($color) {
+  color:$color;
+  &:hover {
+    color: transparentize( $color, 0.3);
+  }
+   &:focus {
+    color: transparentize( $color, 0.4);
+  }
+}
+
+
+
+.a-primary {
+  @include aHover($color-primary);
+}
+
+.a-third{
+  @include aHover($color-third);
 }

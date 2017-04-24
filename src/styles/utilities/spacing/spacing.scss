@@ -27,6 +27,19 @@ $bs4-base:15px;
   }
 }
 
+.pl-bs4 {
+  padding-left: $bs4-base;
+}
+.pr-bs4 {
+  padding-right: $bs4-base;
+}
+
+.px-bs4{
+  @extend .pl-bs4;
+  @extend .pr-bs4;
+
+}
+
 @include percentage(2);
 .pt-6 {
   @include paddingTrem(3.5);

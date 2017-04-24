@@ -16,7 +16,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: transparentize($color-fourth, .2);
   z-index: -1;
   opacity: 0;
   transition: opacity 0.2s, z-index 0s 0.2s;
@@ -44,19 +44,20 @@
 }
 
 .vanilla-modal.modal-visible .modal {
-  z-index: 99;
+  z-index: $zindex-modal;
   opacity: 1;
   transition: opacity 0.2s;
 }
 
 .modal-inner {
+  // min-width: 70%;
   position: relative;
   overflow: hidden;
   max-width: 90%;
   max-height: 90%;
   overflow-x: hidden;
   overflow-y: auto;
-  background: #fff;
+  background:  transparent;
   z-index: -1;
   opacity: 0;
   transform: scale(0);
@@ -72,14 +73,20 @@
 [data-modal-close] {
   position: absolute;
   z-index: 2;
-  right: 0;
-  top: 0;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  font-size: 13px;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  // line-height: 25px;
+  // font-size: 13px;
   cursor: pointer;
   text-align: center;
-  background: #fff;
-  box-shadow: -1px 1px 2px rgba(0,0,0,0.2);
+  background: transparent;
+  // box-shadow: -1px 1px 2px rgba(0,0,0,0.2);
+}
+
+
+.modal-content{
+background-color: transparent;
+border: 0;
 }

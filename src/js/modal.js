@@ -1,8 +1,8 @@
-import VanillaModal from 'vanilla-modal';
 
-export function setModal() {
-  console.log('modal set up');
+export function setModal(VanillaModal) {
   const options={};
-  const modal = new VanillaModal(options);
-  console.log(modal);
+  new VanillaModal(options);
 }
+
+
+
