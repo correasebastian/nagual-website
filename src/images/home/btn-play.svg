@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Play</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-1">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#C96DD8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing-" transform="translate(-601.000000, -439.000000)">
+            <g id="Video" transform="translate(256.000000, 222.000000)">
+                <g id="Play" transform="translate(345.000000, 217.000000)">
+                    <rect id="Bg" fill="url(#linearGradient-1)" x="0" y="0" width="59.5063503" height="59.5063503" rx="29.7531752"></rect>
+                    <polygon id="Arrow" fill="#FFFFFF" transform="translate(28.250000, 30.250000) rotate(-45.000000) translate(-28.250000, -30.250000) " points="33.6123785 22 36.5 38.5 20 35.6123785"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

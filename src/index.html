@@ -49,12 +49,6 @@
   <main class="container-fluid ">
 
     <!--modal- container-->
-    <div class="modal">
-      <div class="modal-inner">
-        <a data-modal-close>Close</a>
-        <div class="modal-content"></div>
-      </div>
-    </div>
 
     <!--end modal- container-->
 
@@ -65,11 +59,19 @@
     <section class="hm-main px-4p px-sm-8p  px-lg-16p   text-center ngl-row pt-nav">
 
       <!--test modals-->
-      <div id="modal-1" class="modal-hider">Modal 1 content</div>
-      <div id="modal-2" class="modal-hider">Modal 2 content</div>
+      <div id="modal1" class="modal-hider">Modal 1 content</div>
+      <div id="modal2" class="modal-hider">Modal 2 content</div>
       <!-- end test modals-->
 
-      <a href="#modal-1" data-modal-open>Modal 1</a>
+      <div class="modal">
+        <div class="modal-inner">
+          <a data-modal-close>Close</a>
+          <div class="modal-content"></div>
+        </div>
+      </div>
+
+
+      <a href="#modal1" data-modal-open>Modal 1</a>
       <h2 class="ngl-main-title color-third px-4p pt-5  text-uppercase txt-shadow">
         Discover a seamless solution for Product Information Management
       </h2>
