@@ -12,41 +12,34 @@ $bs4-base:15px;
   margin-top: ($spacer-x * $base) !important
 }
 
-.px-4p {
-  @include paddingXpercentage(4%);
+@mixin percentage($base:1, $screen:'px') {
+  @for $i from 1 through 8 {
+    $val: $base;
+    $value: $val * 1%;
+    $prefix: $screen;
+    $prefix: $prefix + '-' + ($val* $i) + 'p';
+    $value: $value * $i;
+    // @debug $value;
+    .#{$prefix} {
+      padding-left: $value;
+      padding-right: $value;
+    }
+  }
 }
 
-.px-8p {
-  @include paddingXpercentage(8%);
-}
-
-.px-16p {
-  @include paddingXpercentage(16%);
-}
-
+@include percentage(2);
 .pt-6 {
   @include paddingTrem(3.5);
 }
 
 // media sm and up
 @include media-breakpoint-up(sm) {
-  .px-sm-2p {
-    @include paddingXpercentage(2%);
-  }
-  .px-sm-4p {
-    @include paddingXpercentage(4%);
-  }
-  .px-sm-8p {
-    @include paddingXpercentage(8%);
-  }
+  @include percentage(2, 'px-sm');
   .pl-sm-4p {
     padding-left: 4%;
   }
   .pl-sm-8p {
     padding-left: 8%;
-  }
-  .px-sm-16p {
-    @include paddingXpercentage(16%);
   }
   .pt-sm-6 {
     @include paddingTrem(3.5);
@@ -64,21 +57,7 @@ $bs4-base:15px;
 
 // media lg and up
 @include media-breakpoint-up(lg) {
-  .px-lg-2p {
-    @include paddingXpercentage(2%);
-  }
-  .px-lg-4p {
-    @include paddingXpercentage(4%);
-  }
-  .px-lg-6p {
-    @include paddingXpercentage(6%);
-  }
-  .px-lg-8p {
-    @include paddingXpercentage(8%);
-  }
-  .px-lg-16p {
-    @include paddingXpercentage(16%);
-  }
+  @include percentage(2, 'px-lg');
   .pt-lg-6 {
     @include paddingTrem(3.5);
   }
@@ -95,5 +74,3 @@ $bs4-base:15px;
     @include marginTrem(6);
   }
 }
-
-
