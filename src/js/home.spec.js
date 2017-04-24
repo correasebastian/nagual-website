@@ -98,9 +98,21 @@ describe.only('Home ', () => {
             $btnPlay.addEventListener.restore();
           });
 
+          it('ended  video', () => {
+
+            stub($video, 'addEventListener');
+
+            home.setListeners();
+
+            assert.calledWith($video.addEventListener, 'ended', match.func);
+            $video.addEventListener.restore();
+          });
+
           it('on click  btn-play', () => {
 
             stub($video, 'play');
+            stub($btnPlay.classList, 'add');
+            stub($video, 'setAttribute');
 
             home.setListeners();
 
@@ -109,6 +121,29 @@ describe.only('Home ', () => {
             $btnPlay.dispatchEvent(e);
 
             assert.called($video.play);
+            assert.calledWith($btnPlay.classList.add, 'hidden-xs-up');
+            assert.calledWith($video.setAttribute, 'controls', '');
+
+            $video.play.restore();
+            $btnPlay.classList.add.restore();
+            $video.setAttribute.restore();
+
+          });
+
+          it('on ended  video', () => {
+
+            stub($btnPlay.classList, 'remove');
+
+            home.setListeners();
+
+            var e = new w.Event('ended');
+
+            $video.dispatchEvent(e);
+
+            assert.calledWith($btnPlay.classList.remove, 'hidden-xs-up');
+
+            $btnPlay.classList.remove.restore();
+
           });
 
 

@@ -7,9 +7,15 @@ export class Home {
     this.setListeners();
   }
 
-  setListeners(){
-    this.$btnPlay.addEventListener('click', ()=>{
+  setListeners() {
+    this.$btnPlay.addEventListener('click', () => {
       this.$video.play();
+      this.$btnPlay.classList.add('hidden-xs-up');
+      this.$video.setAttribute('controls', '');
+    });
+
+    this.$video.addEventListener('ended', () => {
+      this.$btnPlay.classList.remove('hidden-xs-up');
     });
   }
 }
