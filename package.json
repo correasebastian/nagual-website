@@ -41,7 +41,8 @@
   },
   "homepage": "https://github.com/sawyer-effect/nagual-web#readme",
   "dependencies": {
-    "bootstrap": "4.0.0-alpha.6"
+    "bootstrap": "4.0.0-alpha.6",
+    "vanilla-modal": "1.6.4"
   },
   "devDependencies": {
     "autoprefixer": "6.7.7",

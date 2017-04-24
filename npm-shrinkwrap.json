@@ -6546,6 +6546,11 @@
       "resolved": "https://registry.npmjs.org/validate-npm-package-license/-/validate-npm-package-license-3.0.1.tgz",
       "dev": true
     },
+    "vanilla-modal": {
+      "version": "1.6.4",
+      "from": "vanilla-modal@latest",
+      "resolved": "https://registry.npmjs.org/vanilla-modal/-/vanilla-modal-1.6.4.tgz"
+    },
     "vary": {
       "version": "1.1.1",
       "from": "vary@>=1.1.0 <1.2.0",
