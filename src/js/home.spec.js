@@ -49,8 +49,8 @@ describe('Home ', () => {
 
     });
 
-    it('should have one button.btn-get-started element ', () => {
-      const $btnDemo = document.querySelector('button.btn-get-started');
+    it('should have one a.btn-get-started element ', () => {
+      const $btnDemo = document.querySelector('a.btn-get-started');
       expect($btnDemo).to.exist;
 
     });
@@ -68,7 +68,7 @@ describe('Home ', () => {
       home = new Home();
       $video = document.querySelector('video#home-video');
       $btnPlay = document.querySelector('button.btn-play');
-      $btnDemo = document.querySelector('button.btn-get-started');
+      $btnDemo = document.querySelector('.btn-get-started');
     });
 
     describe('Methods', function() {

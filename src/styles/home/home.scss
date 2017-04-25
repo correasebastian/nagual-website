@@ -85,6 +85,9 @@ a {
   margin-top: remy(-20);
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: remy(50);
   width: 200px;
   transition: margin-top .2s;
@@ -261,21 +264,19 @@ $radius:15px;
 }
 
 @mixin aHover ($color) {
-  color:$color;
+  color: $color;
   &:hover {
     color: transparentize( $color, 0.3);
   }
-   &:focus {
+  &:focus {
     color: transparentize( $color, 0.4);
   }
 }
-
-
 
 .a-primary {
   @include aHover($color-primary);
 }
 
-.a-third{
+.a-third {
   @include aHover($color-third);
 }

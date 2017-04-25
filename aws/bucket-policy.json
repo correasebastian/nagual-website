@@ -1,0 +1,13 @@
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1493144329148",
+    "Statement": [
+        {
+            "Sid": "Stmt1493144317919",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::nagual-website/*"
+        }
+    ]
+}

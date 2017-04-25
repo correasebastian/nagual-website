@@ -55,6 +55,7 @@ behind the scene this command is doing :
 
 * create a new s3 Bucket
 * convert the bucket to static website
+* set a bucket policy , we have an example in ./aws/bucket-policy.json, (dont forget to change the bucket name  on the resource  ``` arn:aws:s3:::<your-bucket-name>/* ```)
 * create a new user in aws console (circleCi need access to aws), create an access key and set in the circleCi project, [Example](https://circleci.com/docs/1.0/continuous-deployment-with-amazon-s3/)
 * configure the circle.yml to set the folder you want to sync
 * set an environment variable ``` AWS_BUCKET=<your bucket>  ```, example  ``` AWS_BUCKET=s3://nagual-website ```
