@@ -41,7 +41,7 @@ in order to standarized commits we are using the npm package  [commitizen](https
 ## Git Hooks
 We are using the npm package [Husky](https://github.com/typicode/husky) to run the precommit and prepush hooks and run our lint and test taks
 
-## Deploy
+## Deploy - Staging
 
 for the deploy we are using an npm task  --> ``` npm run deploy:staging ``` this task will be executed by the CI tool, in our case CircleCI,
 
@@ -50,3 +50,11 @@ behind the scene this command is doing :
 * running test
 * build the app
 * deploy to [surge](https://surge.sh/)  --> we need to follow this [guide](https://surge.sh/help/integrating-with-travis-ci) to set the environment variables iin circleCi to allow deploys in our behalf
+
+## Deploy - Production
+
+* create a new s3 Bucket
+* convert the bucket to static website
+* create a new user in aws console (circleCi need access to aws), create an access key and set in the circleCi project, [Example](https://circleci.com/docs/1.0/continuous-deployment-with-amazon-s3/)
+* configure the circle.yml to set the folder you want to sync
+* set an environment variable ``` AWS_BUCKET=<your bucket>  ```, example  ``` AWS_BUCKET=s3://nagual-website ```
