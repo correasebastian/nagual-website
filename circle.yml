@@ -8,4 +8,8 @@ deployment:
     branch: develop
     commands:
       - npm run deploy:staging
-
+  prod:
+    branch: aws
+    commands:
+      - npm run build
+      - aws s3 sync dist https://s3.amazonaws.com/nagual-website/ --delete
