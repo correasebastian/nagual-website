@@ -9,7 +9,7 @@ deployment:
     commands:
       - npm run deploy:staging
   prod:
-    branch: aws
+    branch: master
     commands:
       - npm run build
       - aws s3 sync ./dist $AWS_BUCKET --delete
