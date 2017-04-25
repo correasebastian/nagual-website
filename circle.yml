@@ -12,4 +12,4 @@ deployment:
     branch: aws
     commands:
       - npm run build
-      - aws s3 sync dist https://s3.amazonaws.com/nagual-website/ --delete
+      - aws s3 sync ./dist s3://nagual-website --delete
