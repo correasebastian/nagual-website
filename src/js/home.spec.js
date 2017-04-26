@@ -44,7 +44,7 @@ describe('Home ', () => {
     });
 
     it('should have one button.btn-play element ', () => {
-      const $btnPlay = document.querySelector('button.btn-play');
+      const $btnPlay = document.querySelector('[role="button"].btn-play');
       expect($btnPlay).to.exist;
 
     });
@@ -67,7 +67,7 @@ describe('Home ', () => {
     beforeEach(() => {
       home = new Home();
       $video = document.querySelector('video#home-video');
-      $btnPlay = document.querySelector('button.btn-play');
+      $btnPlay = document.querySelector('.btn-play');
       $btnDemo = document.querySelector('.btn-get-started');
     });
 
@@ -116,6 +116,17 @@ describe('Home ', () => {
             $video.addEventListener.restore();
           });
 
+          it('playing  video', () => {
+
+            stub($video, 'addEventListener');
+
+            home.setListeners();
+
+            assert.calledWith($video.addEventListener, 'playing', match.func);
+
+            $video.addEventListener.restore();
+          });
+
           it('on click  btn-play', () => {
 
             stub($video, 'play');
@@ -145,6 +156,7 @@ describe('Home ', () => {
 
             stub($btnPlay.classList, 'remove');
             stub($btnDemo.classList, 'remove');
+            stub($video.classList, 'add');
             stub($video, 'removeAttribute');
 
             home.setListeners();
@@ -155,11 +167,33 @@ describe('Home ', () => {
 
             assert.calledWith($btnPlay.classList.remove, 'hidden-xs-up');
             assert.calledWith($btnDemo.classList.remove, 'playing');
+            assert.calledWith($video.classList.add, 'hide-native-ios-play-btn');
             assert.calledWith($video.removeAttribute, 'controls');
 
             $btnPlay.classList.remove.restore();
             $btnDemo.classList.remove.restore();
+            $video.classList.add.restore();
             $video.removeAttribute.restore();
+
+          });
+
+
+          it('on playing  video', () => {
+
+
+            stub($video.classList, 'remove');
+
+            home.setListeners();
+
+            var e = new w.Event('playing');
+
+            $video.dispatchEvent(e);
+
+
+            assert.calledWith($video.classList.remove, 'hide-native-ios-play-btn');
+
+            $video.classList.remove.restore();
+
 
           });
 
