@@ -10,3 +10,5 @@ temp/
 
 #firebase  functions
 functions/node_modules/
+
+api/lambda.zip

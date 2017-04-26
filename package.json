@@ -26,7 +26,8 @@
     "predeploy:fb:fn": "npm run install:fb:fn",
     "deploy:fb:fn": "firebase deploy --token $FIREBASE_TOKEN",
     "deploy:fb:fn:dev": "npm run deploy:fb:fn",
-    "deploy:fb:fn:prod": "npm run deploy:fb:fn -- -P prod"
+    "deploy:fb:fn:prod": "npm run deploy:fb:fn -- -P prod",
+    "zip:lambda":"cd ./api && zip -r ./lambda.zip * && cd ../"
   },
   "repository": {
     "type": "git",
