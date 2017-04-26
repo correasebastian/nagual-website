@@ -13,14 +13,21 @@ const app = express();
 
 
 const corsOptions = {
-/*  origin: (origin, callback) => {
-    if (config.cors.whitelist.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }*/
+  /*  origin: (origin, callback) => {
+      if (config.cors.whitelist.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    }*/
 };
+
+
+/* app.use((req, res, next) => {
+  console.log('before helmet and body parser : this is the body', req.body);
+  next();
+});*/
+
 
 app.use(helmet());
 app.use(bodyParser.urlencoded({
@@ -31,6 +38,7 @@ app.use(expressValidator());
 app.use(morgan('tiny'));
 
 app.use((req, res, next) => {
+  console.log('after body parser');
   console.log('body', req.body);
   console.log('method', req.method);
   next();
