@@ -20,7 +20,10 @@
     "deploy:staging": "npm run deploy --   https://ngl-staging.surge.sh",
     "pretest": "npm run lint",
     "test": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"src/**/*.spec.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "deploy:fb:fn":"firebase deploy --token $FIREBASE_TOKEN",
+    "deploy:fb:fn:dev":"npm run deploy:fb:fn",
+    "deploy:fb:fn:prod":"npm run deploy:fb:fn -- -P prod"
   },
   "repository": {
     "type": "git",

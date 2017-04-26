@@ -7,3 +7,6 @@
 dist/
 node_modules/
 temp/
+
+#firebase  functions
+functions/node_modules/

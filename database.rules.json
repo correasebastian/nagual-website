@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "demo-forms": {
+      ".read": "auth != null",
+      ".write": true,
+      "$formId": {
+        ".validate": "newData.hasChildren(['name', 'company', 'role', 'email'])",
+        "name": {
+          ".validate": "newData.isString()"
+        },
+        "company": {
+          ".validate": "newData.isString()"
+        },
+        "role": {
+          ".validate": "newData.isString()"
+        },
+        "email": {
+          ".validate": "newData.isString()"
+        }
+      }
+    }
+  }
+}

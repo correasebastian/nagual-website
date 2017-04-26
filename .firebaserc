@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "ngl-dev",
+    "prod": "nagual-a60c7"
+  }
+}
