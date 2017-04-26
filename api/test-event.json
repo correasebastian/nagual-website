@@ -1,5 +1,5 @@
 {
-  "body": "{\"title\":\"body\"}",
+  "body": "{\"email\":\"sebas@sebas.com\"}",
   "resource": "/{proxy+}",
   "requestContext": {
     "resourceId": "123456",

@@ -1,13 +1,14 @@
 const util = require('util');
 
 function onPost(req, res, next) {
-  req.checkBody('title', 'Invalid title property').notEmpty();
+  req.checkBody('email', 'must include email property').notEmpty();
+  req.checkBody('email', 'Is not a valid email').isEmail();
   req.getValidationResult()
     .then((result) => {
       if (!result.isEmpty()) {
         console.log(`There have been validation errors:  ${util.inspect(result.array())}`);
         res.status(400).json({
-          errors: result.array()
+          errors: result.useFirstErrorOnly().array() // result.array()
         });
         return;
       }
