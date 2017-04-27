@@ -1,3 +1,11 @@
+const dotenv = require('dotenv').config({
+  silent: true
+});
+
+/*,
+  path: '../'*/
+
+console.log(dotenv);
 const awsServerlessExpress = require('aws-serverless-express');
 const app = require('./src/app');
 const server = awsServerlessExpress.createServer(app);

@@ -8,6 +8,10 @@ const config = {
   },
   cors: {
     whitelist: ['http://example1.com', 'http://example2.com']
+  },
+  mailchimp: {
+    list: process.env.MAILCHIMP_LIST || 'please-set-mailchimp-list',
+    apiKey: process.env.MAILCHIMP_API_KEY || 'please-setan-apikey-mailchimp'
   }
 };
 
