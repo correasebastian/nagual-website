@@ -252,6 +252,16 @@ $radius:15px;
     color: $color-third;
     border: 1px solid $color-third;
   }
+  .form-group{
+    margin-bottom: 0;
+  }
+  .has-danger{
+    text-align: left;
+
+    .text-help{
+      color:$color-required;
+    }
+  }
 }
 
 .btn-demo-submit {
@@ -285,4 +295,10 @@ $radius:15px;
 [id="home-video"].hide-native-ios-play-btn::-webkit-media-controls-start-playback-button {
     display: none!important;
     -webkit-appearance: none;
+}
+
+
+body.modal-visible{
+  overflow-y: hidden;
+  // position: fixed;
 }

@@ -27,7 +27,7 @@
     "deploy:fb:fn": "firebase deploy --token $FIREBASE_TOKEN",
     "deploy:fb:fn:dev": "npm run deploy:fb:fn",
     "deploy:fb:fn:prod": "npm run deploy:fb:fn -- -P prod",
-    "zip:lambda":"cd ./api && zip -r ./lambda.zip * && cd ../"
+    "zip:lambda": "cd ./api && zip -r ./lambda.zip * && cd ../"
   },
   "repository": {
     "type": "git",
@@ -49,6 +49,7 @@
   "homepage": "https://github.com/sawyer-effect/nagual-web#readme",
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
+    
     "vanilla-modal": "1.6.4"
   },
   "devDependencies": {
