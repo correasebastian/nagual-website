@@ -1,10 +1,10 @@
 const util = require('util');
 // const rp = require('request-promise-native');
-// const config = require('../../config');
+const stgVbls = require('../../stage-variables');
 
 function onPost(req, res, next) {
-  req.checkBody('email_address', 'must include email property').notEmpty();
-  req.checkBody('email_address', 'Is not a valid email').isEmail();
+  /*req.checkBody('email_address', 'must include email property').notEmpty();
+  req.checkBody('email_address', 'Is not a valid email').isEmail();*/
   req.getValidationResult()
     .then((result) => {
       if (!result.isEmpty()) {
@@ -15,7 +15,7 @@ function onPost(req, res, next) {
         return;
       }
 
-      res.status(201).json(req.body);
+      res.status(201).json(Object.assign({}, req.body, stgVbls.getStageVariables()));
       /*      const options = {
               method: 'POST',
               uri: `https://us1.api.mailchimp.com/3.0/lists/${config.mailchimp.list}/members`,

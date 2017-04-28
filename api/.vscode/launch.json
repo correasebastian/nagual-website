@@ -12,6 +12,12 @@
     },
     {
       "type": "node",
+      "request": "launch",
+      "name": "index.spec.js",
+      "program": "${workspaceRoot}/index.spec.js"
+    },
+    {
+      "type": "node",
       "request": "attach",
       "name": "Attach to Port",
       "address": "localhost",
