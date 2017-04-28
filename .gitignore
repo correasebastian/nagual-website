@@ -12,3 +12,5 @@ temp/
 functions/node_modules/
 
 api/lambda.zip
+
+src/js/api.js

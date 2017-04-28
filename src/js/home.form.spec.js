@@ -30,8 +30,8 @@ describe('Home Forms ', () => {
       const action = $demoForm.getAttribute('action');
       const method = $demoForm.getAttribute('method');
       expect($demoForm).to.exist;
-      expect(action).to.equal('/');
-      expect(method).to.equal('get');
+      expect(action).to.equal('/contact-us');
+      expect(method).to.equal('post');
 
     });
 
@@ -56,7 +56,7 @@ describe('Home Forms ', () => {
         required: true
       }, {
         type: 'email',
-        name: 'email',
+        name: 'email_address',
         required: true
       }, {
         type: 'tel',
@@ -99,8 +99,8 @@ describe('Home Forms ', () => {
       const action = $emailForm.getAttribute('action');
       const method = $emailForm.getAttribute('method');
       expect($emailForm).to.exist;
-      expect(action).to.equal('/');
-      expect(method).to.equal('get');
+      expect(action).to.equal('/subscribe');
+      expect(method).to.equal('post');
 
     });
 

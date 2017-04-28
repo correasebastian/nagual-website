@@ -1,10 +1,14 @@
+import {
+  API_BASE_URL
+} from './api';
+
 export class Home {
   constructor() {}
   init() {
     this.$video = document.getElementById('home-video');
     this.$btnPlay = document.querySelector('.btn-play');
     this.$btnDemo = document.querySelector('.btn-get-started');
-
+    this.setbaseUrl(API_BASE_URL);
     this.setListeners();
   }
 
@@ -35,5 +39,11 @@ export class Home {
     });
 
 
+  }
+
+  setbaseUrl(baseUrl){
+    Array.from(document.forms).forEach(form =>{
+      form.setAttribute('action', baseUrl + form.getAttribute('action' ));
+    });
   }
 }

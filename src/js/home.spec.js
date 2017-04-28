@@ -11,6 +11,9 @@ import {
   assert,
   match
 } from 'sinon';
+import {
+  API_BASE_URL
+} from './api';
 
 describe('Home ', () => {
 
@@ -76,16 +79,47 @@ describe('Home ', () => {
       describe('Init', function() {
         it('should get references of the elements', () => {
           stub(home, 'setListeners');
+          stub(home, 'setbaseUrl');
 
           home.init();
 
           expect(home.$video).to.equal($video);
           expect(home.$btnPlay).to.equal($btnPlay);
           assert.calledOnce(home.setListeners);
+          assert.calledWith(home.setbaseUrl, API_BASE_URL);
 
           home.setListeners.restore();
+          home.setbaseUrl.restore();
         });
       });
+
+
+      describe('setbaseurl', function() {
+
+        it('should append the base Url on all the forms ', function() {
+
+          var baseUrl = 'anybaseurl';
+          var actions = Array.from(document.forms).map(form => {
+            return `${baseUrl}${form.getAttribute('action')}`;
+          });
+
+          // console.info(actions);
+
+          home.setbaseUrl(baseUrl);
+
+
+          Array.from(document.forms).forEach(form => {
+            var action = form.getAttribute('action');
+            expect(actions).to.include(action);
+          });
+
+
+
+
+        });
+
+      });
+
 
 
       describe('after Init', function() {

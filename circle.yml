@@ -11,5 +11,5 @@ deployment:
   prod:
     branch: master
     commands:
-      - npm run build
+      - npm run build:prod
       - aws s3 sync ./dist $AWS_BUCKET --delete

@@ -7,18 +7,34 @@
     "precommit": "npm run test",
     "cm": "git cz",
     "prepush": "npm run test",
-    "prebuild:dev": " rimraf temp",
-    "lint": "eslint  src buildScripts",
+
+
+    "copy:api:dev": "cp ./src/js/api/api.dev.js ./src/js/api.js",
+    "prebuild:dev": " rimraf temp && npm run copy:api:dev",
     "build:dev": "NODE_ENV=development webpack --env.dev -w",
-    "prebuild": "rimraf dist",
-    "build": "BABEL_ENV=production NODE_ENV=production webpack --env.prod -p",
     "predev:server": "npm run lint",
     "dev:server": "node buildScripts/dev-server.js",
+
+
+    "prebuild": "rimraf dist",
+    "build": "BABEL_ENV=production NODE_ENV=production webpack --env.prod -p",
+
+
+    "copy:api:staging": "cp ./src/js/api/api.staging.js ./src/js/api.js",
+    "prebuild:staging": "npm run  copy:api:staging",
+    "build:staging": "npm run build",
+    "deploy:staging": "npm run build:staging && surge -p dist -d https://ngl-staging.surge.sh",
+
+
+
+    "copy:api:prod": "cp ./src/js/api/api.prod.js ./src/js/api.js",
+    "prebuild:prod": "npm run copy:api:prod",
+    "build:prod": "npm run build",
+
     "security:check": "nsp check",
-    "predeploy": "npm run build",
-    "deploy": "surge -p dist -d ",
-    "deploy:staging": "npm run deploy --   https://ngl-staging.surge.sh",
-    "pretest": "npm run lint",
+
+    "lint": "eslint  src buildScripts",
+    "pretest": "npm run lint && npm run copy:api:dev",
     "test": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"src/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
     "postinstall": "npm-recursive-install --skip-root",
@@ -49,7 +65,7 @@
   "homepage": "https://github.com/sawyer-effect/nagual-web#readme",
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
-    
+
     "vanilla-modal": "1.6.4"
   },
   "devDependencies": {
