@@ -302,3 +302,13 @@ body.modal-visible{
   overflow-y: hidden;
   // position: fixed;
 }
+
+
+.email-form{
+  .form-group{
+    margin-bottom: 0;
+    .text-help{
+      padding-left: .5rem;
+    }
+  }
+}

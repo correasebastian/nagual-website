@@ -32,6 +32,7 @@ export const main = {
     home.init();
     // debugger;
     Validation.init($.byId('demo-form'), true);
+    Validation.init($.byId('email-form'), true);
     setModal(VanillaModal);
   },
 

@@ -64,7 +64,7 @@
 
   <div id="modal-demo-form" class="modal-hider">
     <div class="demo-form-container mx-auto px-8p py-5">
-      <form id="demo-form"  class="text-center" action="/" method="get">
+      <form id="demo-form" class="text-center" action="/" method="get">
         <h2 class="color-third  text-uppercase  ">
           GET STARTED WITH NAGUAL
         </h2>
@@ -114,17 +114,17 @@
           <!--<iframe src="https://www.youtube.com/embed/ff3C-Kyv8wI"  width="560" height="315" frameborder="0" allowfullscreen>
         </iframe>-->
           <!--loop="" muted="" autoplay=""-->
-          <video class="embed-responsive-item hide-native-ios-play-btn"  poster="images/home/video-poster.png" preload="auto" id="home-video" width="560" height="315" allowfullscreen>
+          <video class="embed-responsive-item hide-native-ios-play-btn" poster="images/home/video-poster.png" preload="auto" id="home-video" width="560" height="315" allowfullscreen>
           <source src="images/home/se-intro-final.webm" type="video/webm">
           <source src="images/home/se-intro-final.mp4" type="video/mp4">
         </video>
-        <!--  <button type="button" class=" btn btn-play  d-flex justify-content-center">
+          <!--  <button type="button" class=" btn btn-play  d-flex justify-content-center">
         </button>
 -->
           <!--<span class="arrow-right d-block">
 
           </span>-->
-          <img role="button" class="btn-play"  src="images/home/btn-play.svg" alt="Play button ">
+          <img role="button" class="btn-play" src="images/home/btn-play.svg" alt="Play button ">
 
 
         </div>
@@ -132,7 +132,7 @@
       <!-- 16:9 aspect ratio -->
 
 
-      <a  href="#modal-demo-form" data-modal-open class="  a-no-default a-third btn btn-md btn-get-started btn-shadow btn-elipsis  border-0  ">DEMO</button>
+      <a href="#modal-demo-form" data-modal-open class="  a-no-default a-third btn btn-md btn-get-started btn-shadow btn-elipsis  border-0  ">DEMO</button>
 
     </section>
 
@@ -271,16 +271,20 @@
         <p class="color-third pt-5 text-lg-center">
           SUBSCRIBE TO OUR NEWSLETTER
         </p>
-        <form action="">
+        <form id="email-form" class="email-form" action="/" method="get">
 
           <label class="sr-only" for="email">Email</label>
-          <div class="input-group input-group-email mx-lg-auto">
-            <input type="email" class="email-input form-control color-third" id="email" aria-describedby="emailHelp" placeholder="Your E-mail" required>
-            <div class="input-group-btn">
-              <input type="image" src="images/utilities/right-long-arrow.svg" class="btn border-0 email-submit color-third" type="button">
-              </input>
+          <div class="form-group">
+
+            <div class=" input-group input-group-email mx-lg-auto">
+              <input type="email" name="email_address" class="email-input form-control color-third" id="email" aria-describedby="emailHelp" placeholder="Your E-mail" required>
+              <div class="input-group-btn">
+                <input type="image" src="images/utilities/right-long-arrow.svg" class="btn border-0 email-submit color-third" type="button">
+                </input>
+              </div>
             </div>
           </div>
+
           <small id="emailHelp" class="form-text sr-only text-muted">We'll never share your email with anyone else.</small>
         </form>
       </div>
@@ -289,10 +293,10 @@
         &copy; 2017 Nagual. All rights reserved.
       </small>
       </div>
-    </div>
-  </footer>
+      </div>
+      </footer>
 
-  <!-- <div class="site-wrapper">
+      <!-- <div class="site-wrapper">
 
     <div class="site-wrapper-inner">
       <div class="cover-container">
@@ -308,7 +312,7 @@
       </div>
     </div>
   </div>-->
-  <%=htmlWebpackPlugin.files.webpackManifest%>
+      <%=htmlWebpackPlugin.files.webpackManifest%>
 </body>
 
 </html>

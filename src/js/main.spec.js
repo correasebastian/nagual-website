@@ -118,8 +118,10 @@ describe('app.js methods', function() {
       var homeInstance = {
         init: spy()
       };
-      var $form={};
-      $.byId.returns($form);
+      var $demoForm = {};
+      var $emailForm = {};
+      $.byId.onCall(0).returns($demoForm);
+      $.byId.onCall(1).returns($emailForm);
       stub(homeObj, 'Home').returns(homeInstance);
       // console.info(modalObj);
 
@@ -128,8 +130,11 @@ describe('app.js methods', function() {
       assert.calledWithNew(homeObj.Home);
       assert.calledOnce(homeInstance.init);
       assert.calledWith($.byId, 'demo-form');
+      assert.calledWith(Validation.init, $demoForm, true);
+      assert.calledWith($.byId, 'email-form');
+      assert.calledWith(Validation.init, $emailForm, true);
       assert.calledWith(modalObj.setModal, VanillaModal);
-      assert.calledWith(Validation.init, $form, true);
+
     });
 
   });
