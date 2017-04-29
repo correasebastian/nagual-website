@@ -37,6 +37,12 @@
     "pretest": "npm run lint && npm run copy:api:dev",
     "test": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"src/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
+
+
+    "test:api": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"api/src/**/*.spec.js\"",
+    "test:api:watch": "npm run test:api -- --watch",
+
+
     "postinstall": "npm-recursive-install --skip-root",
     "x-install:fb:fn": "cd functions && npm install && cd .. && pwd",
     "predeploy:fb:fn": "npm run install:fb:fn",
