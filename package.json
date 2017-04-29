@@ -35,8 +35,10 @@
 
     "lint": "eslint  src buildScripts",
     "pretest": "npm run lint && npm run copy:api:dev",
-    "test": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"src/**/*.spec.js\"",
-    "test:watch": "npm run test -- --watch",
+    "test": "npm run test:client && npm run test:api",
+
+    "test:client": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"src/**/*.spec.js\"",
+    "test:client:watch": "npm run test:client -- --watch",
 
 
     "test:api": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"api/src/**/*.spec.js\"",
