@@ -7,7 +7,7 @@ const config = {
     url: process.env.MONGO_DB_URI || 'mongodb://localhost/ngl'
   },
   cors: {
-    whitelist: ['http://example1.com', 'http://example2.com']
+    whitelist: ['https://ngl-staging.surge.sh', 'http://localhost:3000', 'http://www.nagual.io']
   },
   mailchimp: {
     list: process.env.MAILCHIMP_LIST || 'please-set-mailchimp-list',

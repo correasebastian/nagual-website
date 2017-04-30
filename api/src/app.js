@@ -1,4 +1,3 @@
-
 const express = require('express');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
@@ -14,13 +13,13 @@ const app = express();
 
 
 const corsOptions = {
-  /*  origin: (origin, callback) => {
-      if (config.cors.whitelist.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    }*/
+  origin: (origin, callback) => {
+    if (config.cors.whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 };
 
 
