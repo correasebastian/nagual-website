@@ -15,7 +15,9 @@ function onPost(req, res, next) {
         return;
       }
 
-      const response = Object.assign({}, req.body, stgVbls.getStageVariables());
+      const response = Object.assign({}, req.body, stgVbls.getStageVariables(), {
+        // timestamp: '529'
+      });
 
       res.status(201)
         .json(response);

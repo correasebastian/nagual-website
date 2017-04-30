@@ -7,51 +7,38 @@
     "precommit": "npm run test",
     "cm": "git cz",
     "prepush": "npm run test",
-
-
     "copy:api:dev": "cp ./src/js/api/api.dev.js ./src/js/api.js",
     "prebuild:dev": " rimraf temp && npm run copy:api:dev",
     "build:dev": "NODE_ENV=development webpack --env.dev -w",
     "predev:server": "npm run lint",
     "dev:server": "node buildScripts/dev-server.js",
-
-
     "prebuild": "rimraf dist",
     "build": "BABEL_ENV=production NODE_ENV=production webpack --env.prod -p",
-
-
     "copy:api:staging": "cp ./src/js/api/api.staging.js ./src/js/api.js",
     "prebuild:staging": "npm run  copy:api:staging",
     "build:staging": "npm run build",
     "deploy:staging": "npm run build:staging && surge -p dist -d https://ngl-staging.surge.sh",
-
-
-
     "copy:api:prod": "cp ./src/js/api/api.prod.js ./src/js/api.js",
     "prebuild:prod": "npm run copy:api:prod",
     "build:prod": "npm run build",
-
     "security:check": "nsp check",
-
     "lint": "eslint  src buildScripts",
     "pretest": "npm run lint && npm run copy:api:dev",
     "test": "npm run test:client && npm run test:api",
-
     "test:client": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"src/**/*.spec.js\"",
     "test:client:watch": "npm run test:client -- --watch",
-
-
     "test:api": "BABEL_ENV=testing mocha --require babel-register --reporter progress  \"api/src/**/*.spec.js\"",
     "test:api:watch": "npm run test:api -- --watch",
-
-
     "postinstall": "npm-recursive-install --skip-root",
     "x-install:fb:fn": "cd functions && npm install && cd .. && pwd",
     "predeploy:fb:fn": "npm run install:fb:fn",
     "deploy:fb:fn": "firebase deploy --token $FIREBASE_TOKEN",
     "deploy:fb:fn:dev": "npm run deploy:fb:fn",
     "deploy:fb:fn:prod": "npm run deploy:fb:fn -- -P prod",
-    "zip:lambda": "cd ./api && zip -r ./lambda.zip * && cd ../"
+    "zip:lambda": "cd ./api && zip -r ./lambda.zip * && cd ../",
+    "deploy:lambda": "npm run zip:lambda && aws lambda update-function-code --function-name Nagual-website-lambda   --zip-file fileb://api/lambda.zip --region us-west-2",
+    "publish:lambda": "aws lambda publish-version --function-name Nagual-website-lambda --region us-west-2",
+    "mv:lb:prod": "version=$(aws lambda publish-version --function-name Nagual-website-lambda --region us-west-2 | jq -r '.Version') && aws lambda update-alias  --function-name Nagual-website-lambda --name prod --function-version $version  --region us-west-2"
   },
   "repository": {
     "type": "git",
@@ -73,7 +60,6 @@
   "homepage": "https://github.com/sawyer-effect/nagual-web#readme",
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
-
     "vanilla-modal": "1.6.4"
   },
   "devDependencies": {
@@ -99,6 +85,7 @@
     "html-webpack-plugin": "2.28.0",
     "husky": "0.13.3",
     "inline-manifest-webpack-plugin": "3.0.1",
+    "jq-cli-wrapper": "0.4.0",
     "jsdom": "9.12.0",
     "mocha": "3.2.0",
     "node-sass": "4.5.2",
