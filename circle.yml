@@ -8,8 +8,16 @@ deployment:
     branch: develop
     commands:
       - npm run deploy:staging
+      - npm run deploy:lambda
   prod:
     branch: master
     commands:
       - npm run build:prod
       - aws s3 sync ./dist $AWS_BUCKET --delete
+      - npm run mv:lb:prod
+  test:
+    branch: test
+    commands:
+      - npm run deploy:lambda
+
+
