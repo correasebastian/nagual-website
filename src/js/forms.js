@@ -6,6 +6,10 @@ import {
   $
 } from './util';
 
+import {
+  modal
+} from './modal';
+
 
 /*
 //you have to overrride this if you want to do something after the validation;
@@ -77,6 +81,7 @@ demoForm.postData = function(e) {
       console.log('parsed json', json);
       $ele.reset();
       alert('success');
+      modal.instance.close();
     }).catch(function(ex) {
       console.log('parsing inside the demoform failed', ex);
     });

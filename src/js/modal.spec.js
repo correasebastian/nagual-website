@@ -4,12 +4,14 @@ import {
 import jsdom from 'jsdom';
 import fs from 'fs';
 import {
-  setModal
+  modal
 } from './modal';
 import {
-  spy,
-  assert
+  assert,
+  stub
 } from 'sinon';
+import * as VanillaModal from 'vanilla-modal';
+
 
 describe('Modal ', () => {
 
@@ -61,17 +63,20 @@ describe('Modal ', () => {
   });
 
 
-  describe('setModal', function() {
+  describe('init', function() {
 
     it('should call a new VanillaModal with config object', function() {
 
-      var constructor = spy();
+      let fakeInstance = {};
+      stub(VanillaModal, 'default').returns(fakeInstance);
 
-      setModal(constructor);
+      modal.init();
 
-      assert.calledWithNew(constructor);
-      assert.calledWith(constructor , {});
+      assert.calledWithNew(VanillaModal.default);
+      assert.calledWith(VanillaModal.default, {});
+      expect(modal.instance).to.eql(fakeInstance);
 
+      VanillaModal.default.restore();
 
     });
 

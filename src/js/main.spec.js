@@ -13,8 +13,7 @@ import {
 } from 'sinon';
 
 import * as homeObj from './home';
-import * as modalObj from './modal';
-import VanillaModal from 'vanilla-modal';
+import {modal} from './modal';
 
 import {
   Validation
@@ -106,14 +105,14 @@ describe('app.js methods', function() {
 
     beforeEach(function() {
       stub(Validation, 'init');
-      stub(modalObj, 'setModal');
+      stub(modal, 'init');
       stub($, 'byId');
     });
 
 
     afterEach(function() {
       Validation.init.restore();
-      modalObj.setModal.restore();
+      modal.init.restore();
       $.byId.restore();
     });
 
@@ -126,7 +125,7 @@ describe('app.js methods', function() {
       stub(homeObj, 'Home').returns(homeInstance);
       stub(demoForm, 'initDom');
       stub(emailForm, 'initDom');
-      // console.info(modalObj);
+      // console.info(modal);
 
       main.initApp();
 
@@ -135,7 +134,7 @@ describe('app.js methods', function() {
       assert.calledOnce(demoForm.initDom);
       assert.calledOnce(emailForm.initDom);
 
-      assert.calledWith(modalObj.setModal, VanillaModal);
+      assert.calledOnce(modal.init);
 
       demoForm.initDom.restore();
       emailForm.initDom.restore();

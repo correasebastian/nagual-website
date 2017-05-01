@@ -1,10 +1,10 @@
-import VanillaModal from 'vanilla-modal';
+
 import {
   Home
 } from './home';
 
 import {
-  setModal
+  modal
 } from './modal';
 
 /*import {
@@ -45,7 +45,7 @@ export const main = {
     demoForm.initDom();
     emailForm.initDom();
     // Validation.init($.byId('email-form'), true);
-    setModal(VanillaModal);
+    modal.init();
   },
 
 };

@@ -1,8 +1,7 @@
-
-export function setModal(VanillaModal) {
-  const options={};
-  new VanillaModal(options);
-}
-
-
-
+import VanillaModal from 'vanilla-modal';
+export const modal = {
+  init() {
+    const options = {};
+    this.instance = new VanillaModal(options);
+  }
+};
