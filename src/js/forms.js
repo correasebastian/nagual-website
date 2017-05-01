@@ -48,7 +48,7 @@ export const baseForm = {
 export const emailForm = Object.create(baseForm);
 
 emailForm.postData = function(e) {
-  let $ele = e.currentTarget;
+  let $ele = e.target;
   // console.log('demoForm', e.currentTarget);
   let [action, method] = $.getActionMethod($ele);
 

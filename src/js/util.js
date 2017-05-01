@@ -39,18 +39,31 @@ export const $ = {
         },
         body: jsonData
       })
-      .then(function(response) {
-        if (response.status >= 200 && response.status < 300) {
+      /* .then(function(response) {
+         // const jsonResponse=response.json();
+         console.dir(response);
+         if (response.status >= 200 && response.status < 300) {
+           return response.json();
+         } else {
+           var error = new Error(response.statusText);
+           error.response = response;
+           throw error;
+         }
+       })*/
+      .then(function checkStatus(response) {
+        if (response.ok) {
           return response.json();
-        } else {
-          var error = new Error(response.statusText);
-          error.response = response;
-          throw error;
         }
-      }).catch(function(ex) {
+
+        return response.json().then(json => {
+          console.log('inner check status error side', json);
+          const error = new Error(json.title || response.statusText);
+          return Promise.reject(error);
+        });
+      })
+      .catch(function(ex) {
         console.log('http error', ex);
         return Promise.reject(ex);
       });
   }
 };
-
