@@ -30,6 +30,11 @@ const corsOptions = {
 
 
 app.use(helmet());
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send('something bad happen');
+});
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -44,13 +49,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).send('something bad happen');
-});
+
 
 // app.options('*', cors(corsOptions))
-app.use(cors(corsOptions));
+
 app.use('/', routes);
 
 app.listen(config.server.port, () => {

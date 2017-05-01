@@ -1,7 +1,8 @@
 import '../styles/site.scss';
+import 'whatwg-fetch';
 import {main} from './main';
 
-console.log(process.env);
+// console.log(process.env);
 
 if (process.env.NODE_ENV !== 'production') {
   require('file-loader!../index.html');

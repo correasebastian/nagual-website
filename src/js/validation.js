@@ -457,7 +457,7 @@ export const Validation = {
   lang: ValidationLang,
   ui: ValidationUI,
 
-  init(form, inline = false) {
+  init(form, inline = false, cb = () => {}) {
     // disable browser built-in validation
     form.setAttribute('novalidate', '');
 
@@ -472,11 +472,7 @@ export const Validation = {
           submitBtn.disabled = false;
         });
         if (result === true) {
-
-          alert('wohoo Nagual rocks!! ');
-          form.submit();
-        } else {
-          // this.focusInput(result[0]); //we dont need focus
+          cb(e);
         }
       });
     });

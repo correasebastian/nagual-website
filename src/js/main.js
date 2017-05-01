@@ -1,3 +1,4 @@
+import VanillaModal from 'vanilla-modal';
 import {
   Home
 } from './home';
@@ -6,18 +7,28 @@ import {
   setModal
 } from './modal';
 
-import VanillaModal from 'vanilla-modal';
-import {
+/*import {
   Validation
 } from './validation'; // Native
+*/
+import {
+  $
+} from './util';
 
-import{$} from './util';
+/*import {
+  demoForm
+} from './demo-form';
+*/
+import {
+  emailForm, demoForm
+} from './forms';
 // Check if the DOMContentLoaded has already been completed
+
 
 
 export const main = {
   setListener() {
-    var docState= $.getDocumentState();
+    var docState = $.getDocumentState();
     if (docState === 'complete' || docState !== 'loading') {
       this.initApp();
     } else {
@@ -31,8 +42,9 @@ export const main = {
     var home = new Home();
     home.init();
     // debugger;
-    Validation.init($.byId('demo-form'), true);
-    Validation.init($.byId('email-form'), true);
+    demoForm.initDom();
+    emailForm.initDom();
+    // Validation.init($.byId('email-form'), true);
     setModal(VanillaModal);
   },
 

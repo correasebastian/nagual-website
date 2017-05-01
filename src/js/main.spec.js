@@ -21,6 +21,11 @@ import {
 } from './validation';
 
 import {
+  demoForm,
+  emailForm
+} from './forms';
+
+import {
   // expect
 } from 'chai';
 
@@ -113,27 +118,27 @@ describe('app.js methods', function() {
     });
 
 
-
     it('should call Home class, and init method, Validation.init', function() {
       var homeInstance = {
         init: spy()
       };
-      var $demoForm = {};
-      var $emailForm = {};
-      $.byId.onCall(0).returns($demoForm);
-      $.byId.onCall(1).returns($emailForm);
+
       stub(homeObj, 'Home').returns(homeInstance);
+      stub(demoForm, 'initDom');
+      stub(emailForm, 'initDom');
       // console.info(modalObj);
 
       main.initApp();
 
       assert.calledWithNew(homeObj.Home);
       assert.calledOnce(homeInstance.init);
-      assert.calledWith($.byId, 'demo-form');
-      assert.calledWith(Validation.init, $demoForm, true);
-      assert.calledWith($.byId, 'email-form');
-      assert.calledWith(Validation.init, $emailForm, true);
+      assert.calledOnce(demoForm.initDom);
+      assert.calledOnce(emailForm.initDom);
+
       assert.calledWith(modalObj.setModal, VanillaModal);
+
+      demoForm.initDom.restore();
+      emailForm.initDom.restore();
 
     });
 

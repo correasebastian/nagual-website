@@ -10,5 +10,4 @@ Object.entries(config).forEach(entry => {
   var [key, value] = entry;
   console.log(key, value);
   document.querySelector(`input[name="${key}"]`).value = value;
-})
-;
+});
