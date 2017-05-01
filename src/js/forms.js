@@ -70,20 +70,24 @@ emailForm.init('email-form');
 export const demoForm = Object.create(baseForm);
 demoForm.postData = function(e) {
 
-  let $ele = e.currentTarget;
+  const $ele = e.currentTarget;
+  const $btn = $ele.querySelector('input[type="submit"]');
+  $btn.disabled = true;
   // console.log('demoForm', e.currentTarget);
-  let [action, method] = $.getActionMethod($ele);
+  const [action, method] = $.getActionMethod($ele);
 
   const jsonData = $.formTojson($ele);
 
   $.fetch(action, method, jsonData)
     .then(function(json) {
       console.log('parsed json', json);
+      $btn.disabled = false;
       $ele.reset();
       alert('success');
       modal.instance.close();
     }).catch(function(ex) {
       console.log('parsing inside the demoform failed', ex);
+      $btn.disabled = false;
     });
 };
 demoForm.init('demo-form');
